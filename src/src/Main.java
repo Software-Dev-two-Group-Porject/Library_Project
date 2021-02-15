@@ -7,4 +7,5 @@ public class Main {
         System.out.println("Hello Word!");
     }
     //adding comment to check branching and merging
+    //second comment here to check that merging from dev to test is working ok.
 }
