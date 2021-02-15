@@ -8,5 +8,5 @@ public class Main {
     }
     //adding comment to check branching and merging
     //second comment here to check that merging from dev to test is working ok.
-    //Comment from Michael 3
+    //Comment from Michael 4
 }
