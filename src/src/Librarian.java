@@ -8,7 +8,7 @@ public class Librarian {
 
    Librarian(){
       
-   }
+   } //Default constructor
 
    Librarian (String id, String firstname, String surname) {
       this.id = id;
