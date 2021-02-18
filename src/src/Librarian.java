@@ -6,6 +6,10 @@ public class Librarian {
    //Should ID be string or int?
    String id, firstname, surname;
 
+   Librarian(){
+      
+   }
+
    Librarian (String id, String firstname, String surname) {
       this.id = id;
       this.firstname = firstname;
