@@ -5,18 +5,16 @@
 public class User {
 
     //Creating User File to confirm merge from just created branch in dev branch
-    String id, firstname, surname;
+    private String id, firstname, surname;
 
     User(){
         
     }
 
-    User(String id, String firstname, String surname){
+    User(String id, String firstName, String surname){
      this.id = id;
-     this.firstname = firstname;
+     this.firstname = firstName;
      this.surname = surname; 
     }
-
-
 
 }
