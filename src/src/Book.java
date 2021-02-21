@@ -4,20 +4,79 @@
  **/
 public class Book {
 
-    private String isbn, loanType, availability;
-    private String author, title;
-    private String categories [];
+    private int loanType, quantity;
+    private String author, title, isbn;
+    private String genre, subGenre;
 
     //Default constuctor
+
+    Book(){
+
+    }
+
+    //test constructor
     Book(String isbn, String author, String title){
         this.isbn = isbn;
         this.author = author;
         this.title = title;
     }
 
+    //getters and setters
+    public String getTitle(){
+        return this.title;
+    }
+
+    public void setTitle(String title){
+        this.title = title;
+    }
+
+    public String getAuthor(){
+        return this.author;
+    }
+
+    public void setAuthor(String author){
+        this.author = author;
+    }
+
+    public String getIsbn(){
+        return this.isbn;
+    }
+
+    public void setIsbn(String isbn){
+        this.isbn = isbn;
+    }
+
+    public int getQuantity(){
+        return this.quantity;
+    }
+
+    public void setQuantity(int quantity){
+        this.quantity = quantity;
+    }
+
+    public int getLoanType(int loanType){
+        return this.loanType;
+    }
+
+    public String getGenre(){
+        return this.genre;
+    }
+
+    public void setGenre(String genre){
+        this.genre = genre;
+    }
+
+    public String getSubGenre(){
+        return this.subGenre;
+    }
+
+    public void setSubGenre(String subGenre){
+        this.subGenre = subGenre;
+    }
+
 
     public String toString(){
-        return String.format("%s,   %s,   %s   ", this.isbn, this.author, this.title);
+        return String.format("%s\t%-20s\t%-60s\t%-20s\t%-20s\t%d", this.isbn, this.author, this.title, this.genre, this.subGenre, this.quantity);
     }
 
 }
