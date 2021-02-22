@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 250482, student, Sheldon Cooper, scooper@ulster.ac.uk, passwordsc, C, 223, book1, book2,,,
 030581, student, Leonard Hofstader, lhofstader@ulster.ac.uk, passwordlh, D, 243, book1,,,,
 270485, student, Penny Teller, pteller@ulster.ac.uk, passwordpt, A, 114,,,,,
@@ -8,3 +9,13 @@
 251200, student, Test, test@test.co.uk,,,,,,,,
 
  
+=======
+250482,student,Sheldon Cooper,scooper@ulster.ac.uk,passwordsc,C,223,1,false
+030581,student,Leonard Hofstader,lhofstader@ulster.ac.uk,passwordlh,D,243,0,false
+270485,student,Penny Teller,pteller@ulster.ac.uk,passwordpt,A,114,5,true
+160551,student,Howard Wolowitz,hwolowitz@ulster.ac.uk,passwordpt,B,345,2,true
+210951,student,Bernadette Rostenkowski,brostenkowski@@ulster.ac.uk,passwordbr,F,390,0,false
+291281,staff,Amy Farrah Fowler,afarrahfowler@ulster.ac.uk,passwordaff
+040719,staff,Barry Kripke,bkripke@ulster.ac.uk,passwordbk
+251200,student,Test,test@test.co.uk,,,,7,false
+>>>>>>> Stashed changes
