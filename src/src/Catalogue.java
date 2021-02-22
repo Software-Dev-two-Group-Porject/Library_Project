@@ -1,8 +1,6 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Serializable;
+import java.io.*;
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * Created By Jonathon on 18/02/2021
@@ -11,6 +9,7 @@ import java.util.Arrays;
 
 //implementing serializable so that data object can be easiest saved.
 public class Catalogue {
+    static Scanner input = new Scanner(System.in);
     private Book[] catalogueList;
 
     Catalogue(){
@@ -20,18 +19,21 @@ public class Catalogue {
     //used as a easier test method to check that data is being displayed correctly. 
     public void printList(Book [] bookList){
         System.out.println("\t\t\tBOOK CATALOGUE");
-        String header = String.format("%-15s\t%-20s\t%-60s\t%-20s\t%-20s\t%s", "ISBN", "Author", "Title", "Genre", "Sub Genre", "Quantity");
-        System.out.println(header);
+        System.out.println(printHeader());
         for(int i = 0; i < bookList.length; i++){
             System.out.println(bookList[i].toString());
         }
+    }
+
+    private String printHeader(){
+        return String.format("%-15s\t%-20s\t%-60s\t%-20s\t%-20s\t%s", "ISBN", "Author", "Title", "Genre", "Sub Genre", "Quantity", "Priority");
     }
 
     //This method will open and read our csv file and populate our book array
     //to do this we will create a new book object and then set a value in the array to that object.
     public void initializeCatalogue() {
         int i = 0;
-        String file = "src\\Book_Data.csv";
+        String file = "src\\Data\\Book_Data.csv";
         BufferedReader reader = null;
         String line = "";
         String [] strArr = new String [500];
@@ -108,6 +110,90 @@ public class Catalogue {
         Book [] bookList = Arrays.copyOfRange(returnList, 0, j);
 
         return bookList;
+    }
+
+    //using this method to re write the cv we have in more readable format and when books are added/deleted and quanities
+    //are changed, data can be re written to this file here.
+    public void saveData(){
+        String file = "src\\Data\\Book_Data_Java.csv";
+        BufferedWriter writer = null;
+        String line = "";
+        try{
+            writer = new BufferedWriter( new FileWriter(file));
+            line = printHeader() + "\n";
+            for(int i = 0; i < catalogueList.length; i++){
+               line += catalogueList[i].saveStringForCSV();
+            }
+            writer.write(line);
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        finally {
+
+            try {
+                writer.close();
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+        }
+
+    }
+
+    public void addBookToCatalog(Book book){
+        //we need to extend the size of our array by one and add the book to that
+        //have our catalog list copied with that new element included.
+        //creating
+        Book [] newArray = new Book[catalogueList.length +1];
+        for(int i = 0; i < catalogueList.length; i++){
+            newArray[i] = catalogueList[i];
+        }
+        newArray[newArray.length-1] = book;
+        catalogueList = newArray;
+    }
+
+    public void upDateQuantity(String isbn, String operation){
+       //here we are going to increment and decrement the book value depending on the operation
+        for(int i = 0; i < catalogueList.length; i++){
+            if(catalogueList[i].getIsbn().trim().equals(isbn.trim())){
+                //this ensure's we have the right book
+                //check that the quantity is correct.
+                if(catalogueList[i].getQuantity() > 0 && operation == "checkout"){
+                    catalogueList[i].setQuantity(catalogueList[i].getQuantity() -1);
+                } else if (operation == "return"){
+                    catalogueList[i].setQuantity(catalogueList[i].getQuantity() + 1);
+                } else {
+                    System.out.println("You can't check out from the an empty title");
+                }
+            } else {
+                System.out.println("Book record not found");
+            }
+        }
+    }
+
+    public void removeFromCatalog(String isbn){
+        char response;
+        //The goal of this method will be to search for the element
+        //swap it with the first element in the array
+        //use the Arrays.copy method to return array that no longer contains that element.
+         for(int i = 0; i < catalogueList.length; i++){
+             if(catalogueList[i].getIsbn().equals(isbn.trim())){
+                 System.out.println("Record Found");
+                 System.out.println(printHeader());
+                 System.out.println(catalogueList[i].toString());
+                 System.out.println("\n\nA record has been found, would you like to continue? Y/N");
+                 response = input.nextLine().toUpperCase().charAt(0);
+                 if(response == 'Y') {
+                     Book removeBook = catalogueList[i];
+                     catalogueList[i] = catalogueList[0];
+                     catalogueList[0] = removeBook;
+
+                     catalogueList = Arrays.copyOfRange(catalogueList, 1, catalogueList.length);
+                 } else {
+                     System.out.println("You have chose not to delete the record");
+                     break;
+                 }
+             }
+         }
     }
     
 }
