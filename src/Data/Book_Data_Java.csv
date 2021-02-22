@@ -1,0 +1,423 @@
+ISBN           	Author              	Title                                                       	Genre               	Sub Genre           	Quantity
+#9788847173940	#Goswami, Jaideva    	#Fundamentals of Wavelets                                    	#signal processing   	#                    	#1
+#9785314066179	#Foreman, John       	#Data Smart                                                  	#data science        	#                    	#2
+#9786693977278	#Hawking, Stephen    	#God Created the Integers                                    	#mathematics         	#                    	#2
+#9786516264035	#Dubner, Stephen     	#Superfreakonomics                                           	#economics           	#                    	#2
+#9787338843855	#Said, Edward        	#Orientalism                                                 	#history             	#                    	#4
+#9786312086504	#Vapnik, Vladimir    	#Nature of Statistical Learning Theory, The                  	#data science        	#                    	#2
+#9782526188406	#Menon, V P          	#Integration of the Indian States                            	#history             	#                    	#3
+#9788478097959	#Mlodinow, Leonard   	#Drunkard's Walk, The                                        	#science             	#                    	#3
+#9784338726250	#Shih, Frank         	#Image Processing & Mathematical Morphology                  	#signal processing   	#                    	#4
+#9788884818261	#Konnikova, Maria    	#How to Think Like Sherlock Holmes                           	#psychology          	#                    	#3
+#9783515533816	#Sebastian Gutierrez 	#Data Scientists at Work                                     	#data science        	#                    	#2
+#9785833631745	#Vonnegut, Kurt      	#Slaughterhouse Five                                         	#fiction             	#                    	#5
+#9783129582667	#Villani, Cedric     	#Birth of a Theorem                                          	#mathematics         	#                    	#3
+#9781684873370	#Sussman, Gerald     	#Structure & Interpretation of Computer Programs             	#computer_science    	#                    	#5
+#9781279660501	#Eraly, Abraham      	#Age of Wrath, The                                           	#history             	#                    	#1
+#9782225106665	#Kafka, Frank        	#Trial, The                                                  	#fiction             	#                    	#2
+#9788727934905	#Pratt, John         	#Statistical Decision Theory'                                	#data science        	#                    	#5
+#9782550932386	#Nisbet, Robert      	#Data Mining Handbook                                        	#data science        	#                    	#2
+#9788976903360	#Wells, H. G.        	#New Machiavelli, The                                        	#fiction             	#                    	#5
+#9781003041300	#Heisenberg, Werner  	#Physics & Philosophy                                        	#science             	#                    	#4
+#9783454913742	#Oram, Andy          	#Making Software                                             	#computer_science    	#                    	#1
+#9786420614041	#Tao, Terence        	#Analysis, Vol I                                             	#mathematics         	#                    	#1
+#9781894361365	#Conway, Drew        	#Machine Learning for Hackers                                	#data science        	#                    	#4
+#9786955650020	#Silver, Nate        	#Signal and the Noise, The                                   	#data science        	#                    	#4
+#9784576609919	#McKinney, Wes       	#Python for Data Analysis                                    	#data science        	#                    	#5
+#9788434991108	#Cormen, Thomas      	#Introduction to Algorithms                                  	#computer_science    	#                    	#2
+#9784244254763	#Deb, Siddhartha     	#Beautiful and the Damned, The                               	#nonfiction          	#                    	#2
+#9782910173332	#Camus, Albert       	#Outsider, The                                               	#fiction             	#                    	#5
+#9783177631675	#Doyle, Arthur Conan 	#Complete Sherlock Holmes, The - Vol I                       	#fiction             	#                    	#4
+#9782098805772	#Doyle, Arthur Conan 	#Complete Sherlock Holmes, The - Vol II                      	#fiction             	#                    	#3
+#9785282762759	#Smith, Adam         	#Wealth of Nations, The                                      	#economics           	#                    	#2
+#9785911650758	#Follett, Ken        	#Pillars of the Earth, The                                   	#fiction             	#                    	#3
+#9783719263571	#Hitler, Adolf       	#Mein Kampf                                                  	#nonfiction          	#                    	#1
+#9786103592919	#Capra, Fritjof      	#Tao of Physics, The                                         	#science             	#                    	#3
+#9781376667468	#Feynman, Richard    	#Surely You're Joking Mr Feynman                             	#science             	#                    	#1
+#9781769928712	#Hemingway, Ernest   	#Farewell to Arms, A                                         	#fiction             	#                    	#5
+#9784319032265	#Forsyth, Frederick  	#Veteran, The                                                	#fiction             	#                    	#3
+#9782265526184	#Archer, Jeffery     	#False Impressions                                           	#fiction             	#                    	#1
+#9786078134437	#Pausch, Randy       	#Last Lecture, The                                           	#nonfiction          	#                    	#4
+#9787692454872	#Rand, Ayn           	#Return of the Primitive                                     	#philosophy          	#                    	#1
+#9781907801378	#Crichton, Michael   	#Jurassic Park                                               	#fiction             	#                    	#3
+#9786293100379	#Steinbeck, John     	#Russian Journal, A                                          	#nonfiction          	#                    	#1
+#9782352057049	#Poe, Edgar Allen    	#Tales of Mystery and Imagination                            	#fiction             	#                    	#1
+#9788652834984	#Dubner, Stephen     	#Freakonomics                                                	#economics           	#                    	#3
+#9788336007076	#Capra, Fritjof      	#Hidden Connections, The                                     	#science             	#                    	#4
+#9785007454062	#Durant, Will        	#Story of Philosophy, The                                    	#philosophy          	#                    	#3
+#9785400951397	#Deshpande, P L      	#Asami Asami                                                 	#fiction             	#                    	#1
+#9782362866556	#Steinbeck, John     	#Journal of a Novel                                          	#fiction             	#                    	#4
+#9787622407125	#Steinbeck, John     	#Once There Was a War                                        	#nonfiction          	#                    	#1
+#9781133199752	#Steinbeck, John     	#Moon is Down, The                                           	#fiction             	#                    	#1
+#9782942615830	#Grisham, John       	#Brethren, The                                               	#fiction             	#                    	#3
+#9786746177769	#Naipaul, V. S.      	#In a Free State                                             	#fiction             	#                    	#1
+#9782359719729	#Heller, Joseph      	#Catch 22                                                    	#fiction             	#                    	#4
+#9788151168590	#BBC                 	#Complete Mastermind, The                                    	#nonfiction          	#                    	#5
+#9784076832321	#Dylan, Bob          	#Dylan on Dylan                                              	#nonfiction          	#                    	#2
+#9785346494303	#Gupta, Madan        	#Soft Computing & Intelligent Systems                        	#data science        	#                    	#4
+#9786058683889	#Stonier, Alfred     	#Textbook of Economic Theory                                 	#economics           	#                    	#5
+#9784947701443	#Greene, W. H.       	#Econometric Analysis                                        	#economics           	#                    	#3
+#9782197265873	#Bradsky, Gary       	#Learning OpenCV                                             	#data science        	#                    	#2
+#9784395623123	#Tanenbaum, Andrew   	#Data Structures Using C & C++                               	#computer_science    	#                    	#5
+#9784059815755	#Forsyth, David      	#Computer Vision, A Modern Approach                          	#data science        	#                    	#1
+#9786712143693	#Taub, Schilling     	#Principles of Communication Systems                         	#computer_science    	#                    	#3
+#9788315127616	#Kanetkar, Yashwant  	#Let Us C                                                    	#computer_science    	#                    	#2
+#9782988241226	#Stroud, Jonathan    	#Amulet of Samarkand, The                                    	#fiction             	#                    	#2
+#9788600957994	#Dostoevsky, Fyodor  	#Crime and Punishment                                        	#fiction             	#                    	#2
+#9781345144503	#Brown, Dan          	#Angels & Demons                                             	#fiction             	#                    	#5
+#9787896795398	#Sen, Amartya        	#Argumentative Indian, The                                   	#nonfiction          	#                    	#2
+#9784949938948	#Ghosh, Amitav       	#Sea of Poppies                                              	#fiction             	#                    	#3
+#9785236489833	#Sen, Amartya        	#Idea of Justice, The                                        	#nonfiction          	#                    	#5
+#9787997381989	#Hansberry, Lorraine 	#Raisin in the Sun, A                                        	#fiction             	#                    	#3
+#9785452721921	#Woodward, Bob       	#All the President's Men                                     	#history             	#                    	#3
+#9781762774252	#Archer, Jeffery     	#Prisoner of Birth, A                                        	#fiction             	#                    	#2
+#9785391101896	#Nayar, Kuldip       	#Scoop!                                                      	#history             	#                    	#4
+#9786097759405	#Deshpande, Sunita   	#Ahe Manohar Tari                                            	#nonfiction          	#                    	#1
+#9784819722646	#Dalrymple, William  	#Last Mughal, The                                            	#history             	#                    	#1
+#9784129898269	#Various             	#Social Choice & Welfare, Vol 39 No. 1                       	#economics           	#                    	#2
+#9783226768165	#Deshpande, P L      	#Radiowaril Bhashane & Shrutika                              	#nonfiction          	#                    	#2
+#9783970566416	#Deshpande, P L      	#Gun Gayin Awadi                                             	#nonfiction          	#                    	#2
+#9782143712491	#Deshpande, P L      	#Aghal Paghal                                                	#nonfiction          	#                    	#5
+#9781852900851	#Garg, Sanjay        	#Maqta-e-Ghalib                                              	#fiction             	#                    	#5
+#9785310400903	#                    	#Beyond Degrees                                              	#nonfiction          	#                    	#4
+#9782889084820	#Kale, V P           	#Manasa                                                      	#nonfiction          	#                    	#2
+#9786298644057	#Tharoor, Shashi     	#India from Midnight to Milennium                            	#history             	#                    	#2
+#9781872460098	#                    	#World's Greatest Trials, The                                	#history             	#                    	#5
+#9781831271630	#Tharoor, Shashi     	#Great Indian Novel, The                                     	#fiction             	#                    	#4
+#9782087899420	#Lapierre, Dominique 	#O Jerusalem!                                                	#history             	#                    	#3
+#9782821297771	#Lapierre, Dominique 	#City of Joy, The                                            	#fiction             	#                    	#3
+#9781688280032	#Lapierre, Dominique 	#Freedom at Midnight                                         	#history             	#                    	#1
+#9788649346741	#Steinbeck, John     	#Winter of Our Discontent, The                               	#fiction             	#                    	#3
+#9784109847425	#Russell, Bertrand   	#On Education                                                	#philosophy          	#                    	#1
+#9785359647676	#Harris, Sam         	#Free Will                                                   	#philosophy          	#                    	#1
+#9781011920379	#Tharoor, Shashi     	#Bookless in Baghdad                                         	#nonfiction          	#                    	#2
+#9782507881171	#Gardner, Earle Stanley	#Case of the Lame Canary, The                                	#fiction             	#                    	#4
+#9782817978107	#Hawking, Stephen    	#Theory of Everything, The                                   	#science             	#                    	#5
+#9784052654207	#Drucker, Peter      	#New Markets & Other Essays                                  	#economics           	#                    	#4
+#9788548308008	#Bodanis, David      	#Electric Universe                                           	#science             	#                    	#5
+#9785478298325	#Hugo, Victor        	#Hunchback of Notre Dame, The                                	#fiction             	#                    	#4
+#9784943447184	#Steinbeck, John     	#Burning Bright                                              	#fiction             	#                    	#4
+#9788035812765	#Drucker, Peter      	#Age of Discontuinity, The                                   	#economics           	#                    	#5
+#9786247659252	#Gordon, Richard     	#Doctor in the Nude                                          	#fiction             	#                    	#1
+#9781126269097	#Orwell, George      	#Down and Out in Paris & London                              	#nonfiction          	#                    	#1
+#9786046160887	#Sen, Amartya        	#Identity & Violence                                         	#philosophy          	#                    	#3
+#9783629863540	#Dalrymple, William  	#Beyond the Three Seas                                       	#history             	#                    	#5
+#9788954882918	#                    	#World's Greatest Short Stories, The                         	#fiction             	#                    	#4
+#9781365805175	#Iacoca, Lee         	#Talking Straight                                            	#nonfiction          	#                    	#5
+#9785936167284	#Maugham, William S  	#Maugham's Collected Short Stories, Vol 3                    	#fiction             	#                    	#1
+#9783901095992	#Forsyth, Frederick  	#Phantom of Manhattan, The                                   	#fiction             	#                    	#3
+#9786162991815	#Maugham, William S  	#Ashenden of The British Agent                               	#fiction             	#                    	#3
+#9781228625895	#Pirsig, Robert      	#Zen & The Art of Motorcycle Maintenance                     	#philosophy          	#                    	#3
+#9787873352474	#Fisk, Robert        	#Great War for Civilization, The                             	#history             	#                    	#3
+#9786134284595	#Rand, Ayn           	#We the Living                                               	#fiction             	#                    	#5
+#9785844430449	#Aczel, Amir         	#Artist and the Mathematician, The                           	#science             	#                    	#5
+#9784437422340	#Russell, Bertrand   	#History of Western Philosophy                               	#philosophy          	#                    	#5
+#9781752825800	#                    	#Selected Short Stories                                      	#fiction             	#                    	#3
+#9785241793278	#Sen, Amartya        	#Rationality & Freedom                                       	#economics           	#                    	#5
+#9787200369984	#Huntington, Samuel  	#Clash of Civilizations and Remaking of the World Order      	#history             	#                    	#2
+#9781751562645	#Capra, Fritjof      	#Uncommon Wisdom                                             	#nonfiction          	#                    	#4
+#9785925941157	#Bach, Richard       	#One                                                         	#nonfiction          	#                    	#4
+#9787294939937	#                    	#Karl Marx Biography                                         	#nonfiction          	#                    	#3
+#9785295509289	#Braithwaite         	#To Sir With Love                                            	#fiction             	#                    	#3
+#9781310073127	#Naipaul, V S        	#Half A Life                                                 	#fiction             	#                    	#2
+#9783506286898	#Nehru, Jawaharlal   	#Discovery of India, The                                     	#history             	#                    	#1
+#9784362004069	#Deshpande, P L      	#Apulki                                                      	#nonfiction          	#                    	#4
+#9785551377813	#Russell, Bertrand   	#Unpopular Essays                                            	#philosophy          	#                    	#5
+#9784502995687	#Forsyth, Frederick  	#Deceiver, The                                               	#fiction             	#                    	#3
+#9786106185527	#Woodward, Bob       	#Veil: Secret Wars of the CIA                                	#history             	#                    	#2
+#9785866071321	#Deshpande, P L      	#Char Shabda                                                 	#nonfiction          	#                    	#2
+#9787628400012	#Durrell, Gerald     	#Rosy is My Relative                                         	#fiction             	#                    	#5
+#9786113240702	#Maugham, William S  	#Moon and Sixpence, The                                      	#fiction             	#                    	#4
+#9786058556247	#                    	#Political Philosophers                                      	#philosophy          	#                    	#2
+#9785810768403	#Wells, H G          	#Short History of the World, A                               	#history             	#                    	#2
+#9782556911594	#Maugham, William S  	#Trembling of a Leaf, The                                    	#fiction             	#                    	#1
+#9784648093785	#Gordon, Richard     	#Doctor on the Brain                                         	#fiction             	#                    	#3
+#9785444275547	#Singh, Simon        	#Simpsons & Their Mathematical Secrets                       	#science             	#                    	#5
+#9787955772099	#Duda, Hart          	#Pattern Classification                                      	#data science        	#                    	#3
+#9785584668513	#Friedman, Thomas    	#From Beirut to Jerusalem                                    	#history             	#                    	#2
+#9785793503727	#Singh, Simon        	#Code Book, The                                              	#science             	#                    	#4
+#9781237405239	#Fisk, Robert        	#Age of the Warrior, The                                     	#history             	#                    	#3
+#9785019410777	#                    	#Final Crisis                                                	#comic               	#                    	#3
+#9786384173022	#                    	#Killing Joke, The                                           	#comic               	#                    	#4
+#9785936728556	#                    	#Flashpoint                                                  	#comic               	#                    	#3
+#9786705412193	#                    	#Batman Earth One                                            	#comic               	#                    	#5
+#9788946389511	#                    	#Crisis on Infinite Earths                                   	#comic               	#                    	#4
+#9785516901907	#Devlin, Keith       	#Numbers Behind Numb3rs, The                                 	#science             	#                    	#5
+#9782823478971	#                    	#Superman Earth One - 1                                      	#comic               	#                    	#5
+#9785383125433	#                    	#Superman Earth One - 2                                      	#comic               	#                    	#1
+#9783715258182	#                    	#Justice League: Throne of Atlantis                          	#comic               	#                    	#2
+#9784644724975	#                    	#Justice League: The Villain's Journey                       	#comic               	#                    	#3
+#9781262581981	#                    	#Death of Superman, The                                      	#comic               	#                    	#2
+#9788335355888	#                    	#History of the DC Universe                                  	#comic               	#                    	#1
+#9786215035381	#                    	#Batman: The Long Halloween                                  	#comic               	#                    	#5
+#9781467047568	#Steinbeck, John     	#Life in Letters, A                                          	#nonfiction          	#                    	#2
+#9784109770687	#Gleick, James       	#Information, The                                            	#science             	#                    	#3
+#9784107286100	#                    	#Journal of Economics, vol 106 No 3                          	#economics           	#                    	#4
+#9783656018622	#Thomas, Joy         	#Elements of Information Theory                              	#data science        	#                    	#2
+#9783658321855	#Rashid, Muhammad    	#Power Electronics - Rashid                                  	#computer_science    	#                    	#1
+#9783374426772	#Mohan, Ned          	#Power Electronics - Mohan                                   	#computer_science    	#                    	#2
+#9785240544453	#Haykin, Simon       	#Neural Networks                                             	#data science        	#                    	#3
+#9788801224181	#Steinbeck, John     	#Grapes of Wrath, The                                        	#fiction             	#                    	#5
+#9786985147115	#Deshpande, P L      	#Vyakti ani Valli                                            	#nonfiction          	#                    	#3
+#9787404915186	#Vapnik, Vladimir    	#Statistical Learning Theory                                 	#data science        	#                    	#2
+#9784661383233	#Rutherford, Alex    	#Empire of the Mughal - The Tainted Throne                   	#history             	#                    	#5
+#9783036452841	#Rutherford, Alex    	#Empire of the Mughal - Brothers at War                      	#history             	#                    	#5
+#9785758609543	#Rutherford, Alex    	#Empire of the Mughal - Ruler of the World                   	#history             	#                    	#4
+#9787779904205	#Rutherford, Alex    	#Empire of the Mughal - The Serpent's Tooth                  	#history             	#                    	#5
+#9786347022899	#Rutherford, Alex    	#Empire of the Mughal - Raiders from the North               	#history             	#                    	#4
+#9781676277825	#Baz-Zohar, Michael  	#Mossad                                                      	#history             	#                    	#2
+#9785896176183	#Corbett, Jim        	#Jim Corbett Omnibus                                         	#nonfiction          	#                    	#1
+#9785063610897	#Verne, Jules        	#20000 Leagues Under the Sea                                 	#fiction             	#                    	#4
+#9786782024482	#Deshpande P L       	#Batatyachi Chal                                             	#fiction             	#                    	#4
+#9782856745600	#Deshpande P L       	#Hafasavnuk                                                  	#fiction             	#                    	#3
+#9788849543274	#Deshpande P L       	#Urlasurla                                                   	#fiction             	#                    	#3
+#9781793772502	#Kanetkar, Yashwant  	#Pointers in C                                               	#computer_science    	#                    	#2
+#9783680814544	#Raymond, Eric       	#Cathedral and the Bazaar, The                               	#computer_science    	#                    	#1
+#9786997606998	#Franco, Sergio      	#Design with OpAmps                                          	#computer_science    	#                    	#4
+#9781164649949	#Downey, Allen       	#Think Complexity                                            	#data science        	#                    	#4
+#9785517412417	#West, Morris        	#Devil's Advocate, The                                       	#fiction             	#                    	#4
+#9785906950353	#Rand, Ayn           	#Ayn Rand Answers                                            	#philosophy          	#                    	#3
+#9785207142959	#Rand, Ayn           	#Philosophy: Who Needs It                                    	#philosophy          	#                    	#3
+#9783555007939	#                    	#World's Great Thinkers, The                                 	#philosophy          	#                    	#5
+#9786369471072	#Janert, Phillip     	#Data Analysis with Open Source Tools                        	#data science        	#                    	#3
+#9785279113190	#Sagan, Carl         	#Broca's Brain                                               	#science             	#                    	#3
+#9788855132841	#Bell, E T           	#Men of Mathematics                                          	#mathematics         	#                    	#3
+#9788627125593	#Dawkins, Richard    	#Oxford book of Modern Science Writing                       	#science             	#                    	#5
+#9781916478229	#Ranjan, Sudhanshu   	#Justice, Judiciary and Democracy                            	#philosophy          	#                    	#3
+#9784737260830	#Kautiyla            	#Arthashastra, The                                           	#philosophy          	#                    	#4
+#9787746621189	#Palkhivala          	#We the People                                               	#philosophy          	#                    	#1
+#9784142618350	#Palkhivala          	#We the Nation                                               	#philosophy          	#                    	#5
+#9783765744730	#Sorabjee            	#Courtroom Genius, The                                       	#nonfiction          	#                    	#3
+#9788695440493	#Zaidi, Hussain      	#Dongri to Dubai                                             	#nonfiction          	#                    	#3
+#9782745554981	#Ackroyd, Peter      	#History of England, Foundation                              	#history             	#                    	#3
+#9786115803635	#Dalrymple, William  	#City of Djinns                                              	#history             	#                    	#2
+#9786209998195	#Nariman             	#India's Legal System                                        	#nonfiction          	#                    	#3
+#9786878949005	#Sassoon, Jean       	#More Tears to Cry                                           	#fiction             	#                    	#2
+#9785511060335	#Dickinson, Peter    	#Ropemaker, The                                              	#fiction             	#                    	#2
+#9783709594374	#Brown, Dan          	#Angels & Demons                                             	#fiction             	#                    	#3
+#9785064594368	#                    	#Judge, The                                                  	#fiction             	#                    	#4
+#9787104822076	#                    	#Attorney, The                                               	#fiction             	#                    	#2
+#9786887920150	#Machiavelli         	#Prince, The                                                 	#philosophy          	#                    	#4
+#9786514458904	#Huxley, Aldous      	#Eyeless in Gaza                                             	#fiction             	#                    	#3
+#9787894825072	#Rowling, J K        	#Tales of Beedle the Bard                                    	#fiction             	#                    	#2
+#9787148454848	#Larsson, Steig      	#Girl with the Dragon Tattoo                                 	#fiction             	#                    	#3
+#9788963699197	#Larsson, Steig      	#Girl who kicked the Hornet's Nest                           	#fiction             	#                    	#1
+#9783674721498	#Larsson, Steig      	#Girl who played with Fire                                   	#fiction             	#                    	#5
+#9785804904014	#                    	#Batman Handbook                                             	#comic               	#                    	#5
+#9785991483768	#                    	#Murphy's Law                                                	#nonfiction          	#                    	#5
+#9787756582590	#Tao, Terence        	#Structure and Randomness                                    	#mathematics         	#                    	#4
+#9784241035804	#Eddins, Steve       	#Image Processing with MATLAB                                	#signal processing   	#                    	#1
+#9784399089211	#Orwell, George      	#Animal Farm                                                 	#fiction             	#                    	#4
+#9783129447869	#Dostoevsky, Fyodor  	#Idiot, The                                                  	#fiction             	#                    	#3
+#9783626295698	#Dickens, Charles    	#Christmas Carol, A                                          	#fiction             	#                    	#4
+#9786645101434	#Goswami, Jaideva    	#Fundamentals of Wavelets                                    	#tech                	#signal processing   	#1
+#9785315186906	#Foreman, John       	#Data Smart                                                  	#tech                	#data science        	#4
+#9788924038096	#Hawking, Stephen    	#God Created the Integers                                    	#tech                	#mathematics         	#5
+#9782616004474	#Dubner, Stephen     	#Superfreakonomics                                           	#science             	#economics           	#3
+#9781016606131	#Said, Edward        	#Orientalism                                                 	#nonfiction          	#history             	#1
+#9781500896598	#Vapnik, Vladimir    	#Nature of Statistical Learning Theory, The                  	#tech                	#data science        	#3
+#9785930824170	#Menon, V P          	#Integration of the Indian States                            	#nonfiction          	#history             	#1
+#9782851294647	#Mlodinow, Leonard   	#Drunkard's Walk, The                                        	#science             	#mathematics         	#3
+#9783329995700	#Shih, Frank         	#Image Processing & Mathematical Morphology                  	#tech                	#signal processing   	#4
+#9783432139346	#Konnikova, Maria    	#How to Think Like Sherlock Holmes                           	#nonfiction          	#psychology          	#5
+#9788071568441	#Sebastian Gutierrez 	#Data Scientists at Work                                     	#tech                	#data science        	#1
+#9782984998043	#Vonnegut, Kurt      	#Slaughterhouse Five                                         	#fiction             	#classic             	#3
+#9783446886416	#Villani, Cedric     	#Birth of a Theorem                                          	#science             	#mathematics         	#4
+#9782665496402	#Sussman, Gerald     	#Structure & Interpretation of Computer Programs             	#tech                	#computer science    	#3
+#9783029719498	#Eraly, Abraham      	#Age of Wrath, The                                           	#nonfiction          	#history             	#4
+#9788638201962	#Kafka, Frank        	#Trial, The                                                  	#fiction             	#classic             	#3
+#9785703141189	#Pratt, John         	#Statistical Decision Theory'                                	#tech                	#data science        	#1
+#9787248053300	#Nisbet, Robert      	#Data Mining Handbook                                        	#tech                	#data science        	#5
+#9784148381168	#Wells, H. G.        	#New Machiavelli, The                                        	#fiction             	#novel               	#2
+#9786973518917	#Heisenberg, Werner  	#Physics & Philosophy                                        	#philosophy          	#science             	#5
+#9784261144680	#Oram, Andy          	#Making Software                                             	#tech                	#computer science    	#5
+#9784048960303	#Tao, Terence        	#Analysis, Vol I                                             	#tech                	#mathematics         	#1
+#9784358802553	#Conway, Drew        	#Machine Learning for Hackers                                	#tech                	#data science        	#3
+#9786610603844	#Silver, Nate        	#Signal and the Noise, The                                   	#tech                	#data science        	#4
+#9785172099339	#McKinney, Wes       	#Python for Data Analysis                                    	#tech                	#data science        	#4
+#9786642345510	#Cormen, Thomas      	#Introduction to Algorithms                                  	#tech                	#computer science    	#4
+#9784155793951	#Deb, Siddhartha     	#Beautiful and the Damned, The                               	#nonfiction          	#history             	#5
+#9783364404019	#Camus, Albert       	#Outsider, The                                               	#fiction             	#classic             	#5
+#9787495046027	#Doyle, Arthur Conan 	#Complete Sherlock Holmes, The - Vol I                       	#fiction             	#classic             	#2
+#9784920795018	#Doyle, Arthur Conan 	#Complete Sherlock Holmes, The - Vol II                      	#fiction             	#classic             	#5
+#9782595621948	#Smith, Adam         	#Wealth of Nations, The                                      	#science             	#economics           	#4
+#9782001981918	#Follett, Ken        	#Pillars of the Earth, The                                   	#fiction             	#novel               	#2
+#9786555252875	#Hitler, Adolf       	#Mein Kampf                                                  	#nonfiction          	#autobiography       	#2
+#9786924078393	#Capra, Fritjof      	#Tao of Physics, The                                         	#science             	#physics             	#5
+#9782367031805	#Feynman, Richard    	#Surely You're Joking Mr Feynman                             	#science             	#physics             	#3
+#9788088950790	#Hemingway, Ernest   	#Farewell to Arms, A                                         	#fiction             	#classic             	#2
+#9782643817935	#Forsyth, Frederick  	#Veteran, The                                                	#fiction             	#novel               	#5
+#9783380405441	#Archer, Jeffery     	#False Impressions                                           	#fiction             	#novel               	#1
+#9781286787583	#Pausch, Randy       	#Last Lecture, The                                           	#nonfiction          	#autobiography       	#5
+#9787475700585	#Rand, Ayn           	#Return of the Primitive                                     	#philosophy          	#objectivism         	#2
+#9781995422649	#Crichton, Michael   	#Jurassic Park                                               	#fiction             	#novel               	#4
+#9786483018561	#Steinbeck, John     	#Russian Journal, A                                          	#nonfiction          	#history             	#1
+#9781251163426	#Poe, Edgar Allen    	#Tales of Mystery and Imagination                            	#fiction             	#classic             	#2
+#9781351463016	#Dubner, Stephen     	#Freakonomics                                                	#science             	#economics           	#1
+#9784656486137	#Capra, Fritjof      	#Hidden Connections, The                                     	#science             	#physics             	#3
+#9781137737849	#Durant, Will        	#Story of Philosophy, The                                    	#philosophy          	#history             	#1
+#9788580094210	#Deshpande, P L      	#Asami Asami                                                 	#fiction             	#novel               	#2
+#9787281950276	#Steinbeck, John     	#Journal of a Novel                                          	#fiction             	#classic             	#1
+#9787331738521	#Steinbeck, John     	#Once There Was a War                                        	#nonfiction          	#history             	#1
+#9785584399282	#Steinbeck, John     	#Moon is Down, The                                           	#fiction             	#classic             	#1
+#9782302520730	#Grisham, John       	#Brethren, The                                               	#fiction             	#novel               	#5
+#9788384486368	#Naipaul, V. S.      	#In a Free State                                             	#fiction             	#novel               	#2
+#9782787542967	#Heller, Joseph      	#Catch 22                                                    	#fiction             	#classic             	#5
+#9788620198231	#BBC                 	#Complete Mastermind, The                                    	#nonfiction          	#trivia              	#4
+#9781919538877	#Dylan, Bob          	#Dylan on Dylan                                              	#nonfiction          	#autobiography       	#3
+#9788205149811	#Gupta, Madan        	#Soft Computing & Intelligent Systems                        	#tech                	#data science        	#5
+#9785236961594	#Stonier, Alfred     	#Textbook of Economic Theory                                 	#tech                	#economics           	#5
+#9781987772722	#Greene, W. H.       	#Econometric Analysis                                        	#tech                	#economics           	#5
+#9782985167314	#Bradsky, Gary       	#Learning OpenCV                                             	#tech                	#signal processing   	#2
+#9787813372077	#Tanenbaum, Andrew   	#Data Structures Using C & C++                               	#tech                	#computer science    	#2
+#9786490742236	#Forsyth, David      	#Computer Vision, A Modern Approach                          	#tech                	#signal processing   	#5
+#9785988457196	#Taub, Schilling     	#Principles of Communication Systems                         	#tech                	#signal processing   	#2
+#9788201874033	#Kanetkar, Yashwant  	#Let Us C                                                    	#tech                	#computer science    	#3
+#9782843499564	#Stroud, Jonathan    	#Amulet of Samarkand, The                                    	#fiction             	#novel               	#4
+#9788845485699	#Dostoevsky, Fyodor  	#Crime and Punishment                                        	#fiction             	#classic             	#1
+#9785039842838	#Brown, Dan          	#Angels & Demons                                             	#fiction             	#novel               	#2
+#9785234049107	#Sen, Amartya        	#Argumentative Indian, The                                   	#nonfiction          	#history             	#3
+#9783792593702	#Ghosh, Amitav       	#Sea of Poppies                                              	#fiction             	#novel               	#2
+#9781085542339	#Sen, Amartya        	#Idea of Justice, The                                        	#philosophy          	#economics           	#1
+#9781461742304	#Hansberry, Lorraine 	#Raisin in the Sun, A                                        	#fiction             	#novel               	#3
+#9783204307373	#Woodward, Bob       	#All the President's Men                                     	#nonfiction          	#history             	#5
+#9782079859765	#Archer, Jeffery     	#Prisoner of Birth, A                                        	#fiction             	#novel               	#1
+#9784826069462	#Nayar, Kuldip       	#Scoop!                                                      	#nonfiction          	#history             	#5
+#9781570657105	#Deshpande, Sunita   	#Ahe Manohar Tari                                            	#nonfiction          	#autobiography       	#2
+#9787858519108	#Dalrymple, William  	#Last Mughal, The                                            	#nonfiction          	#history             	#3
+#9782907814762	#Various             	#Social Choice & Welfare, Vol 39 No. 1                       	#tech                	#economics           	#4
+#9785793444110	#Deshpande, P L      	#Radiowaril Bhashane & Shrutika                              	#nonfiction          	#misc                	#2
+#9782094939785	#Deshpande, P L      	#Gun Gayin Awadi                                             	#nonfiction          	#misc                	#3
+#9785087145007	#Deshpande, P L      	#Aghal Paghal                                                	#nonfiction          	#misc                	#1
+#9785085835793	#Garg, Sanjay        	#Maqta-e-Ghalib                                              	#nonfiction          	#poetry              	#2
+#9786615642042	#                    	#Beyond Degrees                                              	#philosophy          	#education           	#2
+#9782080477631	#Kale, V P           	#Manasa                                                      	#nonfiction          	#misc                	#3
+#9782512287853	#Tharoor, Shashi     	#India from Midnight to Milennium                            	#nonfiction          	#history             	#3
+#9784856248525	#                    	#World's Greatest Trials, The                                	#nonfiction          	#history             	#1
+#9782770254411	#Tharoor, Shashi     	#Great Indian Novel, The                                     	#fiction             	#novel               	#3
+#9781740375174	#Lapierre, Dominique 	#O Jerusalem!                                                	#nonfiction          	#history             	#1
+#9788998076368	#Lapierre, Dominique 	#City of Joy, The                                            	#fiction             	#novel               	#4
+#9783699060633	#Lapierre, Dominique 	#Freedom at Midnight                                         	#nonfiction          	#history             	#2
+#9786040514900	#Steinbeck, John     	#Winter of Our Discontent, The                               	#fiction             	#classic             	#3
+#9781289991236	#Russell, Bertrand   	#On Education                                                	#philosophy          	#education           	#4
+#9786083835497	#Harris, Sam         	#Free Will                                                   	#nonfiction          	#psychology          	#1
+#9783788436129	#Tharoor, Shashi     	#Bookless in Baghdad                                         	#nonfiction          	#history             	#2
+#9787240420250	#Gardner, Earle Stanley	#Case of the Lame Canary, The                                	#fiction             	#novel               	#3
+#9788982886893	#Hawking, Stephen    	#Theory of Everything, The                                   	#science             	#physics             	#5
+#9787908613456	#Drucker, Peter      	#New Markets & Other Essays                                  	#science             	#economics           	#5
+#9781908360986	#Bodanis, David      	#Electric Universe                                           	#science             	#physics             	#1
+#9783081399523	#Hugo, Victor        	#Hunchback of Notre Dame, The                                	#fiction             	#classic             	#4
+#9782691383887	#Steinbeck, John     	#Burning Bright                                              	#fiction             	#classic             	#1
+#9787467590204	#Drucker, Peter      	#Age of Discontuinity, The                                   	#nonfiction          	#economics           	#3
+#9787493590514	#Gordon, Richard     	#Doctor in the Nude                                          	#fiction             	#novel               	#1
+#9785608924484	#Orwell, George      	#Down and Out in Paris & London                              	#nonfiction          	#autobiography       	#1
+#9783139834017	#Sen, Amartya        	#Identity & Violence                                         	#philosophy          	#philosophy          	#4
+#9785903694270	#Dalrymple, William  	#Beyond the Three Seas                                       	#nonfiction          	#history             	#5
+#9781751707111	#                    	#World's Greatest Short Stories, The                         	#fiction             	#classic             	#1
+#9785052559011	#Iacoca, Lee         	#Talking Straight                                            	#nonfiction          	#autobiography       	#4
+#9787210742236	#Maugham, William S  	#Maugham's Collected Short Stories, Vol 3                    	#fiction             	#classic             	#4
+#9787802708470	#Forsyth, Frederick  	#Phantom of Manhattan, The                                   	#fiction             	#classic             	#1
+#9788016147397	#Maugham, William S  	#Ashenden of The British Agent                               	#fiction             	#classic             	#4
+#9786521255159	#Pirsig, Robert      	#Zen & The Art of Motorcycle Maintenance                     	#philosophy          	#autobiography       	#2
+#9788949122508	#Fisk, Robert        	#Great War for Civilization, The                             	#nonfiction          	#history             	#1
+#9784817232279	#Rand, Ayn           	#We the Living                                               	#fiction             	#novel               	#5
+#9785635514685	#Aczel, Amir         	#Artist and the Mathematician, The                           	#science             	#mathematics         	#3
+#9783839689599	#Russell, Bertrand   	#History of Western Philosophy                               	#philosophy          	#philosophy          	#4
+#9783543052511	#                    	#Selected Short Stories                                      	#fiction             	#classic             	#2
+#9785485905046	#Sen, Amartya        	#Rationality & Freedom                                       	#science             	#economics           	#5
+#9781792828291	#Huntington, Samuel  	#Clash of Civilizations and Remaking of the World Order      	#nonfiction          	#history             	#1
+#9784015728857	#Capra, Fritjof      	#Uncommon Wisdom                                             	#nonfiction          	#anthology           	#3
+#9786509840198	#Bach, Richard       	#One                                                         	#nonfiction          	#autobiography       	#3
+#9786221625529	#                    	#Karl Marx Biography                                         	#nonfiction          	#autobiography       	#2
+#9788779803200	#Braithwaite         	#To Sir With Love                                            	#fiction             	#classic             	#4
+#9784229853745	#Naipaul, V S        	#Half A Life                                                 	#fiction             	#novel               	#5
+#9783552818448	#Nehru, Jawaharlal   	#Discovery of India, The                                     	#nonfiction          	#history             	#1
+#9782683227161	#Deshpande, P L      	#Apulki                                                      	#nonfiction          	#misc                	#2
+#9787813345661	#Russell, Bertrand   	#Unpopular Essays                                            	#philosophy          	#philosophy          	#5
+#9781550988394	#Forsyth, Frederick  	#Deceiver, The                                               	#fiction             	#novel               	#2
+#9787901097521	#Woodward, Bob       	#Veil: Secret Wars of the CIA                                	#nonfiction          	#history             	#4
+#9781534655567	#Deshpande, P L      	#Char Shabda                                                 	#nonfiction          	#misc                	#2
+#9787381629426	#Durrell, Gerald     	#Rosy is My Relative                                         	#fiction             	#novel               	#5
+#9788237262408	#Maugham, William S  	#Moon and Sixpence, The                                      	#fiction             	#classic             	#3
+#9786214726012	#                    	#Political Philosophers                                      	#philosophy          	#politics            	#5
+#9784690313414	#Wells, H G          	#Short History of the World, A                               	#nonfiction          	#history             	#1
+#9784666488218	#Maugham, William S  	#Trembling of a Leaf, The                                    	#fiction             	#novel               	#5
+#9781791329727	#Gordon, Richard     	#Doctor on the Brain                                         	#fiction             	#novel               	#2
+#9788502690667	#Singh, Simon        	#Simpsons & Their Mathematical Secrets                       	#science             	#mathematics         	#4
+#9788894143180	#Duda, Hart          	#Pattern Classification                                      	#tech                	#data science        	#5
+#9785007462777	#Friedman, Thomas    	#From Beirut to Jerusalem                                    	#nonfiction          	#history             	#5
+#9782407872268	#Singh, Simon        	#Code Book, The                                              	#science             	#mathematics         	#2
+#9786778987905	#Fisk, Robert        	#Age of the Warrior, The                                     	#nonfiction          	#history             	#4
+#9783168430140	#                    	#Final Crisis                                                	#fiction             	#comic               	#1
+#9788503038932	#                    	#Killing Joke, The                                           	#fiction             	#comic               	#4
+#9784560148782	#                    	#Flashpoint                                                  	#fiction             	#comic               	#1
+#9782561433135	#                    	#Batman Earth One                                            	#fiction             	#comic               	#1
+#9788636027763	#                    	#Crisis on Infinite Earths                                   	#fiction             	#comic               	#3
+#9788236059449	#Devlin, Keith       	#Numbers Behind Numb3rs, The                                 	#science             	#mathematics         	#1
+#9786933668231	#                    	#Superman Earth One - 1                                      	#fiction             	#comic               	#4
+#9785112343674	#                    	#Superman Earth One - 2                                      	#fiction             	#comic               	#5
+#9785144717575	#                    	#Justice League: Throne of Atlantis                          	#fiction             	#comic               	#1
+#9781180158117	#                    	#Justice League: The Villain's Journey                       	#fiction             	#comic               	#5
+#9781491051269	#                    	#Death of Superman, The                                      	#fiction             	#comic               	#5
+#9785118121216	#                    	#History of the DC Universe                                  	#fiction             	#comic               	#2
+#9783218942572	#                    	#Batman: The Long Halloween                                  	#fiction             	#comic               	#2
+#9783981776090	#Steinbeck, John     	#Life in Letters, A                                          	#nonfiction          	#autobiography       	#5
+#9782640605460	#Gleick, James       	#Information, The                                            	#science             	#mathematics         	#2
+#9781794941122	#                    	#Journal of Economics, vol 106 No 3                          	#science             	#economics           	#2
+#9781127018365	#Thomas, Joy         	#Elements of Information Theory                              	#tech                	#signal processing   	#1
+#9785543520009	#Rashid, Muhammad    	#Power Electronics - Rashid                                  	#tech                	#computer science    	#4
+#9787923865305	#Mohan, Ned          	#Power Electronics - Mohan                                   	#tech                	#computer science    	#4
+#9787195262295	#Haykin, Simon       	#Neural Networks                                             	#tech                	#data science        	#3
+#9781352844748	#Steinbeck, John     	#Grapes of Wrath, The                                        	#fiction             	#classic             	#3
+#9785887520926	#Deshpande, P L      	#Vyakti ani Valli                                            	#nonfiction          	#misc                	#1
+#9782677283865	#Vapnik, Vladimir    	#Statistical Learning Theory                                 	#tech                	#data science        	#1
+#9782967045120	#Rutherford, Alex    	#Empire of the Mughal - The Tainted Throne                   	#nonfiction          	#history             	#1
+#9785327066447	#Rutherford, Alex    	#Empire of the Mughal - Brothers at War                      	#nonfiction          	#history             	#4
+#9788698313326	#Rutherford, Alex    	#Empire of the Mughal - Ruler of the World                   	#nonfiction          	#history             	#5
+#9784592291695	#Rutherford, Alex    	#Empire of the Mughal - The Serpent's Tooth                  	#nonfiction          	#history             	#1
+#9783153354735	#Rutherford, Alex    	#Empire of the Mughal - Raiders from the North               	#nonfiction          	#history             	#4
+#9786405553551	#Baz-Zohar, Michael  	#Mossad                                                      	#nonfiction          	#history             	#3
+#9785062139311	#Corbett, Jim        	#Jim Corbett Omnibus                                         	#nonfiction          	#history             	#4
+#9787439425141	#Verne, Jules        	#20000 Leagues Under the Sea                                 	#fiction             	#novel               	#3
+#9786570144312	#Deshpande P L       	#Batatyachi Chal                                             	#fiction             	#novel               	#5
+#9782222298865	#Deshpande P L       	#Hafasavnuk                                                  	#fiction             	#novel               	#2
+#9782573184631	#Deshpande P L       	#Urlasurla                                                   	#fiction             	#novel               	#3
+#9783639204045	#Kanetkar, Yashwant  	#Pointers in C                                               	#tech                	#computer science    	#1
+#9783291820271	#Raymond, Eric       	#Cathedral and the Bazaar, The                               	#tech                	#computer science    	#1
+#9788277916092	#Franco, Sergio      	#Design with OpAmps                                          	#tech                	#computer science    	#3
+#9788200917696	#Downey, Allen       	#Think Complexity                                            	#tech                	#data science        	#2
+#9787618222845	#West, Morris        	#Devil's Advocate, The                                       	#fiction             	#novel               	#1
+#9788492553042	#Rand, Ayn           	#Ayn Rand Answers                                            	#philosophy          	#objectivism         	#2
+#9784449004166	#Rand, Ayn           	#Philosophy: Who Needs It                                    	#philosophy          	#objectivism         	#1
+#9782731706918	#                    	#World's Great Thinkers, The                                 	#science             	#physics             	#3
+#9786562932066	#Janert, Phillip     	#Data Analysis with Open Source Tools                        	#tech                	#data science        	#1
+#9784582400445	#Sagan, Carl         	#Broca's Brain                                               	#science             	#physics             	#1
+#9783678837046	#Bell, E T           	#Men of Mathematics                                          	#science             	#mathematics         	#1
+#9788077009970	#Dawkins, Richard    	#Oxford book of Modern Science Writing                       	#science             	#science             	#3
+#9781243998712	#Ranjan, Sudhanshu   	#Justice, Judiciary and Democracy                            	#nonfiction          	#legal               	#1
+#9782929192235	#Kautiyla            	#Arthashastra, The                                           	#philosophy          	#philosophy          	#5
+#9786669506675	#Palkhivala          	#We the People                                               	#philosophy          	#philosophy          	#2
+#9785136235261	#Palkhivala          	#We the Nation                                               	#philosophy          	#philosophy          	#3
+#9782599124508	#Sorabjee            	#Courtroom Genius, The                                       	#nonfiction          	#autobiography       	#1
+#9782311560354	#Zaidi, Hussain      	#Dongri to Dubai                                             	#nonfiction          	#history             	#2
+#9788721913385	#Ackroyd, Peter      	#History of England, Foundation                              	#nonfiction          	#history             	#2
+#9788647442194	#Dalrymple, William  	#City of Djinns                                              	#nonfiction          	#history             	#2
+#9788074308976	#Nariman             	#India's Legal System                                        	#nonfiction          	#legal               	#4
+#9785151556868	#Sassoon, Jean       	#More Tears to Cry                                           	#fiction             	#novel               	#4
+#9783076765345	#Dickinson, Peter    	#Ropemaker, The                                              	#fiction             	#novel               	#2
+#9783226684185	#Brown, Dan          	#Angels & Demons                                             	#fiction             	#novel               	#4
+#9782680079581	#                    	#Judge, The                                                  	#fiction             	#novel               	#5
+#9782091547869	#                    	#Attorney, The                                               	#fiction             	#novel               	#3
+#9784831925134	#Machiavelli         	#Prince, The                                                 	#fiction             	#classic             	#2
+#9783562171844	#Huxley, Aldous      	#Eyeless in Gaza                                             	#fiction             	#novel               	#2
+#9781796653175	#Rowling, J K        	#Tales of Beedle the Bard                                    	#fiction             	#novel               	#4
+#9786499919717	#Larsson, Steig      	#Girl with the Dragon Tattoo                                 	#fiction             	#novel               	#3
+#9785594334456	#Larsson, Steig      	#Girl who kicked the Hornet's Nest                           	#fiction             	#novel               	#1
+#9782839543586	#Larsson, Steig      	#Girl who played with Fire                                   	#fiction             	#novel               	#1
+#9782385296070	#                    	#Batman Handbook                                             	#fiction             	#comic               	#2
+#9782404606015	#                    	#Murphy's Law                                                	#philosophy          	#psychology          	#2
+#9788448373445	#Tao, Terence        	#Structure and Randomness                                    	#science             	#mathematics         	#2
+#9782932730489	#Eddins, Steve       	#Image Processing with MATLAB                                	#tech                	#signal processing   	#3
+#9782155420578	#Orwell, George      	#Animal Farm                                                 	#fiction             	#classic             	#4
+#9788065380581	#Dostoevsky, Fyodor  	#Idiot, The                                                  	#fiction             	#classic             	#5
+#9787995994348	#Dickens, Charles    	#Christmas Carol, A                                          	#fiction             	#classic             	#4

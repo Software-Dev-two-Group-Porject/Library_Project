@@ -74,9 +74,14 @@ public class Book {
         this.subGenre = subGenre;
     }
 
-
     public String toString(){
-        return String.format("%s\t%-20s\t%-60s\t%-20s\t%-20s\t%d", this.isbn, this.author, this.title, this.genre, this.subGenre, this.quantity);
+        return String.format("%s\t%-20s\t%-60s\t%-20s\t%-20s\t%d",
+                this.isbn, this.author, this.title, this.genre, this.subGenre, this.quantity);
+    }
+
+    public String saveStringForCSV(){
+        return String.format("#%s\t#%-20s\t#%-60s\t#%-20s\t#%-20s\t#%d\n",
+                this.isbn, this.author, this.title, this.genre, this.subGenre, this.quantity);
     }
 
 }

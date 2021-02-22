@@ -19,7 +19,7 @@ public class Student extends User
       roomNumber = 0;
    }
 
-   public Student(String id, String firstname, String surname, int userID, int blockNumber, int roomNumber, int booksOnLoan, String userName, String userPassword, boolean fine_defaulter, double fine, ArrayList<Loan> bookLoans)
+   public Student(String id, String firstname, String surname, int userID, int blockNumber, int roomNumber, int booksOnLoan, String userName, String userPassword, boolean fine_defaulter, double fine)
    {
       super(id, firstname, surname);
       this.userID = userID;
@@ -92,7 +92,6 @@ public class Student extends User
       this.userPassword = userPassword;
    }
 
-   }
 
    public double getFine()
    {
@@ -105,22 +104,21 @@ public class Student extends User
    }
 }
 
-   public String ViewUserInformation()
-      System.out.println("Username:\t\t\t" + username + "\nBooks on Loan:\t\t" + booksOnLoan + "\nFines:\t\t\t" + fineAmount);
-      System.out.println("\nPlease be aware fines are charged individually on books at a rate of " + BOOKFINEPERDAY + "per day. " +
-      "Please ensure to return borrowed books before fines may occur.";)
+//   public String ViewUserInformation()
+//      System.out.println("Username:\t\t\t" + username + "\nBooks on Loan:\t\t" + booksOnLoan + "\nFines:\t\t\t" + fineAmount);
+//      System.out.println("\nPlease be aware fines are charged individually on books at a rate of " + BOOKFINEPERDAY + "per day. " +
+//      "Please ensure to return borrowed books before fines may occur.";)
+//
+//   public String ChangeUserInformation()
+//      public void renewBook()
+//      public void requestBook)
+//      public double payFine()
+//      public String viewLoanInformation()
+//
+//
+//      System.out.println("Book Title:" + bookTitle + "\t" + "Issue date:" + issue_date + "\t" + "Due date" + due_date + "\t"
+//      + "Return_date:" + return_date + "\t" + "User ID " + userID + "\t" + "Books on Loan :"
+//      + bookID + "\t" + "Fine status  :" + fine_status + "\t"
+//
+//
 
-   public String ChangeUserInformation()
-      public void renewBook()
-      public void requestBook)
-      public double payFine()
-      public String viewLoanInformation()
-
-
-      System.out.println("Book Title:" + bookTitle + "\t" + "Issue date:" + issue_date + "\t" + "Due date" + due_date + "\t"
-      + "Return_date:" + return_date + "\t" + "User ID " + userID + "\t" + "Books on Loan :"
-      + bookID + "\t" + "Fine status  :" + fine_status + "\t"
-
-
-
-   }
