@@ -10,16 +10,49 @@ import java.util.Scanner;
 
 public class User
 {
-   private String status, name, email, password, block, room;
-   private int userID, booksOnLoan;
+   private String status, name, email, password, block;
+   private int userID, booksOnLoan, room;
    private boolean overdue;
    private User[] userList;
+   static Scanner keyboard = new Scanner(System.in);
 
    User() {  } //Default constr
 
+   User(int userID, String status, String name) {
+      this.userID = userID;
+      this.status = status;
+      this.name = name;
+
+   } //Alt constructor
+
+   public String askString(String input) {
+      System.out.print("Please enter the user's " + input + ": ");
+      return keyboard.nextLine();
+   } //askString
+
+   public int askInt(String input) {
+      System.out.print("Please enter the user's " + input + ": ");
+      return keyboard.nextInt();
+   } //askInt
+
+   public boolean askReply(String input) {
+      System.out.print(input + " (Y/N)");
+      boolean reply = false;
+      char answer;
+      answer = keyboard.nextLine().toUpperCase().charAt(0);
+      if (answer == 'Y') {
+         reply = true;
+      }
+      return reply;
+   } //askReply
+
+   private String printHeader() {
+      return String.format("%-10s\t%-10s\t%-50s\t%-80s\t%-5s\t-5s\t-15s\t-15s\t%s", "ID", "Status", "Name", "Email", "Block", "Room", "Books on loan", "Overdue fines");
+   }
+
    public void printUserList(User [] userList) {
       System.out.println("User List");
-      System.out.println(String.format("%-10s\t%-10s\t%-50s\t%-80s\t%-5s\t-5s\t-15s\t-15s\t%s", "ID", "Status", "Name", "Email", "Block", "Room", "Books on loan", "Overdue fines"));
+      printHeader();
 
       for (int i = 0; i < userList.length; i++) {
          System.out.println(userList[i].toString());
@@ -32,7 +65,7 @@ public class User
       int i = 0;
       String [] userArray = new String[100];
 
-      try (FileReader file = new FileReader(new File("src\\users.dat"))) {
+      try (FileReader file = new FileReader(new File("src\\Data\\users.dat"))) {
          BufferedReader userFile = new BufferedReader(file);
 
          while((line = userFile.readLine()) != null) {
@@ -64,18 +97,19 @@ public class User
 
    private User setUser(String line) {
       User user = new User();
-      int onLoan;
+      int onLoan, tempUserID, theirRoom;
       boolean overdue;
       String [] info = line.split(",");
-
-      user.setUserID(Integer.parseInt(info[0]));
+      tempUserID = Integer.parseInt(info[0]);
+      user.setUserID(tempUserID);
       user.setStatus(info[1]);
       user.setName(info[2]);
       user.setEmail(info[3]);
       user.setPassword(info[4]);
       if (info[1].equals("student")) { //Set student only values
          user.setBlock(info[5]);
-         user.setRoom(info[6]);
+         theirRoom = Integer.parseInt(info[6]);
+         user.setRoom(theirRoom);
          onLoan = Integer.parseInt(info[7]);
          user.setBooksOnLoan(onLoan);
          overdue = Boolean.parseBoolean(info[8]);
@@ -100,7 +134,6 @@ public class User
 
    } //getUserByID
 
-
    public User getUserByEmail(String email) {
       User returnUser = new User();
       for (int i = 0; i < this.userList.length; i++) {
@@ -111,8 +144,81 @@ public class User
       return returnUser;
    } //getUserByEmail
 
+
+
+   public void addUserToList(User user) {
+      User [] newUserList = new User[userList.length + 1];
+      for (int x = 0; x < userList.length; x++) {
+         newUserList[x] = userList[x];
+      }//for
+      newUserList[newUserList.length-1] = user;
+      userList = newUserList;
+
+   } //addUserToList
+
+
+
+   public void deleteUser(int userID) {
+      char delete;
+
+      for (int x = 0; x < userList.length; x++) {
+         if(userList[x].getUserID() == userID) {
+            System.out.println(printHeader());
+            System.out.println(userList[x].toString());
+            System.out.println("Please confirm you would like to delete user. (Y/N)");
+            delete = keyboard.nextLine().toUpperCase().charAt(0);
+            if (delete == 'Y') {
+               User deleteUser = userList[x];
+               userList[x] = userList[0];
+               userList[0] = deleteUser;
+               userList = Arrays.copyOfRange(userList,1,userList.length);
+               System.out.println("User has been deleted.");
+            } else {
+               System.out.println("User has not been deleted.");
+               break;
+            }
+
+
+         } //if user found
+      }//for
+   }//deleteUser
+
+
+
+
+   public void saveUsers() {
+      String file = "src\\Data\\users.dat";
+      BufferedWriter writer = null;
+      String user = "";
+      try {
+         writer = new BufferedWriter(new FileWriter(file));
+         for (int i=0; i < userList.length; i++) {
+            user += userList[i].saveStringForUsersDat();
+
+         }//for
+         writer.write(user);
+
+      } catch(Exception e) {
+         e.printStackTrace();
+      } finally {
+         try {
+            writer.close();
+         } catch (IOException ioe) {
+            ioe.printStackTrace();
+         } //catch
+      } //finally
+   } //saveUsers
+
+
+
+   public String saveStringForUsersDat() {
+      return this.userID + "," + this.status + "," + this.name + "," + this.email + "," + this.password + "," + this.block + "," + this.room + "," + this.booksOnLoan + "," + this.overdue + "\n";
+   } //
+
+
+
    public int getUserID() {  return userID;  }
-   public void setUserID(int userID) {  this.userID = userID; }
+   public void setUserID(int userID) { this.userID = userID; }
    public String getStatus() { return status; }
    public void setStatus(String status) { this.status = status; }
    public String getName() { return name; }
@@ -123,8 +229,8 @@ public class User
    public void setPassword(String password) { this.password = password; }
    public String getBlock() { return block; }
    public void setBlock(String block) { this.block = block; }
-   public String getRoom() { return room; }
-   public void setRoom(String room) { this.room = room; }
+   public int getRoom() { return room; }
+   public void setRoom(int room) { this.room = room; }
    public int getBooksOnLoan() { return booksOnLoan; }
    public void setBooksOnLoan(int booksOnLoan) { this.booksOnLoan = booksOnLoan; }
    public boolean isOverdue() { return overdue; }
