@@ -25,27 +25,6 @@ public class User
 
    } //Alt constructor
 
-   public String askString(String input) {
-      System.out.print("Please enter the user's " + input + ": ");
-      return keyboard.nextLine();
-   } //askString
-
-   public int askInt(String input) {
-      System.out.print("Please enter the user's " + input + ": ");
-      return keyboard.nextInt();
-   } //askInt
-
-   public boolean askReply(String input) {
-      System.out.print(input + " (Y/N)");
-      boolean reply = false;
-      char answer;
-      answer = keyboard.nextLine().toUpperCase().charAt(0);
-      if (answer == 'Y') {
-         reply = true;
-      }
-      return reply;
-   } //askReply
-
    private String printHeader() {
       return String.format("%-10s\t%-10s\t%-50s\t%-80s\t%-5s\t-5s\t-15s\t-15s\t%s", "ID", "Status", "Name", "Email", "Block", "Room", "Books on loan", "Overdue fines");
    }

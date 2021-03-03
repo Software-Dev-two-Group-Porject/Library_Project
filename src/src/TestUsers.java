@@ -7,10 +7,34 @@ import java.util.Scanner;
  **/
 public class TestUsers
 {
+   static Scanner keyboard = new Scanner(System.in);
+
+   public static String askString(String input) {
+      System.out.print("Please enter the user's " + input + ": ");
+      return keyboard.nextLine();
+   } //askString
+
+   public static int askInt(String input) {
+      System.out.print("Please enter the user's " + input + ": ");
+      String number = keyboard.nextLine();
+      int retNumber = Integer.parseInt(number);
+      return retNumber;
+   } //askInt
+
+   public static boolean askReply(String input) {
+      System.out.print(input + " (Y/N)");
+      boolean reply = false;
+      char answer;
+      answer = keyboard.nextLine().toUpperCase().charAt(0);
+      if (answer == 'Y') {
+         reply = true;
+      }
+      return reply;
+   } //askReply
+
 
    public static void main(String[] args) throws IOException
    {
-      Scanner keyboard = new Scanner(System.in);
 
       System.out.println("List of everyone");
       User user = new User();
@@ -20,14 +44,14 @@ public class TestUsers
       //Code to add a new student
       //This isn't in the right place but it can be moved,
       System.out.println("Add New Student\n===============\n");
-      int id = user.askInt("ID");
-      String name = user.askString("name"); //I have no idea why it asks the question but won't allow an answer
-      String email = user.askString("email");
-      String password = user.askString("password");
-      String block = user.askString("block");
-      int room = user.askInt("room number");
+      String name = askString("name"); //I have no idea why it asks the question but won't allow an answer
+      String email = askString("email");
+      int id = askInt("ID");
+      String password = askString("password");
+      String block = askString("block");
+      int room = askInt("room number");
 
-     // boolean add = user.askReply("Would you like to add this user to the database?");
+     // boolean add = askReply("Would you like to add this user to the database?");
 
       System.out.print("Add them? (Y/N)");
       boolean add = false;
