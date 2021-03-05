@@ -113,6 +113,19 @@ public class User
 
    } //getUserByID
 
+   public boolean checkExisting(int id) {
+      boolean exists = false;
+      for (int i = 0; i < this.userList.length; i++)
+      {
+         if (this.userList[i].getUserID() == id)
+         {
+            exists = true;
+         }
+      }
+      return exists;
+
+   } //checkExisting
+
    public User getUserByEmail(String email) {
       User returnUser = new User();
       for (int i = 0; i < this.userList.length; i++) {
@@ -127,6 +140,7 @@ public class User
 
    public void addUserToList(User user) {
       User [] newUserList = new User[userList.length + 1];
+
       for (int x = 0; x < userList.length; x++) {
          newUserList[x] = userList[x];
       }//for
@@ -136,30 +150,41 @@ public class User
    } //addUserToList
 
 
+   public void editUser(int userID) {
+      User editUser = new User();
+      for (int i = 0; i < this.userList.length; i++) {
+         if(this.userList[i].getUserID() == userID) {
+            this.userList[i] = editUser;
+         }
 
-   public void deleteUser(int userID) {
-      char delete;
+      } //for
+
+   }//edit user
+
+
+   public void deleteUser(int userID, int prompt) {
+      char delete = 'N';
 
       for (int x = 0; x < userList.length; x++) {
          if(userList[x].getUserID() == userID) {
             System.out.println(printHeader());
             System.out.println(userList[x].toString());
-            System.out.println("Please confirm you would like to delete user. (Y/N)");
-            delete = keyboard.nextLine().toUpperCase().charAt(0);
-            if (delete == 'Y') {
+            if (prompt != 0) {
+               System.out.println("Please confirm you would like to delete user. (Y/N)");
+               delete = keyboard.nextLine().toUpperCase().charAt(0);
+            }
+            if ((delete == 'Y') || (prompt == 0)) {
                User deleteUser = userList[x];
                userList[x] = userList[0];
                userList[0] = deleteUser;
                userList = Arrays.copyOfRange(userList,1,userList.length);
-               System.out.println("User has been deleted.");
+               if (prompt !=0) { System.out.println("User has been deleted."); }
             } else {
                System.out.println("User has not been deleted.");
                break;
             }
-
-
-         } //if user found
-      }//for
+         }
+      }
    }//deleteUser
 
 
