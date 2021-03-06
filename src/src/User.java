@@ -16,7 +16,7 @@ public class User
    private User[] userList;
    static Scanner keyboard = new Scanner(System.in);
 
-   User() {  } //Default constr
+   User() {  } //Default constructor
 
    User(int userID, String status, String name) {
       this.userID = userID;
@@ -122,7 +122,6 @@ public class User
       } //for
       return returnUser;
    } //getUserByEmail
-
 
 
    public void addUserToList(User user) {

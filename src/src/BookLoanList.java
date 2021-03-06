@@ -3,4 +3,12 @@
  * Update Comments About Program Here
  **/
 public class BookLoanList {
+
+    private BookLoan [] bookLoans;
+
+    BookLoanList(){
+
+    }
+
+
 }
