@@ -4,34 +4,30 @@
  **/
 public class Student extends User
 {
-   int userID, blockNumber, roomNumber, booksOnLoan = 0;
-   String userName = " ", userPassword = " ", userStatus, userEmail;
+   int roomNumber, booksOnLoan = 0;
+   String userName = " ", userPassword = " ";
    int MAXBOOKSONLOAN = 5;
    private boolean fine_defaulter;
    private double fine;
    private String[] bookLoans;
+   char blockLetter;
 
    Student()
    {
       super();
       fine_defaulter = false;
       fine = 0.0;
-      blockNumber = 0;
+      blockLetter = ' ';
       roomNumber = 0;
    }
 
    //<<<<<<< Updated upstream
-   public Student(String id, String firstname, String surname, int userID, int blockNumber, int roomNumber, int booksOnLoan, String userName, String userPassword, boolean fine_defaulter, double fine)
+   public Student(int id, String status, String name, String userPassword, char block, int roomNumber)
    {
-      // super(id, firstname, surname);
-      this.userID = userID;
-      this.blockNumber = blockNumber;
+      super(id, status, name);
+      this.blockLetter = block;
       this.roomNumber = roomNumber;
-      this.booksOnLoan = booksOnLoan;
-      this.userName = userName;
       this.userPassword = userPassword;
-      this.fine_defaulter = fine_defaulter;
-      this.fine = fine;
    }
 //=======
 //   public Student(String id, String firstname, String surname, int userID, int blockNumber, int roomNumber, int booksOnLoan, String userName, String userPassword, boolean fine_defaulter, double fine, ArrayList<Loan> bookLoans)
@@ -48,22 +44,6 @@ public class Student extends User
 //   }
 
 //>>>>>>> Stashed changes
-
-
-   public void setUserID(int userID)
-   {
-      this.userID = userID;
-   }
-
-   public int getBlockNumber()
-   {
-      return blockNumber;
-   }
-
-   public void setBlockNumber(int blockNumber)
-   {
-      this.blockNumber = blockNumber;
-   }
 
    public int getRoomNumber()
    {
@@ -123,7 +103,7 @@ public class Student extends User
 
    public String toString()
    {
-      return String.format("%s\t%-10s\t%-10s\t%-50s\t%-80s\t%-5s\t-5s\t-15s\t-15s\t%d", super.toString(), this.blockNumber, this.roomNumber, this.booksOnLoan, this.fine_defaulter);
+      return String.format(super.toString() + " " + this.blockLetter + " " + this.roomNumber);
    } //Password not shown as in real world would be hashed for security
 }
 

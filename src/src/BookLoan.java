@@ -1,4 +1,7 @@
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -8,26 +11,25 @@ import java.util.Date;
 public class BookLoan
 {
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yy hh:mm:ss");
-    Date thisDate = new Date();
+    LocalDate today = LocalDate.now();
 
     //Declare Variables
     int isbn;
     int userID;
     private Date dateIssued;
     private Date dateReturned;
-    int daysOverdue;
     boolean isOverdue;
     double finePerDay;
+    String status;
 
     BookLoan(){
     }//Default Constructor
 
-   BookLoan(int userID, int isbn, Date dateIssued, Date dateReturned, int daysOverdue, boolean isOverdue, double finePerDay){
+   BookLoan(int userID, int isbn, Date dateIssued, Date dateReturned, boolean isOverdue, double finePerDay){
        this.isbn = isbn;
        this.userID = userID;
        this.dateIssued = dateIssued;
        this.dateReturned = dateReturned;
-       this.daysOverdue = daysOverdue;
        this.isOverdue = isOverdue;
        this.finePerDay = finePerDay;
     }//constructor
@@ -80,20 +82,11 @@ public class BookLoan
       this.dateReturned = dateReturned;
    }
 
-   public int getDaysOverdue()
-   {
-      return daysOverdue;
+   //instead of being a value within the constructor we can use the
+   public int getDaysOverDue(){
+        
    }
 
-   public void setDaysOverdue(int daysOverdue)
-   {
-      this.daysOverdue = daysOverdue;
-   }
-
-   public boolean isOverdue()
-   {
-      return isOverdue;
-   }
 
    public void setOverdue(boolean overdue)
    {
