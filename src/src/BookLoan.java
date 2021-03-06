@@ -32,6 +32,13 @@ public class BookLoan
        this.finePerDay = finePerDay;
     }//constructor
 
+   //Possible Methods for this class
+   //calculateBookFine
+   //payFine - gives user option to pay fine now/or states their is no fine as book returned on time
+   //fineStatus (linked to above method?)
+   //dateDueBack / dateIssued
+
+
    //Get and Set Methods
    public int getISBN()
    {
