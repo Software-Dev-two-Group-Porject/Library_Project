@@ -81,7 +81,7 @@ public class BookLoan
    //instead of being a value within the constructor we can use the
    public int getDaysOverDue(){
       LocalDate nowDate = LocalDate.now(); //getting current date
-      LocalDate pastDate = ; //if storing dateReturned, requires change of data type to LocalDate for 'dateReturned' variable
+      LocalDate pastDate = LocalDate.now(); //if storing dateReturned, requires change of data type to LocalDate for 'dateReturned' variable
       return (int) ChronoUnit.DAYS.between(pastDate,nowDate); //return number of days difference
    }
 

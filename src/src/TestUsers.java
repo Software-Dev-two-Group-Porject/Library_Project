@@ -9,32 +9,10 @@ public class TestUsers
 {
    static Scanner keyboard = new Scanner(System.in);
 
-   public static String askString(String question) {
-      System.out.print(question);
-      return keyboard.nextLine();
-   } //askString
-
-   public static int askInt(String question) {
-      System.out.print(question);
-      String number = keyboard.nextLine();
-      int retNumber = Integer.parseInt(number);
-      return retNumber;
-   } //askInt
-
-   public static boolean askReply(String question) {
-      System.out.print(question + " (Y/N)");
-      boolean reply = false;
-      char answer;
-      answer = keyboard.nextLine().toUpperCase().charAt(0);
-      if (answer == 'Y') {
-         reply = true;
-      }
-      return reply;
-   } //askReply
-
-
    public static void main(String[] args) throws IOException
    {
+
+      Utils.askEmail("Email time:");
 
       User user = new User();
       user.initUserList();
@@ -44,7 +22,7 @@ public class TestUsers
 
       System.out.println("Editing existing user\n===============\n");
 
-      int id = askInt("Enter the user's ID: ");
+      int id = Utils.askInt("Enter the user's ID: ");
 
       if (user.checkExisting(id)) {
          user = user.getUserByID(id);
@@ -53,24 +31,24 @@ public class TestUsers
          int room = 0, choice;
          boolean overdue = false;
          do {
-            choice = askInt("Options\n========================\n1. Name\n2. Email\n2. Password\n4. Block\n5. Room\n6. Overdue\n0. Exit\nPlease enter which element you'd like to edit: ");
+            choice = Utils.askInt("Options\n========================\n1. Name\n2. Email\n2. Password\n4. Block\n5. Room\n6. Overdue\n0. Exit\nPlease enter which element you'd like to edit: ");
             switch (choice) {
                case 1:
-                  name = askString("Please enter their updated name: ");
+                  name = Utils.askString("Please enter their updated name: ");
                   break;
                case 2:
-                  email = askString("Please enter their updated email: ");
+                  email = Utils.askString("Please enter their updated email: ");
                   break;
                case 3:
-                  password = askString("Please enter their new password: ");
+                  password = Utils.askString("Please enter their new password: ");
                   break;
                case 4:
-                  block = askString("Please enter their block: ");
+                  block = Utils.askString("Please enter their block: ");
                   break;
                case 5:
-                  room = askInt("Please enter their new room: ");
+                  room = Utils.askInt("Please enter their new room: ");
                case 6:
-                  int askOverdue = askInt("Please press 1 to mark their account as overdue, press 2 to remove the flag: ");
+                  int askOverdue = Utils.askInt("Please press 1 to mark their account as overdue, press 2 to remove the flag: ");
                   if (askOverdue == 1)
                      overdue = true;
                case 0:
@@ -123,11 +101,11 @@ public class TestUsers
       if (user.checkExisting(id)) {
          System.out.println("User already exists in database."); //Add function to go straight to edit user??
       } else {
-         String name = askString("Please enter the user's name: ");
-         String email = askString("Please enter the user's email: ");
-         String password = askString("Please enter the user's password: ");
-         String block = askString("Please enter the user's block: ");
-         int room = askInt("Please enter the user's room number: ");
+         String name = Utils.askString("Please enter the user's name: ");
+         String email = Utils.askString("Please enter the user's email: ");
+         String password = Utils.askString("Please enter the user's password: ");
+         String block = Utils.askString("Please enter the user's block: ");
+         int room = Utils.askInt("Please enter the user's room number: ");
 
          // boolean add = askReply("Would you like to add this user to the database?");
 

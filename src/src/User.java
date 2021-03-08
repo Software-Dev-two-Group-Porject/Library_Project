@@ -54,6 +54,7 @@ public class User
 
       } catch (Exception e) { //error handling
          System.err.format("File does not exist\n");
+         e.printStackTrace();
       }
 
       String [] newUserArray = Arrays.copyOfRange(userArray, 0, i);
