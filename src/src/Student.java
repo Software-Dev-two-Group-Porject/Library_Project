@@ -4,21 +4,17 @@
  **/
 public class Student extends User
 {
-   int roomNumber, booksOnLoan = 0;
+   int roomNumber;
    String userName = " ", userPassword = " ";
    int MAXBOOKSONLOAN = 5;
    private boolean fine_defaulter;
    private double fine;
-   private String[] bookLoans;
-   char blockLetter;
+   private String[] bookLoanISBNS;
+   private char blockLetter;
 
    Student()
    {
       super();
-      fine_defaulter = false;
-      fine = 0.0;
-      blockLetter = ' ';
-      roomNumber = 0;
    }
 
    //<<<<<<< Updated upstream
@@ -55,15 +51,6 @@ public class Student extends User
       this.roomNumber = roomNumber;
    }
 
-   public int getBooksOnLoan()
-   {
-      return booksOnLoan;
-   }
-
-   public void setBooksOnLoan(int booksOnLoan)
-   {
-      this.booksOnLoan = booksOnLoan;
-   }
 
    public String getUserName()
    {
@@ -85,22 +72,13 @@ public class Student extends User
       this.userPassword = userPassword;
    }
 
-//<<<<<<< Updated upstream
-//=======
-   // }
-//>>>>>>> Stashed changes
-
-   public double getFine()
-   {
-      return fine;
+   public char getBlockLetter() {
+      return blockLetter;
    }
 
-   public void setFine(double fine)
-   {
-      this.fine = fine;
+   public void setBlockLetter(char blockLetter){
+      this.blockLetter = blockLetter;
    }
-//}
-
    public String toString()
    {
       return String.format(super.toString() + " " + this.blockLetter + " " + this.roomNumber);

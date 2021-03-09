@@ -63,5 +63,38 @@ public class StudentList {
         }
    }
 
+   public Student [] findStudentsByName(String name){
+        Student [] returnList = new Student [studentList.length];
+        int s = 0;
+        for (int i = 0; i < studentList.length; i++){
+            if(studentList[i].getName().toLowerCase().trim().contains(name)){
+                returnList[s] = studentList[i];
+                s++;
+            }
+        }
+        return Arrays.copyOfRange(returnList, 0, s);
+   }
+
+   public Student [] findStudentByBlock(char block){
+        Student [] returnList = new Student[studentList.length];
+        int s = 0;
+        for (int i = 0; i < studentList.length; i++){
+            if(studentList[i].getBlockLetter() == block){
+                returnList[s] = studentList[i];
+            }
+        }
+        return Arrays.copyOfRange(returnList, 0, s);
+   }
+
+   public Student findById (int id){
+        Student student = null;
+        for(int i = 0; i < studentList.length; i++){
+            if(studentList[i].getUserID() == id){
+                student = studentList[i];
+            }
+        }
+        return student;
+   }
+
 
 }

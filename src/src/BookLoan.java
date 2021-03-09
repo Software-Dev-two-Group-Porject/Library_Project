@@ -77,7 +77,7 @@ public class BookLoan
 
    //instead of being a value within the constructor we can use the
    public int getDaysOverDue(){
-        
+        return 0;
    }
 
 
