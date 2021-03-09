@@ -15,7 +15,7 @@ public class UserList {
     }
 
 
-    public void populateList() {
+    public void populateList() { //This already exists in User as initUserList
         int i = 0;
         String file = "src\\users.dat";
         BufferedReader reader = null;
