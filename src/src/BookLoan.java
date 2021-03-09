@@ -1,9 +1,7 @@
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -12,6 +10,7 @@ import java.util.Date;
 **/
 public class BookLoan
 {
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy"); //used for formatting due date
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yy hh:mm:ss");
     LocalDate today = LocalDate.now(); //importing LocalDate Library
 
@@ -20,6 +19,7 @@ public class BookLoan
     int userID;
     private Date dateIssued;
     private Date dateReturned;
+    private String dueDate;           //or LocalDate dueDate?
     boolean isOverdue;
     double finePerDay;
     String status;
@@ -80,19 +80,24 @@ public class BookLoan
 
    //instead of being a value within the constructor we can use the
    public int getDaysOverDue(){
-      LocalDate nowDate = LocalDate.now(); //getting current date
-      LocalDate pastDate = LocalDate.now(); //if storing dateReturned, requires change of data type to LocalDate for 'dateReturned' variable
-      return (int) ChronoUnit.DAYS.between(pastDate,nowDate); //return number of days difference
+      LocalDate secondDate = LocalDate.parse(dueDate,formatter); //convert from String type to readable Date
+      LocalDate todayDate = LocalDate.now(); //creating object for current date
+      if (todayDate.compareTo(secondDate)>0){
+      } //if today's date is past due date
+      long daysOverDue = ChronoUnit.DAYS.between(secondDate,todayDate); //calc difference to find days overdue
+      return (int) daysOverDue;
    }
 
    //or - alternative method to above
    ////instead of being a value within the constructor we can use the
-   //      public int getDaysOverDue(){
-   //         LocalDate nowDate = LocalDate.now(); //getting current date
-   //         LocalDate secondDate = LocalDate.parse(dateReturned,formatter);// correct variable use here? - //parse used to convert String to LocalDate format
-   //         long daysDifference = ChronoUnit.DAYS.between(nowDate,secondDate);
-   //         return (int) daysDifference;
-   //      }
+   //public static int getDaysOverDue(){
+      //LocalDate secondDate = LocalDate.of(2021,03,05); //need to input date here?
+      //LocalDate todayDate = LocalDate.now(); //creating object for current date
+      //if (todayDate.compareTo(secondDate)>0){
+      //} //if today's date is past due date
+      //long daysOverDue = ChronoUnit.DAYS.between(secondDate,todayDate); //calc difference to find days overdue
+      //return (int) daysOverDue;
+   //}
 
 
    public void setOverdue(boolean overdue)
