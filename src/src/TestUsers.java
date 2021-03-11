@@ -25,7 +25,7 @@ public class TestUsers
       if (user.checkExisting(id)) {
          user = user.getUserByID(id);
          System.out.println(user.toString());
-         String name = "", email = "", status = "", password = "", block = "";
+         String name = "", email = "", status = "", password = "", block = "", course = "";
          int room = 0, choice;
          boolean overdue = false, cancel = false;
          do {
@@ -100,7 +100,7 @@ public class TestUsers
             {
                room = user.getRoom();
             }
-            int booksOnLoan = user.getBooksOnLoan();
+            //  int booksOnLoan = user.getBooksOnLoan();
 
             editUser.setUserID(id);
             editUser.setName(name);
@@ -109,7 +109,8 @@ public class TestUsers
             editUser.setPassword(password);
             editUser.setBlock(block);
             editUser.setRoom(room);
-            editUser.setBooksOnLoan(booksOnLoan);
+            editUser.setCourse(course);
+            //     editUser.setBooksOnLoan(booksOnLoan);
             editUser.setOverdue(overdue);
 
             user.initUserList(); //Tbh I can't work out why I have to do this again, but it was the only way to get it to work
@@ -142,6 +143,7 @@ public class TestUsers
          String email = Utils.askEmail("Please enter the user's email: ");
          String password = Utils.askString("Please enter the user's password: ", "^[^\\\\d\\\\s]{6,20}$"); //Allows no whitespace and must be between 6 and 20 characters
          String block = Utils.askString("Please enter the user's block: ", "[a-zA-Z]");
+         String course = Utils.askString("Please enter their course: ", "");
          int room = Utils.askInt("Please enter the user's room number: ");
 
          // boolean add = askReply("Would you like to add this user to the database?");
@@ -163,7 +165,8 @@ public class TestUsers
             addUser.setPassword(password);
             addUser.setBlock(block);
             addUser.setRoom(room);
-            addUser.setBooksOnLoan(0); //If they're a new user we presume they have no books on loan
+            addUser.setCourse(course);
+            //  addUser.setBooksOnLoan(0); //If they're a new user we presume they have no books on loan
             addUser.setOverdue(false); //And no overdue fees
 
             user.addUserToList(addUser);
