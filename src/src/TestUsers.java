@@ -12,8 +12,6 @@ public class TestUsers
    public static void main(String[] args) throws IOException
    {
 
-      Utils.askEmail("Email time:");
-
       User user = new User();
       user.initUserList();
 
@@ -29,63 +27,102 @@ public class TestUsers
          System.out.println(user.toString());
          String name = "", email = "", status = "", password = "", block = "";
          int room = 0, choice;
-         boolean overdue = false;
+         boolean overdue = false, cancel = false;
          do {
-            choice = Utils.askInt("Options\n========================\n1. Name\n2. Email\n2. Password\n4. Block\n5. Room\n6. Overdue\n0. Exit\nPlease enter which element you'd like to edit: ");
+            choice = Utils.askInt("Options\n========================\n1. Name\n2. Email\n2. Password\n4. Block\n5. Room\n6. Overdue\n9. Cancel all changes\n0. Save & Exit\nPlease enter which element you'd like to edit: ");
             switch (choice) {
                case 1:
-                  name = Utils.askString("Please enter their updated name: ");
+                  name = Utils.askString("Please enter their updated name: ", "[a-zA-Z\\s'áéíóúÁÉÍÓÚ-]+");
+                  while (Utils.countWords(name) < 2) {
+                     name = Utils.askString("Please enter their full name: ", "[a-zA-Z\\s'áéíóúÁÉÍÓÚ-]+");
+                  }
+                  name = Utils.capitalizeString(name);
                   break;
                case 2:
-                  email = Utils.askString("Please enter their updated email: ");
+                  email = Utils.askEmail("Please enter their updated email: ");
                   break;
                case 3:
-                  password = Utils.askString("Please enter their new password: ");
+                  password = Utils.askString("Please enter their new password: ", "");
                   break;
                case 4:
-                  block = Utils.askString("Please enter their block: ");
+                  block = Utils.askString("Please enter their block: ", "[a-zA-Z]"); //Allow only single letter to be entered
+                  block = block.toUpperCase();
                   break;
                case 5:
                   room = Utils.askInt("Please enter their new room: ");
+                  do
+                  { // This would be set to the maximum room number in the largest block
+                     room = Utils.askInt("Room number invalid. Please enter their room: ");
+                  } while ((room < 1) || (room > 999));
+                  break;
                case 6:
-                  int askOverdue = Utils.askInt("Please press 1 to mark their account as overdue, press 2 to remove the flag: ");
-                  if (askOverdue == 1)
+                  boolean askOverdue = Utils.askReply("Please press Y to mark their account as overdue, press N to remove the flag: ");
+                  if (askOverdue)
                      overdue = true;
+                  break;
+               case 9:
+                  cancel = Utils.askReply("Are you sure you want to cancel? ");
+                  break;
                case 0:
-                  System.out.println("Finished editing.");
+               //   System.out.println("Finished editing.");
                   break;
 
             } //Switch
 
-         } while (choice != 00); //do
-         User editUser = new User();
+         } while ((choice != 9) && (choice !=0)); //do
 
-         if (name.equals("")) { name = user.getName(); }
-         if (email.equals("")) { email = user.getEmail(); }
-         if (status.equals("")) { status = user.getStatus(); } //Do we need to let them edit the status?
-         if (password.equals("")) { password = user.getPassword(); }
-         if (block.equals("")) { block = user.getBlock(); }
-         if (room == 0) { room = user.getRoom(); }
-         int booksOnLoan = user.getBooksOnLoan();
+         if (!cancel)
+         {
 
-         editUser.setUserID(id);
-         editUser.setName(name);
-         editUser.setStatus(status);
-         editUser.setEmail(email);
-         editUser.setPassword(password);
-         editUser.setBlock(block);
-         editUser.setRoom(room);
-         editUser.setBooksOnLoan(booksOnLoan);
-         editUser.setOverdue(overdue);
+            User editUser = new User();
 
-         user.initUserList(); //Tbh I can't work out why I have to do this again, but it was the only way to get it to work
-         user.deleteUser(id, 0); //Delete the existing entry before adding the updated one
-         user.addUserToList(editUser);
-         user.saveUsers();
+            if (name.equals(""))
+            {
+               name = user.getName();
+            }
+            if (email.equals(""))
+            {
+               email = user.getEmail();
+            }
+            if (status.equals(""))
+            {
+               status = user.getStatus();
+            } //Do we need to let them edit the status?
+            if (password.equals(""))
+            {
+               password = user.getPassword();
+            }
+            if (block.equals(""))
+            {
+               block = user.getBlock();
+            }
+            if (room == 0)
+            {
+               room = user.getRoom();
+            }
+            int booksOnLoan = user.getBooksOnLoan();
 
-         User editedUser = user.getUserByID(id);
-         System.out.println("The user has been updated.");
-         System.out.println(editedUser.toString());
+            editUser.setUserID(id);
+            editUser.setName(name);
+            editUser.setStatus(status);
+            editUser.setEmail(email);
+            editUser.setPassword(password);
+            editUser.setBlock(block);
+            editUser.setRoom(room);
+            editUser.setBooksOnLoan(booksOnLoan);
+            editUser.setOverdue(overdue);
+
+            user.initUserList(); //Tbh I can't work out why I have to do this again, but it was the only way to get it to work
+            user.deleteUser(id, 0); //Delete the existing entry before adding the updated one
+            user.addUserToList(editUser);
+            user.saveUsers();
+
+            User editedUser = user.getUserByID(id);
+            System.out.println("The user has been updated.");
+            System.out.println(editedUser.toString());
+         } else {
+            System.out.println("No changes made.");
+         } //else
       } else {
          System.out.println("User doesn't exist in database.");  //Add the code to jump to add user menu?
       }
@@ -101,10 +138,10 @@ public class TestUsers
       if (user.checkExisting(id)) {
          System.out.println("User already exists in database."); //Add function to go straight to edit user??
       } else {
-         String name = Utils.askString("Please enter the user's name: ");
-         String email = Utils.askString("Please enter the user's email: ");
-         String password = Utils.askString("Please enter the user's password: ");
-         String block = Utils.askString("Please enter the user's block: ");
+         String name = Utils.askString("Please enter the user's name: ", "[a-zA-Z\\s-]+");
+         String email = Utils.askEmail("Please enter the user's email: ");
+         String password = Utils.askString("Please enter the user's password: ", "^[^\\\\d\\\\s]{6,20}$"); //Allows no whitespace and must be between 6 and 20 characters
+         String block = Utils.askString("Please enter the user's block: ", "[a-zA-Z]");
          int room = Utils.askInt("Please enter the user's room number: ");
 
          // boolean add = askReply("Would you like to add this user to the database?");

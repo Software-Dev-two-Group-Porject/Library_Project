@@ -137,7 +137,6 @@ public class User
       return returnUser;
    } //getUserByEmail
 
-
    public void addUserToList(User user) {
       User [] newUserList = new User[userList.length + 1];
 
@@ -148,7 +147,6 @@ public class User
       userList = newUserList;
 
    } //addUserToList
-
 
    public void editUser(int userID) {
       User editUser = new User();
@@ -161,15 +159,14 @@ public class User
 
    }//edit user
 
-
    public void deleteUser(int userID, int prompt) {
       char delete = 'N';
 
       for (int x = 0; x < userList.length; x++) {
          if(userList[x].getUserID() == userID) {
-            System.out.println(printHeader());
-            System.out.println(userList[x].toString());
-            if (prompt != 0) {
+            if (prompt != 0) { //Show user info before deleting unless prompts are hidden
+               System.out.println(printHeader());
+               System.out.println(userList[x].toString());
                System.out.println("Please confirm you would like to delete user. (Y/N)");
                delete = keyboard.nextLine().toUpperCase().charAt(0);
             }
@@ -186,9 +183,6 @@ public class User
          }
       }
    }//deleteUser
-
-
-
 
    public void saveUsers() {
       String file = "src\\Data\\users.dat";
@@ -213,13 +207,9 @@ public class User
       } //finally
    } //saveUsers
 
-
-
    public String saveStringForUsersDat() {
       return this.userID + "," + this.status + "," + this.name + "," + this.email + "," + this.password + "," + this.block + "," + this.room + "," + this.booksOnLoan + "," + this.overdue + "\n";
    } //
-
-
 
    public int getUserID() {  return userID;  }
    public void setUserID(int userID) { this.userID = userID; }
