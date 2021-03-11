@@ -16,7 +16,7 @@ public class TestUsers
       user.initUserList();
 
       //Code to edit a user
-      //Not in the right place but getting it working first!
+      //Also not in the right place but getting it working first!
 
       System.out.println("Editing existing user\n===============\n");
 
@@ -64,7 +64,7 @@ public class TestUsers
                   cancel = Utils.askReply("Are you sure you want to cancel? ");
                   break;
                case 0:
-               //   System.out.println("Finished editing.");
+                  //   System.out.println("Finished editing.");
                   break;
 
             } //Switch
@@ -127,7 +127,7 @@ public class TestUsers
          System.out.println("User doesn't exist in database.");  //Add the code to jump to add user menu?
       }
 
-   System.out.println("=================================================");
+      System.out.println("=================================================");
 
       //Code to add a new student
       //This isn't in the right place but it can be moved,
@@ -183,29 +183,29 @@ public class TestUsers
 
 
 
-    //  user = user.getUserByID(160551);
-    //  System.out.print("Please enter a user ID: ");
-    //  user = user.getUserByID(keyboard.nextInt());
-    //  user = user.getUserByEmail(keyboard.nextLine());
+      //  user = user.getUserByID(160551);
+      //  System.out.print("Please enter a user ID: ");
+      //  user = user.getUserByID(keyboard.nextInt());
+      //  user = user.getUserByEmail(keyboard.nextLine());
 
-     // user = user.getUserByEmail("afarrahfowler@ulster.ac.uk");
+      // user = user.getUserByEmail("afarrahfowler@ulster.ac.uk");
 
-    //  System.out.print("Answer: ");
-   //   System.out.println(user.toString());
+      //  System.out.print("Answer: ");
+      //   System.out.println(user.toString());
 
       //Testing adding a new user
 
-    //
+      //
 
-    //  System.out.println("Hello");
-  //    System.out.println(testAddUser.toString());
+      //  System.out.println("Hello");
+      //    System.out.println(testAddUser.toString());
 
-    //
+      //
 
 
-    //  System.out.println("Delete");
-    //  int delID = 7845;
-    //  user.deleteUser(delID);
+      //  System.out.println("Delete");
+      //  int delID = 7845;
+      //  user.deleteUser(delID);
 
 
       //user.saveUsers();
@@ -220,16 +220,16 @@ public class TestUsers
 
 
 
-   //   User.UserList("all");
-   //   System.out.println("List of staff");
-   //   User.UserList("student");
+      //   User.UserList("all");
+      //   System.out.println("List of staff");
+      //   User.UserList("student");
 
 
 
 
 
-   //   System.out.print("Please enter a user name: ");
-   //   User.UserSearch("Name", keyboard.nextLine());
+      //   System.out.print("Please enter a user name: ");
+      //   User.UserSearch("Name", keyboard.nextLine());
 
 
 
