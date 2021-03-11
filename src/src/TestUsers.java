@@ -18,7 +18,7 @@ public class TestUsers
       user.initUserList();
 
       //Code to edit a user
-      //Also not in the right place but getting it working first!
+      //Not in the right place but getting it working first!
 
       System.out.println("Editing existing user\n===============\n");
 
