@@ -29,7 +29,7 @@ public class Utils
    } //askString
 
    public static String askEmail(String question) {
-      String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+      String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+[.]+[A-Za-z.]+$";
       boolean regexPass;
       String answer;
       System.out.println(question);
