@@ -10,8 +10,8 @@ import java.util.Scanner;
 
 public class User
 {
-   private String status, name, email, password, block;
-   private int userID, booksOnLoan, room;
+   private String status, name, email, password, block, course;
+   private int userID, room;
    private boolean overdue;
    private User[] userList;
    static Scanner keyboard = new Scanner(System.in);
@@ -79,6 +79,7 @@ public class User
       User user = new User();
       int onLoan, tempUserID, theirRoom;
       boolean overdue;
+      String theirCourse = "null";
       String [] info = line.split(",");
       tempUserID = Integer.parseInt(info[0]);
       user.setUserID(tempUserID);
@@ -90,8 +91,11 @@ public class User
          user.setBlock(info[5]);
          theirRoom = Integer.parseInt(info[6]);
          user.setRoom(theirRoom);
-         onLoan = Integer.parseInt(info[7]);
-         user.setBooksOnLoan(onLoan);
+         user.setCourse(theirCourse);
+
+         //onLoan = Integer.parseInt(info[7]);
+
+       //  user.setBooksOnLoan(onLoan);
          overdue = Boolean.parseBoolean(info[8]);
          user.setOverdue(overdue);
          //Add user course
@@ -137,7 +141,6 @@ public class User
       return returnUser;
    } //getUserByEmail
 
-
    public void addUserToList(User user) {
       User [] newUserList = new User[userList.length + 1];
 
@@ -148,7 +151,6 @@ public class User
       userList = newUserList;
 
    } //addUserToList
-
 
    public void editUser(int userID) {
       User editUser = new User();
@@ -161,15 +163,14 @@ public class User
 
    }//edit user
 
-
    public void deleteUser(int userID, int prompt) {
       char delete = 'N';
 
       for (int x = 0; x < userList.length; x++) {
          if(userList[x].getUserID() == userID) {
-            System.out.println(printHeader());
-            System.out.println(userList[x].toString());
-            if (prompt != 0) {
+            if (prompt != 0) { //Show user info before deleting unless prompts are hidden
+               System.out.println(printHeader());
+               System.out.println(userList[x].toString());
                System.out.println("Please confirm you would like to delete user. (Y/N)");
                delete = keyboard.nextLine().toUpperCase().charAt(0);
             }
@@ -186,9 +187,6 @@ public class User
          }
       }
    }//deleteUser
-
-
-
 
    public void saveUsers() {
       String file = "src\\Data\\users.dat";
@@ -213,13 +211,9 @@ public class User
       } //finally
    } //saveUsers
 
-
-
    public String saveStringForUsersDat() {
-      return this.userID + "," + this.status + "," + this.name + "," + this.email + "," + this.password + "," + this.block + "," + this.room + "," + this.booksOnLoan + "," + this.overdue + "\n";
+      return this.userID + "," + this.status + "," + this.name + "," + this.email + "," + this.password + "," + this.block + "," + this.room + "," + this.overdue + "\n";
    } //
-
-
 
    public int getUserID() {  return userID;  }
    public void setUserID(int userID) { this.userID = userID; }
@@ -235,9 +229,11 @@ public class User
    public void setBlock(String block) { this.block = block; }
    public int getRoom() { return room; }
    public void setRoom(int room) { this.room = room; }
-   public int getBooksOnLoan() { return booksOnLoan; }
-   public void setBooksOnLoan(int booksOnLoan) { this.booksOnLoan = booksOnLoan; }
-   public boolean isOverdue() { return overdue; }
+ //  public int getBooksOnLoan() { return booksOnLoan; }
+ //  public void setBooksOnLoan(int booksOnLoan) { this.booksOnLoan = booksOnLoan; }
+   public String getCourse(String course) { return course; }
+   public void setCourse(String course) { this.course = course; }
+//   public boolean isOverdue() { return overdue; }
    public void setOverdue(boolean overdue) { this.overdue = overdue; }
 
 
