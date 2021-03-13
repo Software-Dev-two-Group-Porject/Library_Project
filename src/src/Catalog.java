@@ -8,11 +8,11 @@ import java.util.Scanner;
  **/
 
 //implementing serializable so that data object can be easiest saved.
-public class Catalogue {
+public class Catalog {
     static Scanner input = new Scanner(System.in);
     private Book[] catalogueList;
 
-    Catalogue(){
+    Catalog(){
     }
 
 

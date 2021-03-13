@@ -7,16 +7,21 @@ public class TestCatalog {
     public static void main(String [] args){
         //Testing search and save and update methods
 
-        Catalogue catalogue = new Catalogue();
-        catalogue.initializeCatalogue();
-        Book [] bookArr = catalogue.getCatalogueList();
+        Catalog catalog = new Catalog();
+        catalog.initializeCatalogue();
+        Book [] bookArr = catalog.getCatalogueList();
 
 
         //Test 10
-        catalogue.getBookByIsbn("9780132350884");
-        catalogue.upDateQuantity("9780132350884", "checkout");
-        Book book = catalogue.getBookByIsbn("9780132350884");
-        System.out.println(book.toString());
-        catalogue.saveData();
+        System.out.println(catalog.getBookByIsbn("9780132350884").toString());
+        catalog.upDateQuantity("9780132350884", "checkout");
+        catalog.saveData();
+        catalog.initializeCatalogue();
+        catalog.removeFromCatalog("9780132350884");
+        catalog.saveData();
+        catalog.initializeCatalogue();
+        System.out.println(catalog.getBookByIsbn("9780132350884").toString());
+
+
     }
 }
