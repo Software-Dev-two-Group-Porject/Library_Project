@@ -8,11 +8,21 @@ import java.awt.event.ActionListener;
  **/
 public class StudentPanel extends JPanel implements ActionListener {
     HeaderPanel headerPanel;
-    StudentList studentList;
-
+    Catalog catalog;
+    BookDataPanel bookDataPanel;
     StudentPanel(Student student){
         headerPanel = new HeaderPanel("Student", student.getName());
         headerPanel.setBounds(20, 10, 850, 120);
+        catalog = new Catalog();
+        catalog.initializeCatalogue();
+
+
+        //need to display the current book order.
+        // need a smaller data table similar to the catalog,
+        //display the name of the book as well as other details so book can be eaily views.
+        //have a status update button#
+
+
     }
 
     @Override

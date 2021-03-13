@@ -36,7 +36,7 @@ public class Catalog {
         String file = "src\\Data\\Book_Data.csv";
         BufferedReader reader = null;
         String line = "";
-        String [] strArr = new String [500];
+        String [] strArr = new String [1000];
         try {
             reader = new BufferedReader(new FileReader(file));
             while ((line = reader.readLine()) != null) {
