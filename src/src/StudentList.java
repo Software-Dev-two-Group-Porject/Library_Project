@@ -55,6 +55,10 @@ public class StudentList {
         }
     }
 
+    public Student [] getStudentList(){
+        return this.studentList;
+    }
+
 
    public void printStudentList(){
 
