@@ -112,15 +112,42 @@ public class Catalogue {
         return bookList;
     }
 
+    public Book [] getBookByAuthor(String author){
+        Book [] returnList = new Book[catalogueList.length];
+        int b =0;
+        for(int i = 0; i < catalogueList.length; i++){
+            if(catalogueList[i].getAuthor().toLowerCase().contains(author.trim().toLowerCase())){
+                returnList[b] = catalogueList[i];
+                b++;
+            }
+        }
+
+        return Arrays.copyOfRange(returnList, 0, b);
+    }
+
+    public Book[] getBooksByTitle(String title){
+        System.out.println(title);
+        Book [] returnList = new Book [catalogueList.length];
+        int b = 0;
+        for(int i = 0; i < catalogueList.length; i++){
+            if(catalogueList[i].getTitle().toLowerCase().contains(title.toLowerCase().trim())){
+                catalogueList[i].toString();
+                returnList[b] = catalogueList[i];
+                b++;
+            }
+        }
+
+        return Arrays.copyOfRange(returnList, 0, b);
+    }
+
     //using this method to re write the cv we have in more readable format and when books are added/deleted and quanities
     //are changed, data can be re written to this file here.
     public void saveData(){
-        String file = "src\\Data\\Book_Data_Java.csv";
+        String file = "src\\Data\\Book_Data.csv";
         BufferedWriter writer = null;
         String line = "";
         try{
             writer = new BufferedWriter( new FileWriter(file));
-            line = printHeader() + "\n";
             for(int i = 0; i < catalogueList.length; i++){
                line += catalogueList[i].saveStringForCSV();
             }
@@ -147,7 +174,7 @@ public class Catalogue {
         for(int i = 0; i < catalogueList.length; i++){
             newArray[i] = catalogueList[i];
         }
-        newArray[newArray.length-1] = book;
+        newArray[newArray.length -1] = book;
         catalogueList = newArray;
     }
 

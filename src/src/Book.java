@@ -54,9 +54,6 @@ public class Book {
         this.quantity = quantity;
     }
 
-    public int getLoanType(int loanType){
-        return this.loanType;
-    }
 
     public String getGenre(){
         return this.genre;
