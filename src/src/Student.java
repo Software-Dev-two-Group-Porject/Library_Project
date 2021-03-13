@@ -18,13 +18,13 @@ public class Student extends User
    }
 
    //<<<<<<< Updated upstream
-   public Student(int id, String status, String name, String userPassword, char block, int roomNumber, String course)
+   public Student(int id, String status, String name, String email, char block, int roomNumber, String course)
    {
       super(id, status, name);
       this.blockLetter = block;
+      this.setEmail(email);
       this.roomNumber = roomNumber;
       this.course = course;
-      this.userPassword = userPassword;
    }
 //=======
 //   public Student(String id, String firstname, String surname, int userID, int blockNumber, int roomNumber, int booksOnLoan, String userName, String userPassword, boolean fine_defaulter, double fine, ArrayList<Loan> bookLoans)
@@ -51,6 +51,7 @@ public class Student extends User
    {
       this.roomNumber = roomNumber;
    }
+
 
 
    public String getUserName()
@@ -81,12 +82,16 @@ public class Student extends User
       return this.course;
    }
 
+   public void setCourse(String course){
+      this.course = course;
+   }
+
    public void setBlockLetter(char blockLetter){
       this.blockLetter = blockLetter;
    }
    public String toString()
    {
-      return String.format(super.toString() + " " + this.blockLetter + " " + this.roomNumber);
+      return String.format(super.toString() + " " + this.course + " " +this.blockLetter + " " + this.roomNumber);
    } //Password not shown as in real world would be hashed for security
 }
 

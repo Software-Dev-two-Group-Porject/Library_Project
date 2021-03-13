@@ -29,15 +29,18 @@ public class StudentList {
             while((line = reader.readLine()) != null){
                 arr[i] = line;
                 String [] data = line.split(",");
+                for(int d = 0; d < data.length; d++){
+                    System.out.println(d + " " + data[d]);
+                }
                 if(data[1].toLowerCase().trim().equals("student")){
                     stdArr[s] = new Student(
                             Integer.parseInt(data[0]), //UserID
                             data[1], //User Status
                             data[2], //Username
-                            data[4],
+                            data[3], //email
                             data[5].toUpperCase().charAt(0), //Student Block Letter
-                            Integer.parseInt(data[6]), //Student Room Number.,
-                            data[7]
+                            Integer.parseInt(data[6]), //Student Room Number.
+                            data[8]//the course
                             );
                     s++;
                 }

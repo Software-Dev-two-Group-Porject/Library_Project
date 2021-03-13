@@ -80,9 +80,9 @@ public class StudentDataPanel extends JPanel {
         dataContainer.add(tableHeader, BorderLayout.NORTH);
 
         dataOutput.setLayout(new GridBagLayout());
-        renderTable(studentList.getStudentList());;
+        renderTable(studentList.getStudentList());
 
-
+        studentList.printStudentList();
         JScrollPane jScrollPane = new JScrollPane(dataOutput);
         jScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         dataContainer.add(jScrollPane, BorderLayout.CENTER);
@@ -194,39 +194,33 @@ public class StudentDataPanel extends JPanel {
         dataOutput.revalidate();
         dataOutput.repaint();
 
-        JLabel id, name, course, block, roomNum;
+
 
         TableButton [] vb = getDataTableViewButtons(arr);
         TableButton [] eb = getTableEditButtons(arr);
 
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridwidth = 10;
         gbc.fill = GridBagConstraints.HORIZONTAL;
-
+        gbc.insets = new Insets(0,0,3,20);
         for(int i = 0; i < arr.length; i++){
             new JLabel(String.valueOf(arr[i].getUserID()));
-            gbc.gridwidth = 2;
-            gbc.gridy = i;
+            gbc.gridx = 0; gbc.gridwidth = 2; gbc.gridy = i;
             dataOutput.add(new JLabel(String.valueOf(arr[i].getUserID())), gbc);
-            gbc.gridwidth = 3;
-            gbc.gridy = i;
-            dataOutput.add(new JLabel(arr[i].getUserName()), gbc);
-            gbc.gridwidth =3;
-            gbc.gridy = i;
+            gbc.gridx = 2; gbc.gridwidth = 4;  gbc.gridy = i;
+            dataOutput.add(new JLabel(arr[i].getName()), gbc);
+            gbc.gridx=6;   gbc.gridwidth =5; gbc.gridy = i;
+            dataOutput.add(new JLabel(arr[i].getEmail()), gbc);
+            gbc.gridx = 11;  gbc.gridwidth = 5; gbc.gridy =i;
             dataOutput.add(new JLabel(arr[i].getCourse()), gbc);
-            gbc.gridwidth = 2;
-            gbc.gridy =i;
-            dataOutput.add(new JLabel(arr[i].getCourse()), gbc);
-            gbc.gridwidth = 2;
-            gbc.gridy = i;
+            gbc.gridx = 16; gbc.gridwidth = 2; gbc.gridy = i;
             dataOutput.add(new JLabel(String.valueOf(arr[i].getBlockLetter()).toUpperCase()), gbc);
-            gbc.gridwidth = 2;
-            gbc.gridy = i;
+            gbc.gridx = 18; gbc.gridwidth = 2; gbc.gridy = i;
             dataOutput.add(new JLabel(String.valueOf(arr[i].getRoomNumber())), gbc);
-            gbc.gridwidth =1;
+            gbc.gridwidth =1; gbc.gridx = 20;
             gbc.gridy = i;
             dataOutput.add(vb[i], gbc);
             gbc.gridwidth=1;
+            gbc.gridx = 21;
             gbc.gridy = i;
             dataOutput.add(eb[i], gbc);
         }
