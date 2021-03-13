@@ -18,7 +18,7 @@ public class Student extends User
    }
 
    //<<<<<<< Updated upstream
-   public Student(int id, String status, String name, String course, String userPassword, char block, int roomNumber)
+   public Student(int id, String status, String name, String userPassword, char block, int roomNumber, String course)
    {
       super(id, status, name);
       this.blockLetter = block;

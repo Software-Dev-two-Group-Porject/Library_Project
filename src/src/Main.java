@@ -30,7 +30,7 @@ public class Main {
             bookLoan.setDateIssued(Date.from(LocalDate.of(2021, 1, 9).atStartOfDay(ZoneId.systemDefault()).toInstant()));
             bookLoan.setDueDate(formatter.parse( "2021-03-08 12:30:34"));
             System.out.println(str.charAt(0));
-            System.out.println( "Detting due date" + formatter.format(bookLoan.getDueDate()));
+            System.out.println( "Getting due date" + formatter.format(bookLoan.getDueDate()));
             System.out.println("Printing the date issued" + formatter.format(bookLoan.getDateIssued()));
             System.out.println(bookLoan.getDaysOverDue());
         } catch (ParseException pe) {

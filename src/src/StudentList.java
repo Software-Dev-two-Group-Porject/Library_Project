@@ -36,7 +36,8 @@ public class StudentList {
                             data[2], //Username
                             data[4],
                             data[5].toUpperCase().charAt(0), //Student Block Letter
-                            Integer.parseInt(data[6]) //Student Room Number.
+                            Integer.parseInt(data[6]), //Student Room Number.,
+                            data[7]
                             );
                     s++;
                 }
@@ -98,6 +99,12 @@ public class StudentList {
             }
         }
         return student;
+   }
+
+   public Student [] findByIdForTable(int id){
+        Student [] studentArr = new Student[1];
+        studentArr[0] = findById(id);
+        return studentArr;
    }
 
 

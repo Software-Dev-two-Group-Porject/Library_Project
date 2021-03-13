@@ -129,20 +129,20 @@ public class BookDataPanel extends JPanel {
             case "isbn":
                 //get by isbn
 
-                arr = catalog.getBookByIsbnForDataTable(searchTextCategory.getText());
+                arr = catalog.getBookByIsbnForTable(searchTextCategory.getText());
                 break;
             case "title":
                 arr = catalog.getBooksByTitle(searchTextCategory.getText());
                 //perform search to get title
                 break;
             case "author":
-                arr = catalog.getBooksByAuthor(searchTextCategory.getText());
+                arr = catalog.getBookByAuthor(searchTextCategory.getText());
                 break;
             case "genre":
                 arr = catalog.getBookByGenre(searchTextCategory.getText());
                 break;
             case "sub genre":
-                arr = catalog.getBookBySubGenre(searchTextCategory.getText());
+                arr = catalog.getBookByGenre(searchTextCategory.getText());
                 break;
             default:
                 break;

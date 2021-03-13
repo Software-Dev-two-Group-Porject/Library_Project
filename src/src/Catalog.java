@@ -164,6 +164,12 @@ public class Catalog {
 
     }
 
+    public Book [] getBookByIsbnForTable(String isbn){
+        Book [] bookArr = new Book[1];
+        bookArr[0] = getBookByIsbn(isbn);
+        return bookArr;
+    }
+
     public void addBookToCatalog(Book book){
         //we need to extend the size of our array by one and add the book to that
         //have our catalog list copied with that new element included.
