@@ -77,7 +77,7 @@ public class Book {
     }
 
     public String saveStringForCSV(){
-        return String.format("#%s\t#%-20s\t#%-60s\t#%-20s\t#%-20s\t#%d\n",
+        return String.format("%s\t#%-40s\t#%-60s\t#%-20s\t#%-20s\t#%d\n",
                 this.isbn, this.author, this.title, this.genre, this.subGenre, this.quantity);
     }
 

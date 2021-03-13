@@ -51,7 +51,6 @@ public class Catalogue {
             this.catalogueList = new Book[newStrArray.length];//array set to length of existing records
             //here we loop through the String array and set our book object by the values in the csv
             //the order of the csv to the class names.
-
             for(int j = 0; j < this.catalogueList.length; j++){
                 this.catalogueList[j] = setBookObject(newStrArray[j]);
             }
@@ -75,12 +74,12 @@ public class Catalogue {
         int isbn, quantity;
         Book book = new Book();
         String [] row = line.split("#");
-        book.setTitle(row[0]);
-        book.setAuthor(row[1]);
-        book.setGenre(row[2]);
-        book.setSubGenre(row[5]);
-        book.setIsbn(row[6]);
-        quantity = Integer.parseInt(row[10]);
+        book.setIsbn(row[0].trim());
+        book.setTitle(row[1].trim());
+        book.setAuthor(row[2].trim());
+        book.setGenre(row[3].trim());
+        book.setSubGenre(row[4].trim());
+        quantity = Integer.parseInt(row[5].trim());
         book.setQuantity(quantity);
         return book;
     }
@@ -126,7 +125,6 @@ public class Catalogue {
     }
 
     public Book[] getBooksByTitle(String title){
-        System.out.println(title);
         Book [] returnList = new Book [catalogueList.length];
         int b = 0;
         for(int i = 0; i < catalogueList.length; i++){
@@ -179,22 +177,29 @@ public class Catalogue {
     }
 
     public void upDateQuantity(String isbn, String operation){
+        Book book = null;
+        int j= 0;
        //here we are going to increment and decrement the book value depending on the operation
-        for(int i = 0; i < catalogueList.length; i++){
-            if(catalogueList[i].getIsbn().trim().equals(isbn.trim())){
+        for(int i = 0; i < catalogueList.length; i++) {
+            if (catalogueList[i].getIsbn().trim().equals(isbn.trim())) {
                 //this ensure's we have the right book
                 //check that the quantity is correct.
-                if(catalogueList[i].getQuantity() > 0 && operation == "checkout"){
-                    catalogueList[i].setQuantity(catalogueList[i].getQuantity() -1);
+                book = catalogueList[i];
+                j = i;
+            }
+        }
+                if(book != null){
+                if(book.getQuantity() > 0 && operation == "checkout"){
+                    book.setQuantity(book.getQuantity() -1);
                 } else if (operation == "return"){
-                    catalogueList[i].setQuantity(catalogueList[i].getQuantity() + 1);
+                    book.setQuantity(book.getQuantity() + 1);
                 } else {
                     System.out.println("You can't check out from the an empty title");
                 }
+                catalogueList[j] = book;
             } else {
                 System.out.println("Book record not found");
             }
-        }
     }
 
     public void removeFromCatalog(String isbn){
