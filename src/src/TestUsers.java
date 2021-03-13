@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -15,6 +16,11 @@ public class TestUsers
       User user = new User();
       user.initUserList();
 
+
+   //   String testString = Utils.askString("Testing: ", "");
+
+   //   System.out.println("Answer: " + testString);
+
       //Code to edit a user
       //Also not in the right place but getting it working first!
 
@@ -29,7 +35,7 @@ public class TestUsers
          int room = 0, choice;
          boolean overdue = false, cancel = false;
          do {
-            choice = Utils.askInt("Options\n========================\n1. Name\n2. Email\n2. Password\n4. Block\n5. Room\n6. Overdue\n9. Cancel all changes\n0. Save & Exit\nPlease enter which element you'd like to edit: ");
+            choice = Utils.askInt("Options\n========================\n1. Name\n2. Email\n3. Password\n4. Block\n5. Room\n6. Overdue\n7. Course\n9. Cancel all changes\n0. Save & Exit\nPlease enter which element you'd like to edit: ");
             switch (choice) {
                case 1:
                   name = Utils.askString("Please enter their updated name: ", "[a-zA-Z\\s'áéíóúÁÉÍÓÚ-]+");
@@ -40,6 +46,7 @@ public class TestUsers
                   break;
                case 2:
                   email = Utils.askEmail("Please enter their updated email: ");
+                  email = email.toLowerCase();
                   break;
                case 3:
                   password = Utils.askString("Please enter their new password: ", "");
@@ -59,6 +66,10 @@ public class TestUsers
                   boolean askOverdue = Utils.askReply("Please press Y to mark their account as overdue, press N to remove the flag: ");
                   if (askOverdue)
                      overdue = true;
+                  break;
+               case 7:
+                  course = Utils.askString("Please enter their course: ", "");
+                  course = Utils.capitalizeString(course);
                   break;
                case 9:
                   cancel = Utils.askReply("Are you sure you want to cancel? ");
@@ -96,11 +107,14 @@ public class TestUsers
             {
                block = user.getBlock();
             }
+            if (course.equals(""))
+            {
+               course = user.getCourse();
+            }
             if (room == 0)
             {
                room = user.getRoom();
             }
-            //  int booksOnLoan = user.getBooksOnLoan();
 
             editUser.setUserID(id);
             editUser.setName(name);
@@ -110,7 +124,6 @@ public class TestUsers
             editUser.setBlock(block);
             editUser.setRoom(room);
             editUser.setCourse(course);
-            //     editUser.setBooksOnLoan(booksOnLoan);
             editUser.setOverdue(overdue);
 
             user.initUserList(); //Tbh I can't work out why I have to do this again, but it was the only way to get it to work
@@ -166,8 +179,7 @@ public class TestUsers
             addUser.setBlock(block);
             addUser.setRoom(room);
             addUser.setCourse(course);
-            //  addUser.setBooksOnLoan(0); //If they're a new user we presume they have no books on loan
-            addUser.setOverdue(false); //And no overdue fees
+            addUser.setOverdue(false); //If it's a new user we assume they aren't overdue
 
             user.addUserToList(addUser);
             user.saveUsers();

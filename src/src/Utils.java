@@ -14,22 +14,25 @@ public class Utils
       boolean regexPass;
       String answer;
       System.out.println(question);
-      keyboard.nextLine(); //Necessary to create new line after nextInt input
       answer = keyboard.nextLine();
-      if (regex == "") {
-         regex = "^[^\\\\d\\\\s]+$"; //Non digits or whitespace and at least one character
-      }
-      do
+      if (regex != "")
       {
-         if (!answer.matches(regex)) {
-            System.out.println("Invalid characters entered, please try again:");
-            regexPass = false;
-            answer = keyboard.nextLine();
-         } else
+         //regex = "^[^\\\\d\\\\s]+$"; //Non digits or whitespace and at least one character
+         //  regexPass = true;
+         // }
+         do
          {
-            regexPass = true;
-         }
-      } while (!regexPass);
+            if (!answer.matches(regex))
+            {
+               System.out.println("Invalid characters entered, please try again:");
+               regexPass = false;
+               answer = keyboard.nextLine();
+            } else
+            {
+               regexPass = true;
+            }
+         } while (!regexPass);
+      }
       return answer;
    } //askString
 
@@ -59,25 +62,26 @@ public class Utils
 
    public static int askInt(String question) {
       int retNumber = 0;
-      System.out.print(question);
+      System.out.println(question);
       while (true) {
-         try
-         {
-            retNumber = keyboard.nextInt();
+         try {
+            retNumber = Integer.parseInt(keyboard.nextLine());
             break;
-         } catch (InputMismatchException error) {
+         } catch (NumberFormatException error) {
             System.out.println("Please enter only numbers: ");
-            keyboard.next();
+        //    keyboard.next();
          }
-      }
+
+
+      } //while
       return retNumber;
-   } //askInt
+   } //AskInt
 
    public static boolean askReply(String question) {
       System.out.print(question + " (Y/N) ");
       boolean reply = false;
       char answer;
-      answer = keyboard.next().toUpperCase().charAt(0);
+      answer = keyboard.nextLine().toUpperCase().charAt(0);
       if (answer == 'Y') {
          reply = true;
       }
