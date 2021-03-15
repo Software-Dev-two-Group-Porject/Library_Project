@@ -31,12 +31,11 @@ public class Utils
    } //askString
 
    public static String askEmail(String question) {
-      String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+[.]+[A-Za-z.]+$";
-      //Email format & allowed characters
+      String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+[.]+[A-Za-z.]+$"; //Email format & allowed characters
       boolean regexPass;
       String answer;
       System.out.println(question);
-      answer = keyboard.next();
+      answer = keyboard.nextLine();
       do
       {
          Pattern pattern = Pattern.compile(regex);
@@ -45,11 +44,12 @@ public class Utils
          if (!regexPass) {
             System.out.println("Invalid email entered, please try again:");
             regexPass = false;
-            answer = keyboard.next();
+            answer = keyboard.nextLine();
          } else {
             regexPass = true;
          }
       } while (!regexPass);
+      answer = answer.toLowerCase();
       return answer;
    } //askString
 

@@ -26,12 +26,12 @@ public class User
    } //Alt constructor
 
    private String printHeader() {
-      return String.format("%-10s\t%-10s\t%-50s\t%-80s\t%-5s\t-5s\t-15s\t-15s\t%s", "ID", "Status", "Name", "Email", "Block", "Room", "Books on loan", "Overdue fines");
+      return String.format("%-10s\t%-10s\t%-40s\t%-50s\t%-5s\t%-5s\t%-10s\t%s", "ID", "Status", "Name", "Email", "Block", "Room", "Overdue", "Course");
    }
 
    public void printUserList(User [] userList) {
       System.out.println("User List");
-      printHeader();
+      System.out.println(printHeader());
 
       for (int i = 0; i < userList.length; i++) {
          System.out.println(userList[i].toString());
@@ -40,7 +40,6 @@ public class User
 
    public void initUserList() {
       String line = "";
-
       int i = 0;
       String [] userArray = new String[100];
 
@@ -62,20 +61,18 @@ public class User
       this.userList = new User[newUserArray.length];
 
       for(int j = 0; j < newUserArray.length; j++) {
-      //   System.out.println("Array " + newUserArray[j]);
-       //  System.out.println("Length: " + newUserArray.length);
          this.userList[j] = setUser(newUserArray[j]);
       }
 
    } //initUserList
 
    public String toString() {
-      return String.format("%-30s\t%-10s\t%-10s\t%-40s\t",this.name, this.userID, this.status, this.email);
+      return String.format("%-10s\t%-10s\t%-40s\t%-50s\t%-5s\t%-5s\t%-10s\t%s", this.userID, this.status, this.name, this.email, this.block, this.room, this.overdue, this.course);
    } //toString
 
    public User[] getUserList() { return this.userList; }
 
-   private User setUser(String line) {
+   protected static User setUser(String line) {
       User user = new User();
       int onLoan, tempUserID, theirRoom;
       boolean overdue;
@@ -109,7 +106,7 @@ public class User
       returnUser.initUserList();
 
       for (int i = 0; i < userList.length; i++) {
-         if(returnUser.userList[i].getUserID() == id) {
+         if(userList[i].getUserID() == id) {
             returnUser = returnUser.userList[i];
          }
 

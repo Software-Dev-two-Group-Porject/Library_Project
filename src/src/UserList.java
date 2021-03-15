@@ -13,8 +13,6 @@ public class UserList {
     UserList(){
 
     }
-
-
     public void populateList() { //This already exists in User as initUserList
         int i = 0;
         String file = "src\\users.dat";

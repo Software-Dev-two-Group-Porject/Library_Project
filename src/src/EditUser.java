@@ -26,10 +26,9 @@ public class EditUser
                   break;
                case 2:
                   email = Utils.askEmail("Please enter their updated email: ");
-                  email = email.toLowerCase();
                   break;
                case 3:
-                  password = Utils.askString("Please enter their new password: ", "");
+                  password = Utils.askString("Please enter their new password: ", "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$");
                   break;
                case 4:
                   block = Utils.askString("Please enter their block: ", "[a-zA-Z]"); //Allow only single letter to be entered
@@ -37,10 +36,10 @@ public class EditUser
                   break;
                case 5:
                   room = Utils.askInt("Please enter their new room: ");
-                  do
+                  while ((room < 1) || (room > 499))
                   { // This would be set to the maximum room number in the largest block
                      room = Utils.askInt("Room number invalid. Please enter their room: ");
-                  } while ((room < 1) || (room > 999));
+                  }
                   break;
                case 6:
                   boolean askOverdue = Utils.askReply("Please press Y to mark their account as overdue, press N to remove the flag: ");
