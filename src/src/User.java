@@ -106,10 +106,11 @@ public class User
 
    public User getUserByID(int id) {
       User returnUser = new User();
+      returnUser.initUserList();
 
-      for (int i = 0; i < this.userList.length; i++) {
-         if(this.userList[i].getUserID() == id) {
-            returnUser = this.userList[i];
+      for (int i = 0; i < userList.length; i++) {
+         if(returnUser.userList[i].getUserID() == id) {
+            returnUser = returnUser.userList[i];
          }
 
       } //for
@@ -118,11 +119,14 @@ public class User
 
    } //getUserByID
 
-   public boolean checkExisting(int id) {
+   public static boolean checkExisting(int id) {
       boolean exists = false;
-      for (int i = 0; i < this.userList.length; i++)
+      User existingUser = new User();
+      existingUser.initUserList();
+
+      for (int i = 0; i < existingUser.userList.length; i++)
       {
-         if (this.userList[i].getUserID() == id)
+         if (existingUser.userList[i].getUserID() == id)
          {
             exists = true;
          }

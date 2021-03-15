@@ -1,4 +1,3 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,15 +14,10 @@ public class Utils
       String answer;
       System.out.println(question);
       answer = keyboard.nextLine();
-      if (regex != "")
-      {
-         //regex = "^[^\\\\d\\\\s]+$"; //Non digits or whitespace and at least one character
-         //  regexPass = true;
-         // }
+      if (regex != "") { //Empty string allows any character to be used
          do
          {
-            if (!answer.matches(regex))
-            {
+            if (!answer.matches(regex)) {
                System.out.println("Invalid characters entered, please try again:");
                regexPass = false;
                answer = keyboard.nextLine();
@@ -47,8 +41,7 @@ public class Utils
       {
          Pattern pattern = Pattern.compile(regex);
          Matcher matcher = pattern.matcher(answer);
-         regexPass = matcher.find();
-
+         regexPass = matcher.find(); //Checks if input string matches the regex and returns true or false
          if (!regexPass) {
             System.out.println("Invalid email entered, please try again:");
             regexPass = false;
@@ -61,7 +54,7 @@ public class Utils
    } //askString
 
    public static int askInt(String question) {
-      int retNumber = 0;
+      int retNumber;
       System.out.println(question);
       while (true) {
          try {
@@ -69,10 +62,7 @@ public class Utils
             break;
          } catch (NumberFormatException error) {
             System.out.println("Please enter only numbers: ");
-        //    keyboard.next();
          }
-
-
       } //while
       return retNumber;
    } //AskInt
@@ -86,7 +76,7 @@ public class Utils
          reply = true;
       }
       return reply;
-   } //I still need to fix this - Michael askReply
+   } //askReply
 
    public static int countWords(String string) { //Used to check at least two words have been entered
       String[] words;
@@ -110,9 +100,7 @@ public class Utils
          }
       }
       return String.valueOf(chars);
-   }
-
-
+   } //capitalizeString
 
 
 } //class
