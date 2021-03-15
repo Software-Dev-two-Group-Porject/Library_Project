@@ -112,6 +112,7 @@ public class BookDataPanel extends JPanel {
     }
 
     public void openAddEditBook(String isbn){
+        AddBook addBook = new AddBook(catalog);
 
     }
 
@@ -128,7 +129,6 @@ public class BookDataPanel extends JPanel {
         switch(searchByBox.getItemAt(searchByBox.getSelectedIndex()).toLowerCase()){
             case "isbn":
                 //get by isbn
-
                 arr = catalog.getBookByIsbnForTable(searchTextCategory.getText());
                 break;
             case "title":
@@ -151,6 +151,11 @@ public class BookDataPanel extends JPanel {
         if(arr != null) {
             renderTable(arr);
         }
+        else{
+            JOptionPane.showMessageDialog(null,
+                    String.format("Your search by %s has returned no results",
+                            searchByBox.getItemAt(searchByBox.getSelectedIndex())));
+        }
     }
 
     public void renderTable(Book[] arr){
@@ -167,16 +172,16 @@ public class BookDataPanel extends JPanel {
         gbc.insets = new Insets(0,0,0,10);
         for(int i =0; i < arr.length; i++){
             isbn = new JLabel(arr[i].getIsbn(), JLabel.LEFT);
-            gbc.gridx = 0; gbc.gridwidth = 2; gbc.weightx = 1;
+            gbc.gridx = 0; gbc.gridwidth = 2; gbc.weightx = 0;
             gbc.gridy= i;
             dataOutput.add(isbn, gbc);
 
             title = new JLabel(arr[i].getTitle(), JLabel.LEFT);
-            gbc.gridx = 2; gbc.gridwidth = 3; gbc.gridy = i; gbc.weightx = 3;
+            gbc.gridx = 2; gbc.gridwidth = 3; gbc.gridy = i; gbc.weightx = 5;
             dataOutput.add(title, gbc);
 
             author = new JLabel(arr[i].getAuthor(), JLabel.LEFT);
-            gbc.gridx =6;  gbc.gridwidth = 3; gbc.gridy = i; gbc.weightx =3;
+            gbc.gridx =6;  gbc.gridwidth = 3; gbc.gridy = i; gbc.weightx =4;
             dataOutput.add(author, gbc);
 
             genre = new JLabel(arr[i].getGenre(), JLabel.LEFT);
@@ -191,7 +196,7 @@ public class BookDataPanel extends JPanel {
             gbc.gridx = 20; gbc.gridwidth = 3; gbc.gridy = i; gbc.weightx =3;
             dataOutput.add(quantity, gbc);
 
-            gbc.gridx = 23; gbc.gridwidth = 2; gbc.gridy=i; gbc.weightx = 1;
+            gbc.gridx = 23; gbc.gridwidth = 2; gbc.gridy=i; gbc.weightx = 0;
             dataOutput.add(vb[i], gbc);
         }
     }

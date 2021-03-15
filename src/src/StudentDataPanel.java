@@ -75,7 +75,7 @@ public class StudentDataPanel extends JPanel {
         dataOutput = new JPanel();
 
         mainContainer.add(dataContainer, BorderLayout.CENTER);
-        tableHeader = new CommonLabel(getTableHeader(), 15);
+        tableHeader = new CommonLabel(getTableHeader(), 10);
         tableHeader.setBorder(BorderFactory.createLineBorder(design.borderColor, 2));
         dataContainer.add(tableHeader, BorderLayout.NORTH);
 
@@ -180,9 +180,10 @@ public class StudentDataPanel extends JPanel {
 
     public String getTableHeader(){
         return "<html><tr>" +
-                "<td style='padding-right:50px; padding-left:10px'>ID</td>" +
+                "<td style='padding-right:30px; padding-left:50px'>ID</td>" +
                 "<td style='padding-right:110px;'>Name</td>"+
                 "<td style='padding-right:150px;'>Email</td>"+
+                "<td styke='padding-right:150px'>Course</td>" +
                 "<td style='padding-right:20px;'>Block</td>"+
                 "<td style='padding-right:20px;'>Room</td>"+
                 "</tr></html>";

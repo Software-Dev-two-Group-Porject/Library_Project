@@ -14,9 +14,8 @@ public class AddEditStudent extends JFrame {
     JTextField idField;
     CommonTextField nameField, emailField, courseField, blockField, roomField;
     CommonButton btnClear, btnAdd, btnCancel, btnEdit;
-    Design desgin = new Design();
+    Design design = new Design();
     int action;
-    String id;
     StudentList studentList;
     Student student;
 
@@ -25,7 +24,7 @@ public class AddEditStudent extends JFrame {
         this.action = action;
         this.student = student;
         headerLabel = new CommonLabel(getHeader(action),25);
-        headerLabel.setBorder(BorderFactory.createMatteBorder(0,0, 3, 0, desgin.borderGold));
+        headerLabel.setBorder(BorderFactory.createMatteBorder(0,0, 3, 0, design.borderGold));
         headerLabel.setHorizontalAlignment(JLabel.CENTER);
         headerLabel.setBounds(125, 30, 150, 30);
 
@@ -69,31 +68,33 @@ public class AddEditStudent extends JFrame {
 
         //setting buttons
         if(this.action == 1){
-            btnEdit = new CommonButton("Edit", desgin.btnWarningColor, 13);
+            btnEdit = new CommonButton("Edit", design.btnWarningColor, 13);
             btnEdit.setBounds(50, 410, 100, 40);
+            btnEdit.addActionListener(l -> editStudentInfo(student));
             this.add(btnEdit);
         } else {
-            btnAdd = new CommonButton("Add", desgin.btnAddColor, 13);
+            btnAdd = new CommonButton("Add", design.btnAddColor, 13);
             btnAdd.setBounds(50, 410, 100, 40);
+            btnAdd.addActionListener(l -> addStudent(student));
             this.add(btnAdd);
         }
 
-        btnClear = new CommonButton("Clear", desgin.tableButtonColor, 13);
+        btnClear = new CommonButton("Clear", design.tableButtonColor, 13);
         btnClear.setBounds(180, 410, 100, 40);
 
         this.add(btnClear);
 
         //adding labels
-        this.add(headerLabel); this.add(labelId); this.add(labelName);
+        this.add(headerLabel); this.add(labelId); this.add(labelName); this.add(labelEmail);
         this.add(labelCourse); this.add(labelBlock); this.add(labelRoom);
 
-        this.add(idField); this.add(nameField); this.add(courseField);
+        this.add(idField); this.add(nameField); this.add(courseField); this.add(emailField);
         this.add(blockField); this.add(roomField);
 
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setResizable(false); this.setLayout(null);
         this.setSize(400, 600);
-        this.getContentPane().setBackground(desgin.bgColor);
+        this.getContentPane().setBackground(design.bgColor);
         this.setVisible(true);
     }
 
@@ -113,11 +114,19 @@ public class AddEditStudent extends JFrame {
             textField.setBackground(Color.black);
             textField.setBorder(BorderFactory.createLineBorder(Color.white, 2));
         } else {
-            textField.setBorder(BorderFactory.createLineBorder(desgin.borderColor, 2));
+            textField.setBorder(BorderFactory.createLineBorder(design.borderColor, 2));
         }
 
-        textField.setFont(new Font(desgin.fontName, Font.PLAIN, 15));
+        textField.setFont(new Font(design.fontName, Font.PLAIN, 15));
 
         return textField;
+    }
+
+    public void editStudentInfo(Student student ){
+
+    }
+
+    public void addStudent(Student student){
+
     }
 }
