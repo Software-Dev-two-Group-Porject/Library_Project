@@ -78,7 +78,7 @@ public class StaffPanel extends JPanel {
         this.add(studentDataPanel);
         studentDataPanel.setVisible(true);
 
-        bookDataPanel = new BookDataPanel(this);
+        bookDataPanel = new BookDataPanel(null, this);
         bookDataPanel.setBounds(50, 300, 900, 250);
         bookDataPanel.setVisible(false);
         this.add(bookDataPanel);
@@ -106,5 +106,6 @@ public class StaffPanel extends JPanel {
             displayStudentPanel.setEnabled(false);
         }
     }
+
 
 }

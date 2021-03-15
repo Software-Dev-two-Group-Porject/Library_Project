@@ -14,11 +14,13 @@ public class BookDataPanel extends JPanel {
     CommonTextField searchTextCategory;
     JPanel mainContainer, topComponentContainer, dataContainer, dataOutput;
     StaffPanel staffPanel;
+    StudentPanel studentPanel;
     Catalog catalog;
 
-    BookDataPanel(StaffPanel staffPanel){
+    BookDataPanel(StudentPanel studentPanel, StaffPanel staffPanel){
         this.setLayout(null);
         this.staffPanel = staffPanel;
+        this.studentPanel = studentPanel;
 
         catalog = new Catalog();
         catalog.initializeCatalogue();
@@ -112,7 +114,8 @@ public class BookDataPanel extends JPanel {
     }
 
     public void openAddEditBook(String isbn){
-        AddBook addBook = new AddBook(catalog);
+        AddBook addBook = new AddBook(catalog, this);
+
 
     }
 

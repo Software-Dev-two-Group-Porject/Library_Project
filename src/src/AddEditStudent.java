@@ -15,14 +15,17 @@ public class AddEditStudent extends JFrame {
     CommonTextField nameField, emailField, courseField, blockField, roomField;
     CommonButton btnClear, btnAdd, btnCancel, btnEdit;
     Design design = new Design();
-    int action;
+    int action, id;
     StudentList studentList;
     Student student;
+    StudentDataPanel studentDataPanel;
 
     //the actions here will be an int 0 = Add, 1 = edit. this will manage some of the data that will be displayed.
-    AddEditStudent(int action, Student student){
+    AddEditStudent(int action, int id, StudentDataPanel studentDataPanel, StudentList studentList){
+        this.studentDataPanel = studentDataPanel;
+        this.studentList = studentList;
         this.action = action;
-        this.student = student;
+        this.id = id;
         headerLabel = new CommonLabel(getHeader(action),25);
         headerLabel.setBorder(BorderFactory.createMatteBorder(0,0, 3, 0, design.borderGold));
         headerLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -108,6 +111,7 @@ public class AddEditStudent extends JFrame {
     public JTextField setIdTextField(int action) {
         JTextField textField = new JTextField();
         if (action == 1){
+            studentList.findById(id);
             textField.setText(String.valueOf(student.getUserID()));
             textField.setEditable(false);
             textField.setForeground(Color.white);
@@ -127,6 +131,8 @@ public class AddEditStudent extends JFrame {
     }
 
     public void addStudent(Student student){
+
+        studentDataPanel.renderTable(studentList.getStudentList());
 
     }
 }

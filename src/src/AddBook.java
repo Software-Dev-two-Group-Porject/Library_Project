@@ -11,9 +11,13 @@ public class AddBook extends JFrame {
     Catalog catalog;
     Book book;
     Design design = new Design();
+    StaffPanel staffPanel;
+    BookDataPanel bookDataPanel;
 
 
-    AddBook(Catalog catalog){
+    AddBook(Catalog catalog, BookDataPanel bookDataPanel){
+        this.bookDataPanel = bookDataPanel;
+        this.staffPanel = staffPanel;
         this.catalog = catalog;
         this.setLayout(null);
 
@@ -67,10 +71,13 @@ public class AddBook extends JFrame {
         this.add(quantityLabel);
 
         buttonAdd = new CommonButton("Add Book", design.btnAddColor, 13);
-        buttonAdd.setBounds(50, 470, 200, 40);
+        buttonAdd.setBounds(50, 470, 90, 40);
         buttonAdd.addActionListener(l -> addBookToCatalog());
         this.add(buttonAdd);
 
+        buttonClear = new CommonButton("Clear", design.tableButtonColor, 13);
+        buttonClear.setBounds(150, 470, 90, 40);
+        buttonClear.addActionListener(l -> clearTextFields());
         this.getContentPane().setBackground(design.bgColor);
         this.setSize(400, 600);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -78,6 +85,24 @@ public class AddBook extends JFrame {
 
     public void addBookToCatalog(){
         Book book = new Book();
+        //here would be where the validation journey would begin.
+        book.setIsbn(isbnField.getText());
+        book.setTitle(titleField.getText());
+        book.setAuthor(authorField.getText());
+        book.setGenre(genreField.getText());
+        book.setSubGenre(subGenreField.getText());
+        book.setQuantity(Integer.parseInt(quantityField.getText()));
+
+
+        //afterValidation has been passed book is added to the list, the list is then saved,
+        // then the list is retrieved again.
+        catalog.addBookToCatalog(book);
+        catalog.saveData();
+        catalog.initializeCatalogue();
+        bookDataPanel.renderTable(catalog.getCatalogueList());
+    }
+
+    public void clearTextFields(){
 
     }
 }

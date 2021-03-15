@@ -7,9 +7,11 @@ import javax.swing.*;
 public class BookLoanDataPanel extends JPanel {
     StudentPanel studentPanel;
 
+    JPanel topContainer, dataContainer, dataOuput;
+    JLabel dataHeader;
+
     BookLoanDataPanel(StudentPanel studentPanel){
         this.studentPanel = studentPanel;
-
     }
 
 

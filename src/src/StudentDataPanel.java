@@ -160,7 +160,7 @@ public class StudentDataPanel extends JPanel {
         if (addEditStudent != null) {
             addEditStudent.dispose();
         }
-        addEditStudent = new AddEditStudent(action, student);
+        addEditStudent = new AddEditStudent(action, Integer.parseInt(id), this, studentList);
     }
 
     public void setSearchCriteria(ActionEvent e){
