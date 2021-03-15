@@ -14,8 +14,7 @@ public class BookLoanList {
     private BookLoan [] bookLoans;
     private String file = "src\\Data\\BookLoanList.csv";
     static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-
+    private int count;
 
     BookLoanList(){
 
@@ -65,6 +64,48 @@ public class BookLoanList {
 
     public BookLoan [] getBookLoanList() {
         return this.bookLoans;
+    }
+
+    public BookLoan getBookloanByIsbnAndUserId(String isbn, int id){
+        BookLoan returnBookLoan = new BookLoan();
+        for(int i = 0; i < bookLoans.length; i++){
+            if(bookLoans[i].getISBN().equals(isbn) && bookLoans[i].getUserID() == id){
+                returnBookLoan = bookLoans[i];
+            }
+        }
+        return returnBookLoan;
+    }
+
+    public BookLoan [] getBookLoansByIsbn(String isbn){
+        count = 0;
+        BookLoan [] returnBookLoanList = new BookLoan[bookLoans.length];
+
+        for(int i = 0; i < bookLoans.length; i++){
+            if(bookLoans[i].getISBN().equals(isbn.trim())){
+                returnBookLoanList[count] = bookLoans[i];
+                count++;
+            }
+        }
+
+        return Arrays.copyOfRange(returnBookLoanList, 0, count);
+    }
+
+    public BookLoan[] getBookLoansByUserId(int id){
+        count = 0;
+        BookLoan [] returnBookList = new BookLoan[bookLoans.length];
+
+        for(int i = 0; i < bookLoans.length; i++){
+            if(bookLoans[i].getUserID() == id){
+                returnBookList[count] = bookLoans[i];
+                count++;
+            }
+        }
+
+        return Arrays.copyOfRange(returnBookList, 0, count);
+    }
+
+    public void addToBookLoanList(BookLoan bkloan){
+
     }
 
 
