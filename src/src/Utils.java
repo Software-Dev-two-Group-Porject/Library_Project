@@ -10,13 +10,13 @@ public class Utils
 {
    static Scanner keyboard = new Scanner(System.in);
 
-   static String name = "[a-zA-Z\\s'áéíóúÁÉÍÓÚ-]+"; //Allows only letters, hyphens and spaces
+   static String name = "[a-zA-Z\\sáéíóúÁÉÍÓÚ-]+"; //Allows only letters, hyphens and spaces
    static String password = "((?=.*[a-z])(?=.*d)(?=.*[@#$%])(?=.*[A-Z]).{1,})"; //Must have 1 each uppercase, lowercase, number, special character & no whitespace
    static String numbers = "[0-9]+"; //Numbers only
    static String block = "[a-hA-h]"; //Would be set to only accept blocks that the university has
    final static int MAXROOM = 499; //Highest room number in any block
    static String course = "[a-zA-Z\\s'áéíóúÁÉÍÓÚ&,-]+"; //Allows only letters, ampersand, commas, hyphens and spaces
-   String def;
+   static String bookName = "[a-zA-Z0-9\\sáéíóúÁÉÍÓÚ-'&(),]+";
 
    public static String nameValidation(String input) {
       String validationMessage = "";
@@ -59,6 +59,13 @@ public class Utils
       String validationMessage = "";
       if (!stringCheck(input, course)) validationMessage += "Course must only have letters, hyphens and spaces\n";
       if (!charCount(4, 60, input)) validationMessage += "Course must have between 4 and 60 characters\n";
+      return validationMessage;
+   } //courseValidation
+
+   public static String bookValidation(String input) {
+      String validationMessage = "";
+      if (!stringCheck(input, bookName)) validationMessage += "Book name must only have letters, numbers and - ' & () ,\n";
+      if (!charCount(4, 60, input)) validationMessage += "Book name must have between 4 and 60 characters\n";
       return validationMessage;
    } //courseValidation
 
