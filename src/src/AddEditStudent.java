@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -45,12 +46,14 @@ public class AddEditStudent extends JFrame {
 
         nameField = new CommonTextField();
         nameField.setBounds(50, 160, 250, 30);
+        nameField.setText(student.getName());
 
         labelEmail = new CommonLabel("Email:", 15);
         labelEmail.setBounds(50, 200, 100, 25);
 
         emailField = new CommonTextField();
         emailField.setBounds(50, 225, 250, 30);
+        emailField.setText(student.getEmail());
 
         labelPassword = new CommonLabel("Password:", 15);
         labelPassword.setBounds(50, 265, 100, 25);
@@ -58,6 +61,7 @@ public class AddEditStudent extends JFrame {
         passwordField = new JPasswordField();
         passwordField.setBorder(BorderFactory.createLineBorder(design.borderColor, 2));
         passwordField.setBounds(50, 290, 250, 30);
+        passwordField.setText(student.getPassword());
 
         labelPasswordRepeat = new CommonLabel("Repeat Password:", 15);
         labelPasswordRepeat.setBounds(50, 320, 150, 25);
@@ -65,6 +69,7 @@ public class AddEditStudent extends JFrame {
         repeatPasswordField = new JPasswordField();
         repeatPasswordField.setBorder(BorderFactory.createLineBorder(design.borderColor, 2));
         repeatPasswordField.setBounds(50, 345, 250, 30);
+        repeatPasswordField.setText(student.getPassword());
 
         labelStatus = new CommonLabel("Status:", 15);
         labelStatus.setBounds(50, 385, 100, 25);
@@ -79,6 +84,7 @@ public class AddEditStudent extends JFrame {
 
         courseField = new CommonTextField();
         courseField.setBounds(50, 475, 250, 30);
+        courseField.setText(student.getCourse());
 
         labelBlock = new CommonLabel("Block: ", 15);
         labelBlock.setBounds(50, 510, 100, 25);
@@ -86,6 +92,7 @@ public class AddEditStudent extends JFrame {
         blockField = new CommonTextField();
         blockField.setHorizontalAlignment(JTextField.CENTER);
         blockField.setBounds(50, 535, 100, 30);
+        blockField.setText(student.getBlock());
 
         labelRoom = new CommonLabel("Room: ", 15);
         labelRoom.setBounds(180, 510, 100, 25);
@@ -93,6 +100,7 @@ public class AddEditStudent extends JFrame {
         roomField = new CommonTextField();
         roomField.setHorizontalAlignment(JTextField.CENTER);
         roomField.setBounds(180, 535, 100, 30);
+        roomField.setText(String.valueOf(student.getRoomNumber()));
 
         //setting buttons
         if(this.action == 1){
@@ -142,15 +150,26 @@ public class AddEditStudent extends JFrame {
             textField.setBackground(Color.black);
             textField.setBorder(BorderFactory.createLineBorder(Color.white, 2));
             textField.setFont(new Font(design.fontName, Font.PLAIN, 15));
-
         return textField;
     }
+
+
+    public void setStatusFieldsOnChange(ActionEvent ae){
+
+    }
+
+    public void setStatusFields(String status){
+
+    }
+
+
 
     public void editStudentInfo(Student student ){
     }
 
     public void addStudent(Student student){
-        
+
+        //need to order the userList array.
         studentDataPanel.renderTable(studentList.getStudentList());
 
     }

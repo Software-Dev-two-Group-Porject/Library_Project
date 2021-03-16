@@ -16,6 +16,7 @@ public class StudentDataPanel extends JPanel {
     CommonButton searchButton, addStudentButton, viewAllButton;
     AddEditStudent addEditStudent;
     StaffPanel staffPanel;
+    User user;
 
     StudentDataPanel(StaffPanel staffPanel){
         //setting to null
@@ -23,6 +24,7 @@ public class StudentDataPanel extends JPanel {
         studentList = new StudentList();
         studentList.populateList();
         this.staffPanel = staffPanel;
+        user = new User();
 
 
         topComponentPanel = new JPanel();
@@ -148,11 +150,10 @@ public class StudentDataPanel extends JPanel {
 
     public void openAddEditTab(String id){
         int action = 0;
-        Student [] studentArray = studentList.getStudentList();
+
         Student student;
         if(id.equals("")) {
             student = new Student();
-            student.setUserID(studentArray[studentArray.length - 1].getUserID() + 1);
         }
         else{
             student = studentList.findById(Integer.parseInt(id));
@@ -185,7 +186,7 @@ public class StudentDataPanel extends JPanel {
                 "<td style='padding-right:30px; padding-left:50px'>ID</td>" +
                 "<td style='padding-right:110px;'>Name</td>"+
                 "<td style='padding-right:150px;'>Email</td>"+
-                "<td styke='padding-right:150px'>Course</td>" +
+                "<td style='padding-right:150px'>Course</td>" +
                 "<td style='padding-right:20px;'>Block</td>"+
                 "<td style='padding-right:20px;'>Room</td>"+
                 "</tr></html>";

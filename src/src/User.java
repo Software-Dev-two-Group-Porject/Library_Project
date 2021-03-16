@@ -25,11 +25,11 @@ public class User
 
    } //Alt constructor
 
-   private String printHeader() {
+   private static String printHeader() {
       return String.format("%-10s\t%-10s\t%-50s\t%-80s\t%-5s\t-5s\t-15s\t-15s\t%s", "ID", "Status", "Name", "Email", "Block", "Room", "Books on loan", "Overdue fines");
    }
 
-   public void printUserList(User [] userList) {
+   public static void printUserList(User [] userList) {
       System.out.println("User List");
       printHeader();
 
@@ -67,6 +67,7 @@ public class User
          this.userList[j] = setUser(newUserArray[j]);
       }
 
+      quickSort(this.userList, 0, this.userList.length - 1);
    } //initUserList
 
    public String toString() {
@@ -77,9 +78,8 @@ public class User
 
    private User setUser(String line) {
       User user = new User();
-      int onLoan, tempUserID, theirRoom;
+      int tempUserID, theirRoom;
       boolean overdue;
-      String theirCourse;
       String [] info = line.split(",");
       tempUserID = Integer.parseInt(info[0]);
       user.setUserID(tempUserID);
@@ -215,6 +215,34 @@ public class User
       return this.userID + "," + this.status + "," + this.name + "," + this.email + "," + this.password + "," + this.block + "," + this.room + "," + this.overdue + "," + this.course + "\n";
    } //
 
+   //implementing the quicksort for adding new id's
+   public static int partition(User [] users, int begin, int end){
+      User pivot = users[end] ;
+      int i = (begin -1);
+      for(int j = begin; j <= end -1; j++){
+         if(users[j].getUserID() < pivot.getUserID()){
+            i++;
+            User temp = users[i];
+            users[i] = users[j];
+            users[j] = temp;
+
+         }
+      }
+
+      User temp = users[i +1];
+      users[i+1] = users[end];
+      users[end] = temp;
+
+      return i + 1;
+   }
+
+   static void quickSort(User [] users, int begin, int end){
+      if (begin < end){
+         int partitionIndex = partition(users, begin,end );
+         quickSort(users, begin, partitionIndex -1);
+         quickSort(users, partitionIndex +1, end);
+      }
+   }
    public int getUserID() {  return userID;  }
    public void setUserID(int userID) { this.userID = userID; }
    public String getStatus() { return status; }
