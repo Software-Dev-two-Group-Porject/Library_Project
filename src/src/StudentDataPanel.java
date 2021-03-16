@@ -16,13 +16,15 @@ public class StudentDataPanel extends JPanel {
     CommonButton searchButton, addStudentButton, viewAllButton;
     AddEditStudent addEditStudent;
     StaffPanel staffPanel;
+    User user;
 
     StudentDataPanel(StaffPanel staffPanel){
-        //setting to null
         this.setLayout(null);
         studentList = new StudentList();
         studentList.populateList();
         this.staffPanel = staffPanel;
+        user = new User();
+        user.initUserList();
 
 
         topComponentPanel = new JPanel();
@@ -33,7 +35,7 @@ public class StudentDataPanel extends JPanel {
 
         addStudentButton =  new CommonButton("Add Student", design.btnAddColor, 9);
         addStudentButton.addActionListener(e -> openAddEditTab(""));
-        addStudentButton.setBounds(10, 10, 85, 25);
+        addStudentButton.setBounds(10, 10, 95, 25);
         topComponentPanel.add(addStudentButton);
 
         viewAllButton = new CommonButton("View All", design.tableButtonColor, 9);
@@ -75,7 +77,7 @@ public class StudentDataPanel extends JPanel {
         dataOutput = new JPanel();
 
         mainContainer.add(dataContainer, BorderLayout.CENTER);
-        tableHeader = new CommonLabel(getTableHeader(), 15);
+        tableHeader = new CommonLabel(getTableHeader(), 10);
         tableHeader.setBorder(BorderFactory.createLineBorder(design.borderColor, 2));
         dataContainer.add(tableHeader, BorderLayout.NORTH);
 
@@ -129,7 +131,7 @@ public class StudentDataPanel extends JPanel {
             viewBtns[i] = new TableButton("", design.tableButtonColor, "View");
             viewBtns[i].setId(String.valueOf(arr[i].getUserID()));
             String text  = viewBtns[i].getId();
-            viewBtns[i].addActionListener(e -> somethingHappening(e, text));
+            viewBtns[i].addActionListener(e -> somethingHappening(text));
         }
         return viewBtns;
     }
@@ -148,9 +150,11 @@ public class StudentDataPanel extends JPanel {
 
     public void openAddEditTab(String id){
         int action = 0;
+
         Student student;
         if(id.equals("")) {
             student = new Student();
+            student.setUserID(user.getUserList()[user.getUserList().length -1].getUserID() + 1);
         }
         else{
             student = studentList.findById(Integer.parseInt(id));
@@ -160,7 +164,7 @@ public class StudentDataPanel extends JPanel {
         if (addEditStudent != null) {
             addEditStudent.dispose();
         }
-        addEditStudent = new AddEditStudent(action, student);
+        addEditStudent = new AddEditStudent(action, student, this, studentList);
     }
 
     public void setSearchCriteria(ActionEvent e){
@@ -172,7 +176,7 @@ public class StudentDataPanel extends JPanel {
         searchTextCategory.setVisible(true);
     }
 
-    public void somethingHappening(ActionEvent e, String val){
+    public void somethingHappening(String val){
         Student student = studentList.findById(Integer.parseInt(val));
         staffPanel.setStudentViewLabels(student);
     }
@@ -180,9 +184,10 @@ public class StudentDataPanel extends JPanel {
 
     public String getTableHeader(){
         return "<html><tr>" +
-                "<td style='padding-right:50px; padding-left:10px'>ID</td>" +
+                "<td style='padding-right:30px; padding-left:50px'>ID</td>" +
                 "<td style='padding-right:110px;'>Name</td>"+
                 "<td style='padding-right:150px;'>Email</td>"+
+                "<td style='padding-right:150px'>Course</td>" +
                 "<td style='padding-right:20px;'>Block</td>"+
                 "<td style='padding-right:20px;'>Room</td>"+
                 "</tr></html>";

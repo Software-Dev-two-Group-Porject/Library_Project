@@ -9,6 +9,6 @@ public class CommonTextField extends JTextField {
     Design design = new Design();
     CommonTextField(){
         this.setFont(new Font(design.fontName, Font.PLAIN, 15));
-        this.setBorder(BorderFactory.createLineBorder(design.borderColor));
+        this.setBorder(BorderFactory.createLineBorder(design.borderColor, 2));
     }
 }

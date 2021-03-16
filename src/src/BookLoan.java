@@ -114,6 +114,14 @@ public class BookLoan
       //return (int) daysOverDue;
    //}
 
+    public String getStatus(){
+        return this.status;
+    }
+
+    public void setStatus(String status){
+        this.status = status;
+    }
+
     public Date getDueDate() {
         return dueDate;
     }
