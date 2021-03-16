@@ -1,7 +1,7 @@
 250491,student,Shéldon O'Reilly,mike@michaeljlove.co.uk,passwordsc,F,200,false,Sports Science
 250483,student,Penny Teller,pteller@ulster.ac.uk,passwordpt,A,114,true,Concrete Studies
 250481,student,Howard Wolowitz,hwolowitz@ulster.ac.uk,passwordpt,B,345,true,Computer Science
-250480,student,Bernadette Rostenkowski,brostenkowski@@ulster.ac.uk,passwordbr,F,390,false,Pharmaceuticals
+250480,student,Bernadette Rostenkowski,brostenkowski@ulster.ac.uk,passwordbr,F,390,false,Pharmaceuticals
 250485,staff,Amy Farrah Fowler,afarrahfowler@ulster.ac.uk,passwordaff,null,0,false,null
 250488,staff,Wil Wheaton,wwheaton@ulster.ac.uk,passwordww,null,0,false,null
 250489,student,Leslie Winkle,lwinkle@ulster.ac.uk,passwordlw,A,111,false,Neuroscience

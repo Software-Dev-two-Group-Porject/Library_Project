@@ -17,6 +17,15 @@ public class TestUsers
 
     //  int id = Utils.askInt("Enter the user's ID: ");
 
+      System.out.println("Name: ");
+      String name = keyboard.nextLine();
+
+      String test = Utils.courseValidation(name);
+
+      System.out.println("Error: " + test);
+      System.out.println("Result: " + name);
+
+
       user.printUserList(user.getUserList());
 
    //   user = user.getUserByID(id);

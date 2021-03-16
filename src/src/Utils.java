@@ -9,6 +9,73 @@ import java.util.regex.Pattern;
 public class Utils
 {
    static Scanner keyboard = new Scanner(System.in);
+
+   static String name = "[a-zA-Z\\s'áéíóúÁÉÍÓÚ-]+"; //Allows only letters, hyphens and spaces
+   static String password = "((?=.*[a-z])(?=.*d)(?=.*[@#$%])(?=.*[A-Z]).{1,})"; //Must have 1 each uppercase, lowercase, number, special character & no whitespace
+   static String numbers = "[0-9]+"; //Numbers only
+   static String block = "[a-hA-h]"; //Would be set to only accept blocks that the university has
+   final static int MAXROOM = 499; //Highest room number in any block
+   static String course = "[a-zA-Z\\s'áéíóúÁÉÍÓÚ&,-]+"; //Allows only letters, ampersand, commas, hyphens and spaces
+   String def;
+
+   public static String nameValidation(String input) {
+      String validationMessage = "";
+      if (!stringCheck(input, name)) validationMessage += "Name must only have letters, hyphens and spaces\n";
+      if (!charCount(4, 50, input)) validationMessage += "Name must have between 4 and 50 characters\n";
+      if (countWords(input) < 2) validationMessage += "Name must be at least two words\n";
+      return validationMessage;
+   } //nameValidation
+
+   public static String passwordValidation(String input) {
+      String validationMessage = "";
+      if (!charCount(8,20,input)) validationMessage += "Password must have between 8 and 20 characters\n";
+      if (!stringCheck(input, password))  validationMessage += "Password must include at least one each of lowercase, uppercase, number and special character\n";
+      return validationMessage;
+   } //passwordValidation
+
+   public static String isbnValidation(String input) {
+      String validationMessage = "";
+      if (!stringCheck(input, numbers)) validationMessage += "ISBN must only have numbers and no spaces\n";
+      if (input.length() != 10) validationMessage += "ISBN must have ten numbers\n";
+      return validationMessage;
+   } //isbnValidation
+
+   public static String blockValidation(String input) {
+      String validationMessage = "";
+      if (!stringCheck(input, block)) validationMessage += "Please enter a block from A-H\n";
+      if (input.length() != 1) validationMessage += "Please enter a single letter\n";
+      return validationMessage;
+   } //blockValidation
+
+   public static String roomValidation(String input) {
+      String validationMessage = "";
+      if (Integer.parseInt(input) > MAXROOM) validationMessage += "Invalid room number";
+      if (!stringCheck(input, numbers)) validationMessage += "Room must only have numbers and no spaces\n";
+      if (!charCount(0,4,input)) validationMessage += "Room number must have one, two or three digits\n";
+      return validationMessage;
+   } //roomValidation
+
+   public static String courseValidation(String input) {
+      String validationMessage = "";
+      if (!stringCheck(input, course)) validationMessage += "Course must only have letters, hyphens and spaces\n";
+      if (!charCount(4, 60, input)) validationMessage += "Course must have between 4 and 60 characters\n";
+      return validationMessage;
+   } //courseValidation
+
+   private static boolean charCount(int min, int max, String input) {
+      boolean pass = true;
+      input = input.trim();
+      if ((input.length() <= min) || (input.length() >= max)) pass = false;
+      return pass;
+   } //checkInt
+
+   private static boolean stringCheck(String input, String regexType) {
+      boolean regexPass = true;
+      input = input.trim();
+      if (!input.matches(regexType)) regexPass = false;
+      return regexPass;
+   } //askString
+
    public static String askString(String question, String regex) {
       boolean regexPass;
       String answer;
@@ -78,7 +145,7 @@ public class Utils
       return reply;
    } //askReply
 
-   public static int countWords(String string) { //Used to check at least two words have been entered
+   public static int countWords(String string) { //Used to check how many words have been entered
       String[] words;
       if (string == null || string.isEmpty()) {
          return 0;
