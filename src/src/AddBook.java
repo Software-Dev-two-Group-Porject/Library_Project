@@ -81,6 +81,7 @@ public class AddBook extends JFrame {
         this.getContentPane().setBackground(design.bgColor);
         this.setSize(400, 600);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setVisible(true);
     }
 
     public void addBookToCatalog(){

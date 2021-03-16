@@ -19,35 +19,48 @@ public class StaffPanel extends JPanel {
     BookDataPanel bookDataPanel;
     CommonButton displayBookPanel, displayStudentPanel;
     JPanel readyStats, studentInfo, buttonContainer;
-
+    BookLoanList bookLoanList;
 
     StaffPanel(User user){
         this.setLayout(null);
         this.setBackground(design.bgColor);
+        bookLoanList = new BookLoanList();
+
+
+        readyStats = new JPanel();
+        readyStats.setLayout(new GridLayout(3, 0));
+        readyStats.setBackground(design.bgColor);
+
+        studentInfo = new JPanel();
+        studentInfo.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+
 
         headerPanel = new HeaderPanel("Staff",user.getName());
         headerPanel.setBounds(20, 10, 850, 120);
         this.add(headerPanel);
 
         labelTotalRequests = new CommonLabel("Requests: ", 20);
-        labelTotalRequests.setBounds(50, 150, 300, 30);
-        this.add(labelTotalRequests);
+        readyStats.add(labelTotalRequests);
 
         labelReadyForCollection = new CommonLabel("For Collection: ", 20);
-        labelReadyForCollection.setBounds(50, 180, 330, 30);
-        this.add(labelReadyForCollection);
+        readyStats.add(labelReadyForCollection);
 
         labelsBooksForDelivery = new CommonLabel("For delivery: ", 20);
-        labelsBooksForDelivery.setBounds(50, 210, 300, 30);
-        this.add(labelsBooksForDelivery);
+        readyStats.add(labelsBooksForDelivery);
+
+        readyStats.setBounds(70, 130, 350, 120);
+        this.add(readyStats);
+
 
         studentName = new CommonLabel("Name:", 15);
         studentName.setBounds(400, 150, 300, 25);
-        this.add(studentName);
+        studentInfo.add(studentName);
+
 
         studentCourse = new CommonLabel("Course:", 15);
         studentCourse.setBounds(400, 180, 300, 25);
-        this.add(studentCourse);
+        studentInfo.add(studentCourse);
 
         studentBlock = new CommonLabel("Block:", 15);
         studentBlock.setBounds(400, 210, 150, 25);
@@ -82,6 +95,7 @@ public class StaffPanel extends JPanel {
         bookDataPanel.setBounds(50, 300, 900, 250);
         bookDataPanel.setVisible(false);
         this.add(bookDataPanel);
+
     }
 
     public void setStudentViewLabels(Student student){

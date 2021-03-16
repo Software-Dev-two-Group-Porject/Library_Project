@@ -97,6 +97,8 @@ public class BookDataPanel extends JPanel {
         for(int i = 0; i < viewBtns.length; i++){
             viewBtns[i] = new TableButton("", design.tableButtonColor, "View");
             viewBtns[i].setId(arr[i].getIsbn());
+            String isbn = arr[i].getIsbn();
+            viewBtns[i].addActionListener(l -> setBookDataLabels(isbn));
         }
         return viewBtns;
     }
@@ -206,5 +208,9 @@ public class BookDataPanel extends JPanel {
 
     public void displayAllBookData(){
         renderTable(catalog.getCatalogueList());
+    }
+
+    public void setBookDataLabels(String isbn){
+
     }
 }

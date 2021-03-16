@@ -4,9 +4,9 @@
  **/
 public class Student extends User
 {
-   int roomNumber;
-   String userName = " ", userPassword = " ", course;
-   int MAXBOOKSONLOAN = 5;
+   private int roomNumber;
+   private String  course;
+   private final int MAXBOOKSONLOAN = 5;
    private boolean fine_defaulter;
    private double fine;
    private String[] bookLoanISBNS;
@@ -18,9 +18,9 @@ public class Student extends User
    }
 
    //<<<<<<< Updated upstream
-   public Student(int id, String status, String name, String email, char block, int roomNumber, String course)
+   public Student(int id, String status, String name, String email, String password, char block, int roomNumber, String course)
    {
-      super(id, status, name);
+      super(id, status, name, email, password);
       this.blockLetter = block;
       this.setEmail(email);
       this.roomNumber = roomNumber;
@@ -50,28 +50,6 @@ public class Student extends User
    public void setRoomNumber(int roomNumber)
    {
       this.roomNumber = roomNumber;
-   }
-
-
-
-   public String getUserName()
-   {
-      return userName;
-   }
-
-   public void setUserName(String userName)
-   {
-      this.userName = userName;
-   }
-
-   public String getUserPassword()
-   {
-      return userPassword;
-   }
-
-   public void setUserPassword(String userPassword)
-   {
-      this.userPassword = userPassword;
    }
 
    public char getBlockLetter() {

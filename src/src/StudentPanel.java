@@ -7,17 +7,16 @@ import java.awt.event.ActionListener;
  * Update Comments About Program Here
  **/
 public class StudentPanel extends JPanel {
-    CommonLabel labelBooksRequested, booksOnLoan, booksOverDue;
+    CommonLabel labelBooksRequested, booksOnLoan, booksOverDue,
+            title, author, genre, subgenre, quantity;
     HeaderPanel headerPanel;
     Catalog catalog;
     BookDataPanel bookDataPanel;
     BookLoanList bookLoanList;
+    BookLoanDataPanel bookLoanDataPanel;
     JPanel bookDetailPanel;
     JPanel bookLoanDetail;
     JPanel buttonContainer;
-
-
-
 
     StudentPanel(Student student){
         this.setLayout(null);

@@ -37,7 +37,8 @@ public class StudentList {
                             Integer.parseInt(data[0]), //UserID
                             data[1], //User Status
                             data[2], //Username
-                            data[3], //email
+                            data[3], //email,
+                            data[4],//password
                             data[5].toUpperCase().charAt(0), //Student Block Letter
                             Integer.parseInt(data[6]), //Student Room Number.
                             data[8]//the course

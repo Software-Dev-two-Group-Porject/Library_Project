@@ -18,10 +18,12 @@ public class User
 
    User() {  } //Default constructor
 
-   User(int userID, String status, String name) {
+   User(int userID, String status, String name, String email, String password) {
       this.userID = userID;
       this.status = status;
       this.name = name;
+      this.email = email;
+      this.password = password;
 
    } //Alt constructor
 

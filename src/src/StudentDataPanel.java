@@ -19,12 +19,12 @@ public class StudentDataPanel extends JPanel {
     User user;
 
     StudentDataPanel(StaffPanel staffPanel){
-        //setting to null
         this.setLayout(null);
         studentList = new StudentList();
         studentList.populateList();
         this.staffPanel = staffPanel;
         user = new User();
+        user.initUserList();
 
 
         topComponentPanel = new JPanel();
@@ -35,7 +35,7 @@ public class StudentDataPanel extends JPanel {
 
         addStudentButton =  new CommonButton("Add Student", design.btnAddColor, 9);
         addStudentButton.addActionListener(e -> openAddEditTab(""));
-        addStudentButton.setBounds(10, 10, 85, 25);
+        addStudentButton.setBounds(10, 10, 95, 25);
         topComponentPanel.add(addStudentButton);
 
         viewAllButton = new CommonButton("View All", design.tableButtonColor, 9);
@@ -131,7 +131,7 @@ public class StudentDataPanel extends JPanel {
             viewBtns[i] = new TableButton("", design.tableButtonColor, "View");
             viewBtns[i].setId(String.valueOf(arr[i].getUserID()));
             String text  = viewBtns[i].getId();
-            viewBtns[i].addActionListener(e -> somethingHappening(e, text));
+            viewBtns[i].addActionListener(e -> somethingHappening(text));
         }
         return viewBtns;
     }
@@ -154,6 +154,7 @@ public class StudentDataPanel extends JPanel {
         Student student;
         if(id.equals("")) {
             student = new Student();
+            student.setUserID(user.getUserList()[user.getUserList().length -1].getUserID() + 1);
         }
         else{
             student = studentList.findById(Integer.parseInt(id));
@@ -175,7 +176,7 @@ public class StudentDataPanel extends JPanel {
         searchTextCategory.setVisible(true);
     }
 
-    public void somethingHappening(ActionEvent e, String val){
+    public void somethingHappening(String val){
         Student student = studentList.findById(Integer.parseInt(val));
         staffPanel.setStudentViewLabels(student);
     }

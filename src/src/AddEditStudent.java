@@ -23,6 +23,7 @@ public class AddEditStudent extends JFrame {
     Student student;
     StudentDataPanel studentDataPanel;
     JComboBox<String> statusBox;
+    User user;
 
     //the actions here will be an int 0 = Add, 1 = edit. this will manage some of the data that will be displayed.
     AddEditStudent(int action, Student student, StudentDataPanel studentDataPanel, StudentList studentList){
@@ -30,6 +31,7 @@ public class AddEditStudent extends JFrame {
         this.studentList = studentList;
         this.action = action;
         this.student = student;
+        user = new User();
         headerLabel = new CommonLabel(getHeader(action),25);
         headerLabel.setBorder(BorderFactory.createMatteBorder(0,0, 3, 0, design.borderGold));
         headerLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -58,18 +60,18 @@ public class AddEditStudent extends JFrame {
         labelPassword = new CommonLabel("Password:", 15);
         labelPassword.setBounds(50, 265, 100, 25);
 
-        passwordField = new JPasswordField();
+
+        passwordField = new JPasswordField(student.getPassword());
+        passwordField.setColumns(20);
         passwordField.setBorder(BorderFactory.createLineBorder(design.borderColor, 2));
         passwordField.setBounds(50, 290, 250, 30);
-        passwordField.setText(student.getPassword());
 
         labelPasswordRepeat = new CommonLabel("Repeat Password:", 15);
         labelPasswordRepeat.setBounds(50, 320, 150, 25);
 
-        repeatPasswordField = new JPasswordField();
+        repeatPasswordField = new JPasswordField(student.getPassword());
         repeatPasswordField.setBorder(BorderFactory.createLineBorder(design.borderColor, 2));
         repeatPasswordField.setBounds(50, 345, 250, 30);
-        repeatPasswordField.setText(student.getPassword());
 
         labelStatus = new CommonLabel("Status:", 15);
         labelStatus.setBounds(50, 385, 100, 25);
@@ -77,7 +79,7 @@ public class AddEditStudent extends JFrame {
         String [] options = {"staff", "student"};
         statusBox = new JComboBox<>(options);
         statusBox.setBounds(50, 410, 250, 30);
-        statusBox.setSelectedIndex(0);
+        statusBox.setSelectedIndex(1);
 
         labelCourse = new CommonLabel("Course:", 15);
         labelCourse.setBounds(50, 450, 100, 25);
@@ -92,7 +94,7 @@ public class AddEditStudent extends JFrame {
         blockField = new CommonTextField();
         blockField.setHorizontalAlignment(JTextField.CENTER);
         blockField.setBounds(50, 535, 100, 30);
-        blockField.setText(student.getBlock());
+        blockField.setText(String.valueOf(student.getBlockLetter()).toUpperCase());
 
         labelRoom = new CommonLabel("Room: ", 15);
         labelRoom.setBounds(180, 510, 100, 25);

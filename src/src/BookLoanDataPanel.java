@@ -8,7 +8,9 @@ public class BookLoanDataPanel extends JPanel {
     StudentPanel studentPanel;
 
     JPanel topContainer, dataContainer, dataOuput;
-    JLabel dataHeader;
+    JLabel username, bookTitle, dueDate, dateReleased, status, isOverDue, fineAmount;
+
+
 
     BookLoanDataPanel(StudentPanel studentPanel){
         this.studentPanel = studentPanel;
