@@ -10,93 +10,119 @@ import java.awt.event.WindowListener;
  **/
 public class AddEditStudent extends JFrame {
 
-    CommonLabel headerLabel, labelId, labelEmail, labelName, labelCourse, labelBlock, labelRoom;
+    CommonLabel headerLabel, labelId, labelEmail, labelStatus, labelPassword, labelPasswordRepeat,
+            labelName, labelCourse, labelBlock, labelRoom;
     JTextField idField;
     CommonTextField nameField, emailField, courseField, blockField, roomField;
-    CommonButton btnClear, btnAdd, btnCancel, btnEdit;
+    JPasswordField passwordField, repeatPasswordField;
+    CommonButton btnClear, btnAddEdit, btnCancel;
     Design design = new Design();
     int action, id;
     StudentList studentList;
     Student student;
     StudentDataPanel studentDataPanel;
+    JComboBox<String> statusBox;
 
     //the actions here will be an int 0 = Add, 1 = edit. this will manage some of the data that will be displayed.
-    AddEditStudent(int action, int id, StudentDataPanel studentDataPanel, StudentList studentList){
+    AddEditStudent(int action, Student student, StudentDataPanel studentDataPanel, StudentList studentList){
         this.studentDataPanel = studentDataPanel;
         this.studentList = studentList;
         this.action = action;
-        this.id = id;
+        this.student = student;
         headerLabel = new CommonLabel(getHeader(action),25);
         headerLabel.setBorder(BorderFactory.createMatteBorder(0,0, 3, 0, design.borderGold));
         headerLabel.setHorizontalAlignment(JLabel.CENTER);
         headerLabel.setBounds(125, 30, 150, 30);
 
         labelId = new CommonLabel("ID:", 15);
-        labelId.setBounds(50, 90, 100, 30);
+        labelId.setBounds(50, 70, 100, 25);
 
         idField = setIdTextField(action);
-        idField.setBounds(50, 115, 150, 30);
+        idField.setBounds(50, 95, 150, 30);
 
         labelName = new CommonLabel("Name: ", 15);
-        labelName.setBounds(50, 165, 100, 30);
+        labelName.setBounds(50, 135, 100, 25);
 
         nameField = new CommonTextField();
-        nameField.setBounds(50, 190, 250, 30);
+        nameField.setBounds(50, 160, 250, 30);
 
-        labelEmail = new CommonLabel("Email", 15);
-        labelEmail.setBounds(50, 200, 100, 30);
+        labelEmail = new CommonLabel("Email:", 15);
+        labelEmail.setBounds(50, 200, 100, 25);
 
         emailField = new CommonTextField();
-        emailField.setBounds(50, 210, 250, 30);
+        emailField.setBounds(50, 225, 250, 30);
+
+        labelPassword = new CommonLabel("Password:", 15);
+        labelPassword.setBounds(50, 265, 100, 25);
+
+        passwordField = new JPasswordField();
+        passwordField.setBorder(BorderFactory.createLineBorder(design.borderColor, 2));
+        passwordField.setBounds(50, 290, 250, 30);
+
+        labelPasswordRepeat = new CommonLabel("Repeat Password:", 15);
+        labelPasswordRepeat.setBounds(50, 320, 150, 25);
+
+        repeatPasswordField = new JPasswordField();
+        repeatPasswordField.setBorder(BorderFactory.createLineBorder(design.borderColor, 2));
+        repeatPasswordField.setBounds(50, 345, 250, 30);
+
+        labelStatus = new CommonLabel("Status:", 15);
+        labelStatus.setBounds(50, 385, 100, 25);
+
+        String [] options = {"staff", "student"};
+        statusBox = new JComboBox<>(options);
+        statusBox.setBounds(50, 410, 250, 30);
+        statusBox.setSelectedIndex(0);
 
         labelCourse = new CommonLabel("Course:", 15);
-        labelCourse.setBounds(50, 240, 100, 30);
+        labelCourse.setBounds(50, 450, 100, 25);
 
         courseField = new CommonTextField();
-        courseField.setBounds(50, 270, 250, 30);
+        courseField.setBounds(50, 475, 250, 30);
 
         labelBlock = new CommonLabel("Block: ", 15);
-        labelBlock.setBounds(50, 310, 100, 30);
+        labelBlock.setBounds(50, 510, 100, 25);
 
         blockField = new CommonTextField();
         blockField.setHorizontalAlignment(JTextField.CENTER);
-        blockField.setBounds(50, 345, 100, 30);
+        blockField.setBounds(50, 535, 100, 30);
 
         labelRoom = new CommonLabel("Room: ", 15);
-        labelRoom.setBounds(180, 310, 100, 30);
+        labelRoom.setBounds(180, 510, 100, 25);
 
         roomField = new CommonTextField();
         roomField.setHorizontalAlignment(JTextField.CENTER);
-        roomField.setBounds(180, 345, 100, 30);
+        roomField.setBounds(180, 535, 100, 30);
 
         //setting buttons
         if(this.action == 1){
-            btnEdit = new CommonButton("Edit", design.btnWarningColor, 13);
-            btnEdit.setBounds(50, 410, 100, 40);
-            btnEdit.addActionListener(l -> editStudentInfo(student));
-            this.add(btnEdit);
+            btnAddEdit = new CommonButton("Edit", design.btnWarningColor, 13);
+            btnAddEdit.addActionListener(l -> editStudentInfo(student));
         } else {
-            btnAdd = new CommonButton("Add", design.btnAddColor, 13);
-            btnAdd.setBounds(50, 410, 100, 40);
-            btnAdd.addActionListener(l -> addStudent(student));
-            this.add(btnAdd);
+            btnAddEdit = new CommonButton("Add", design.btnAddColor, 13);
+            btnAddEdit.addActionListener(l -> addStudent(student));
         }
 
-        btnClear = new CommonButton("Clear", design.tableButtonColor, 13);
-        btnClear.setBounds(180, 410, 100, 40);
+        btnAddEdit.setBounds(50, 575, 100, 40);
+        this.add(btnAddEdit);
 
+        btnClear = new CommonButton("Clear", design.tableButtonColor, 13);
+        btnClear.setBounds(180, 575, 100, 40);
         this.add(btnClear);
+
 
         //adding labels
         this.add(headerLabel); this.add(labelId); this.add(labelName); this.add(labelEmail);
-        this.add(labelCourse); this.add(labelBlock); this.add(labelRoom);
+        this.add(labelCourse); this.add(labelBlock); this.add(labelRoom); this.add(labelStatus);
+        this.add(labelPassword); this.add(labelPasswordRepeat);
 
         this.add(idField); this.add(nameField); this.add(courseField); this.add(emailField);
-        this.add(blockField); this.add(roomField);
+        this.add(statusBox); this.add(repeatPasswordField);
+        this.add(blockField); this.add(roomField); this.add(passwordField);
 
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setResizable(false); this.setLayout(null);
-        this.setSize(400, 600);
+        this.setSize(400, 670);
         this.getContentPane().setBackground(design.bgColor);
         this.setVisible(true);
     }
@@ -108,30 +134,23 @@ public class AddEditStudent extends JFrame {
             return "Edit Student";
     }
 
-    public JTextField setIdTextField(int action) {
+    public JTextField setIdTextField(int id) {
         JTextField textField = new JTextField();
-        if (action == 1){
-            studentList.findById(id);
             textField.setText(String.valueOf(student.getUserID()));
             textField.setEditable(false);
             textField.setForeground(Color.white);
             textField.setBackground(Color.black);
             textField.setBorder(BorderFactory.createLineBorder(Color.white, 2));
-        } else {
-            textField.setBorder(BorderFactory.createLineBorder(design.borderColor, 2));
-        }
-
-        textField.setFont(new Font(design.fontName, Font.PLAIN, 15));
+            textField.setFont(new Font(design.fontName, Font.PLAIN, 15));
 
         return textField;
     }
 
     public void editStudentInfo(Student student ){
-
     }
 
     public void addStudent(Student student){
-
+        
         studentDataPanel.renderTable(studentList.getStudentList());
 
     }

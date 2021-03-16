@@ -148,9 +148,11 @@ public class StudentDataPanel extends JPanel {
 
     public void openAddEditTab(String id){
         int action = 0;
+        Student [] studentArray = studentList.getStudentList();
         Student student;
         if(id.equals("")) {
             student = new Student();
+            student.setUserID(studentArray[studentArray.length - 1].getUserID() + 1);
         }
         else{
             student = studentList.findById(Integer.parseInt(id));
@@ -160,7 +162,7 @@ public class StudentDataPanel extends JPanel {
         if (addEditStudent != null) {
             addEditStudent.dispose();
         }
-        addEditStudent = new AddEditStudent(action, Integer.parseInt(id), this, studentList);
+        addEditStudent = new AddEditStudent(action, student, this, studentList);
     }
 
     public void setSearchCriteria(ActionEvent e){
