@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * Created By Jonathon on 21/02/2021
@@ -12,9 +13,9 @@ import java.util.Arrays;
 public class BookLoanList {
 
     private BookLoan [] bookLoans;
-    private String file = "src\\Data\\BookLoanList.csv";
+    private String file = "src/Data/BookLoanList.csv";
     static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
+    static Scanner keyboard = new Scanner(System.in); //added RM- temp
 
 
     BookLoanList(){
@@ -67,5 +68,72 @@ public class BookLoanList {
         return this.bookLoans;
     }
 
+    //To Do
+    //Add Method
+    //Remove Method
+    //Update Status Method - Update
 
+    //Copied from Catalog to edit
+    //Method to remove book from BookLoan List if collected/requested/delivered
+    public void removeFromBookLoanList(String isbn, int userid){
+        char response;
+        for(int i = 0; i < bookLoans.length; i++){
+            if(bookLoans[i].getISBN().equals(isbn.trim())){   //do I need ID looped through too?
+                System.out.println("Record Found");
+                System.out.println(isbn); //printHeader()?
+                System.out.println(bookLoans[i].toString());
+                System.out.println("\n\nA record has been found, would you like to continue? Y/N");
+                response = keyboard.nextLine().toUpperCase().charAt(0);
+                if(response == 'Y') {
+                    BookLoan removeBook = bookLoans[i];
+                    bookLoans[i] = bookLoans[0];
+                    bookLoans[0] = removeBook;
+
+                    bookLoans = Arrays.copyOfRange(bookLoans, 1, bookLoans.length); //returns new array with item deleted
+                } else {
+                    System.out.println("You have chose not to delete the record");
+                    break;
+                }
+            }
+        }
+    }
+
+
+    //AddBooklist method
+    public void addToBookLoanList(BookLoan book, int userid){
+        BookLoan [] newArray = new BookLoan[bookLoans.length + 1]; //create new array adding 1 new index for new book
+        for(int i = 0; i < bookLoans.length; i++){
+            newArray[i] = bookLoans[i];
+        }
+        newArray[newArray.length -1] = book;
+        bookLoans = newArray;
+    }
+
+/**- code with errors
+    //Update Status Method - Update - find object, update (and set value to it) -
+    //change status to reflect status of book (Collected, Requested, Delivered)
+    public void updateStatus(String isbn, int userid, String status){
+        BookLoan book = null; //?
+        int j= 0;
+        for(int i = 0; i < bookLoans.length; i++) {
+            if (bookLoans[i].getISBN().trim().equals(isbn.trim())) {
+                book = bookLoans[i];
+                j = i;
+            }
+        }
+        if(book != null){
+            if(BookLoan.getDateIssued() > 0 && status == "Collected"){
+                BookLoan.setStatus(book.getStatus());
+            } else if (status == "Delivered"){
+                BookLoan.setStatus(book.getStatus() + 1);
+            } else {
+                System.out.println("Requested");
+            }
+            bookLoans[j] = book;
+        } else {
+            System.out.println("Book record not found");
+        }
+
+    }
+ **/
 }

@@ -10,5 +10,10 @@ public class TestBookLoanList {
         for(int i = 0; i < testrray.length; i++){
             System.out.println(testrray[i].toString());
         }
+
+        //Test of removeFromBookLoanList
+        bookLoanList.removeFromBookLoanList("9788847173940",250482); //how do you test it has been removed?
+
     }
+
 }
