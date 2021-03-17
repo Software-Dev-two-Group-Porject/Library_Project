@@ -89,10 +89,6 @@ public class BookLoan
       this.dateReturned = dateReturned;
    }
 
-   public String getStatus() { return status; }
-
-   public void setStatus(String status)
-   { this.status = status; }
 
    //instead of being a value within the constructor we can use the
    public int getDaysOverDue(){
