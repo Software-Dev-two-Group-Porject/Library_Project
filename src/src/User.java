@@ -18,10 +18,12 @@ public class User
 
    User() {  } //Default constructor
 
-   User(int userID, String status, String name) {
+   User(int userID, String status, String name, String email, String password) {
       this.userID = userID;
       this.status = status;
       this.name = name;
+      this.email = email;
+      this.password = password;
 
    } //Alt constructor
 
@@ -63,6 +65,8 @@ public class User
       for(int j = 0; j < newUserArray.length; j++) {
          this.userList[j] = setUser(newUserArray[j]);
       }
+
+      quickSort(this.userList, 0, this.userList.length -1);
 
    } //initUserList
 
@@ -211,6 +215,36 @@ public class User
          } //catch
       } //finally
    } //saveUsers
+
+   //sorting implementation for ID's to be incremented easily.
+   private static void quickSort(User [] users, int begin, int end){
+      if(begin < end){
+         int partitionIndex = partition(users, begin, end);
+         quickSort(users, begin, partitionIndex -1);
+         quickSort(users, partitionIndex+1, end);
+
+      }
+   }
+
+   private static int partition(User [] users, int begin, int end){
+      User pivot = users[end];
+      int i = (begin - 1);
+
+      for(int j = begin; j <=end; j++){
+         if(users[j].getUserID() < pivot.getUserID()){
+            i++;
+            User temp = users[i];
+            users[i] = users[j];
+            users[j] = temp;
+         }
+      }
+
+      User temp = users[i+1];
+      users[i+1] = users[end];
+      users[end] = temp;
+
+      return i+1;
+   }
 
    public String saveStringForUsersDat() {
       return this.userID + "," + this.status + "," + this.name + "," + this.email + "," + this.password + "," + this.block + "," + this.room + "," + this.overdue + "," + this.course + "\n";

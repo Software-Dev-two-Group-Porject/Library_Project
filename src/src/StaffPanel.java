@@ -12,7 +12,8 @@ import java.util.Date;
 public class StaffPanel extends JPanel {
     CommonLabel labelTotalRequests, labelReadyForCollection, labelsBooksForDelivery;
     HeaderPanel headerPanel;
-    CommonLabel studentName, studentCourse, studentBlock, studentRoomNumber, currentLoanCount;
+    CommonLabel studentName, studentCourse, studentBlock, studentRoomNumber,
+                studentEmail, studentCourses;
 
     Design design = new Design();
     StudentDataPanel studentDataPanel;
@@ -32,9 +33,11 @@ public class StaffPanel extends JPanel {
         readyStats.setBackground(design.bgColor);
 
         studentInfo = new JPanel();
+        studentInfo.setBackground(design.bgColor);
         studentInfo.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new Insets(0,10,5,0);
 
         headerPanel = new HeaderPanel("Staff",user.getName());
         headerPanel.setBounds(20, 10, 850, 120);
@@ -52,23 +55,30 @@ public class StaffPanel extends JPanel {
         readyStats.setBounds(70, 130, 350, 120);
         this.add(readyStats);
 
+        studentName = new CommonLabel("", 15);
+        gbc.gridx = 0; gbc.gridwidth =2; gbc.gridy = 0;
+        studentInfo.add(studentName, gbc);
 
-        studentName = new CommonLabel("Name:", 15);
-        studentName.setBounds(400, 150, 300, 25);
-        studentInfo.add(studentName);
+        studentEmail = new CommonLabel("", 15);
+        gbc.gridx = 0; gbc.gridwidth = 2; gbc.gridy = 1;
+        studentInfo.add(studentName, gbc);
 
-
-        studentCourse = new CommonLabel("Course:", 15);
-        studentCourse.setBounds(400, 180, 300, 25);
+        studentCourse = new CommonLabel("", 15);
+        gbc.gridx =0; gbc.gridwidth = 2; gbc.gridy = 2;
         studentInfo.add(studentCourse);
 
-        studentBlock = new CommonLabel("Block:", 15);
-        studentBlock.setBounds(400, 210, 150, 25);
-        this.add(studentBlock);
+        studentBlock = new CommonLabel("", 15);
+        gbc.gridx = 0; gbc.gridwidth = 1; gbc.gridy = 3;
+        studentInfo.add(studentBlock);
 
-        studentRoomNumber = new CommonLabel("Room Num:", 15);
-        studentRoomNumber.setBounds(550, 210, 150, 25);
-        this.add(studentRoomNumber);
+        studentRoomNumber = new CommonLabel("", 15);
+        gbc.gridx = 1; gbc.gridwidth = 1; gbc.gridy = 3;
+        studentInfo.add(studentRoomNumber, gbc);
+
+
+        studentInfo.setBounds(450, 130, 350, 120);
+        this.add(studentInfo);
+
 
         buttonContainer = new JPanel();
         buttonContainer.setLayout(new FlowLayout());

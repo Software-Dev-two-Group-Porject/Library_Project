@@ -26,7 +26,6 @@ public class UserList {
                 i++;
             }
 
-
             //using copy of method to create new array of String without the column headers so data can be seperated
             //and placed in setters
             String[] newStrArray = Arrays.copyOfRange(strArr, 1, i);
