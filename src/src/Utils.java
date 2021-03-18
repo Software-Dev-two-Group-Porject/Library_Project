@@ -11,12 +11,22 @@ public class Utils
    static Scanner keyboard = new Scanner(System.in);
 
    static String name = "[a-zA-Z\\sáéíóúÁÉÍÓÚ-]+"; //Allows only letters, hyphens and spaces
-   static String password = "((?=.*[a-z])(?=.*d)(?=.*[@#$%])(?=.*[A-Z]).{1,})"; //Must have 1 each uppercase, lowercase, number, special character & no whitespace
+   static String password = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8,20}$"; //Must have 1 each uppercase, lowercase, number, special character & no whitespace
    static String numbers = "[0-9]+"; //Numbers only
    static String block = "[a-hA-h]"; //Would be set to only accept blocks that the university has
    final static int MAXROOM = 499; //Highest room number in any block
    static String course = "[a-zA-Z\\s'áéíóúÁÉÍÓÚ&,-]+"; //Allows only letters, ampersand, commas, hyphens and spaces
    static String bookName = "[a-zA-Z0-9\\sáéíóúÁÉÍÓÚ-'&(),]+";
+
+   Utils(){
+
+   }
+
+   public static String emailValidation(String email){
+      String validationMessage = "";
+      if(!email.contains("@ulster.ac.uk")) validationMessage += "This is not a valid email, Please enter an Ulster academic email\n";
+      return validationMessage;
+   }
 
    public static String nameValidation(String input) {
       String validationMessage = "";
@@ -26,10 +36,11 @@ public class Utils
       return validationMessage;
    } //nameValidation
 
-   public static String passwordValidation(String input) {
+   public static String passwordValidation(String input, String input2) {
       String validationMessage = "";
       if (!charCount(8,20,input)) validationMessage += "Password must have between 8 and 20 characters\n";
       if (!stringCheck(input, password))  validationMessage += "Password must include at least one each of lowercase, uppercase, number and special character\n";
+      if (!input.equals(input2)) validationMessage += "Passwords must match";
       return validationMessage;
    } //passwordValidation
 
