@@ -50,12 +50,12 @@ public class BookLoanList {
         System.out.println(line);
         try {
             String [] data = line.split(",");
-
             bookLoan.setISBN(data[0]);
             bookLoan.setUserID(Integer.parseInt(data[1]));
             bookLoan.setDateIssued(formatter.parse(data[2]));
-            bookLoan.setDueDate(formatter.parse(data[3]));
-            bookLoan.setDateReturned(formatter.parse(data[4]));
+            bookLoan.setStatus(data[3]);
+            bookLoan.setDueDate(formatter.parse(data[4]));
+            bookLoan.setDateReturned(formatter.parse(data[5]));
             bookLoan.setOverdue(false);
             bookLoan.setFinePerDay(2.50);
         } catch (ParseException pe) {
@@ -179,6 +179,38 @@ public class BookLoanList {
 
     }
      **/
+
+    public int getTotalRequests(){
+        int count = 0;
+        for(int i = 0; i < bookLoans.length; i++){
+            if(bookLoans[i].status.equals("requested")){
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public int getTotalApproved(){
+        int count = 0;
+        for(int i = 0; i < bookLoans.length; i++){
+            if(bookLoans[i].status.equals("approved")){
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public int getTotalReady(){
+        int count = 0;
+        for(int i = 0; i < bookLoans.length; i++){
+            if(bookLoans[i].status.equals("ready")){
+                count++;
+            }
+        }
+        return count;
+    }
 
 
 }

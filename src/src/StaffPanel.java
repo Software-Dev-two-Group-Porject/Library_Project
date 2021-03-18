@@ -3,6 +3,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -14,72 +15,93 @@ public class StaffPanel extends JPanel {
     HeaderPanel headerPanel;
     CommonLabel studentName, studentCourse, studentBlock, studentRoomNumber,
                 studentEmail, studentCourses;
-
+    CommonButton viewRequests, viewApprovals, viewReadys;
     Design design = new Design();
     StudentDataPanel studentDataPanel;
     BookDataPanel bookDataPanel;
     CommonButton displayBookPanel, displayStudentPanel;
     JPanel readyStats, studentInfo, buttonContainer;
     BookLoanList bookLoanList;
-
+    GridBagConstraints gbc = new GridBagConstraints();
+    JPanel bookLoanHolder;
     StaffPanel(User user){
         this.setLayout(null);
         this.setBackground(design.bgColor);
         bookLoanList = new BookLoanList();
-
+        bookLoanList.populateBookLoanList();
 
         readyStats = new JPanel();
-        readyStats.setLayout(new GridLayout(3, 0));
+        readyStats.setLayout(new GridBagLayout());
         readyStats.setBackground(design.bgColor);
-
-        studentInfo = new JPanel();
-        studentInfo.setBackground(design.bgColor);
-        studentInfo.setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.insets = new Insets(0,10,5,0);
+        gbc.insets = new Insets(0, 0, 5, 20);
 
         headerPanel = new HeaderPanel("Staff",user.getName());
         headerPanel.setBounds(20, 10, 850, 120);
         this.add(headerPanel);
 
-        labelTotalRequests = new CommonLabel("Requests: ", 20);
-        readyStats.add(labelTotalRequests);
+        labelTotalRequests = new CommonLabel("Requests: " + bookLoanList.getTotalRequests(), 20);
+        gbc.gridx = 0; gbc.gridy = 0; gbc.gridwidth = 10;
+        readyStats.add(labelTotalRequests, gbc);
 
-        labelReadyForCollection = new CommonLabel("For Collection: ", 20);
-        readyStats.add(labelReadyForCollection);
+        viewRequests = new CommonButton("View", design.tableButtonColor, 12);
+        gbc.gridx =11; gbc.gridy =0; gbc.gridwidth = 1;
+        readyStats.add(viewRequests, gbc);
 
-        labelsBooksForDelivery = new CommonLabel("For delivery: ", 20);
-        readyStats.add(labelsBooksForDelivery);
+        labelsBooksForDelivery = new CommonLabel("For delivery: " + bookLoanList.getTotalApproved(), 20);
+        gbc.gridx = 0; gbc.gridy = 1; gbc.gridwidth = 10;
+        readyStats.add(labelsBooksForDelivery, gbc);
+
+        viewApprovals = new CommonButton("View", design.tableButtonColor, 12);
+        gbc.gridx =11; gbc.gridy =1; gbc.gridwidth = 1;
+        readyStats.add(viewApprovals, gbc);
+
+        labelReadyForCollection = new CommonLabel("For Collection: " + bookLoanList.getTotalReady(), 20);
+        gbc.gridx = 0; gbc.gridy = 2; gbc.gridwidth = 10;
+        readyStats.add(labelReadyForCollection, gbc);
+
+        viewReadys = new CommonButton("View", design.tableButtonColor, 12);
+        gbc.gridx =11; gbc.gridy =2; gbc.gridwidth = 1;
+        readyStats.add(viewReadys, gbc);
 
         readyStats.setBounds(70, 130, 350, 120);
         this.add(readyStats);
 
-        studentName = new CommonLabel("", 15);
-        gbc.gridx = 0; gbc.gridwidth =2; gbc.gridy = 0;
+        studentInfo = new JPanel();
+        studentInfo.setBackground(design.bgColor);
+        studentInfo.setLayout(new GridBagLayout());
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new Insets(0,0,3,0);
+
+        studentName = new CommonLabel("", 17);
+        gbc.gridx = 0; gbc.gridy = 0;
         studentInfo.add(studentName, gbc);
 
-        studentEmail = new CommonLabel("", 15);
-        gbc.gridx = 0; gbc.gridwidth = 2; gbc.gridy = 1;
-        studentInfo.add(studentName, gbc);
+        studentEmail = new CommonLabel("", 17);
+        gbc.gridx = 0; gbc.gridy = 1;
+        studentInfo.add(studentEmail, gbc);
 
-        studentCourse = new CommonLabel("", 15);
-        gbc.gridx =0; gbc.gridwidth = 2; gbc.gridy = 2;
-        studentInfo.add(studentCourse);
+        studentCourse = new CommonLabel("", 17);
+        gbc.gridx =0; gbc.gridy = 2;
+        studentInfo.add(studentCourse, gbc);
 
-        studentBlock = new CommonLabel("", 15);
-        gbc.gridx = 0; gbc.gridwidth = 1; gbc.gridy = 3;
-        studentInfo.add(studentBlock);
+        studentBlock = new CommonLabel("", 17);
+        gbc.gridx = 0; gbc.gridy = 3;
+        studentInfo.add(studentBlock, gbc);
 
-        studentRoomNumber = new CommonLabel("", 15);
-        gbc.gridx = 1; gbc.gridwidth = 1; gbc.gridy = 3;
+        studentRoomNumber = new CommonLabel("", 17);
+        gbc.gridx = 1; gbc.gridy = 3;
         studentInfo.add(studentRoomNumber, gbc);
-
-
-        studentInfo.setBounds(450, 130, 350, 120);
+        studentInfo.setBounds(450, 130, 400, 120);
         this.add(studentInfo);
 
+        bookLoanHolder = new JPanel();
+        JScrollPane jsp = new JScrollPane(bookLoanHolder);
+        jsp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
+        jsp.setBounds(450, 130, 400, 120);
+
+        this.add(jsp);
         buttonContainer = new JPanel();
         buttonContainer.setLayout(new FlowLayout());
         buttonContainer.setBounds(50, 260, 180, 35);
@@ -109,10 +131,29 @@ public class StaffPanel extends JPanel {
     }
 
     public void setStudentViewLabels(Student student){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        BookLoan [] bookLoans = bookLoanList.getBookLoansByUserId(student.getUserID());
         studentName.setText("Name: " + student.getName());
-        studentCourse.setText("Course: ");
+        studentEmail.setText("Email: " + student.getEmail());
+        studentCourse.setText("Course: " + student.getCourse());
         studentBlock.setText("Block:  " + student.getBlockLetter());
         studentRoomNumber.setText("Room:  " + student.getRoomNumber());
+        if(bookLoans.length > 0){
+            CommonLabel bookLoanLabel = new CommonLabel("Current Loans", 12);
+            CommonLabel bookTitle = new CommonLabel("", 12);
+            CommonLabel status = new CommonLabel("", 12);
+            CommonLabel dateReleased = new CommonLabel("", 12);
+            CommonLabel dateDue = new CommonLabel("", 12);
+            for(int i = 0; i < bookLoans.length; i++){
+                bookTitle.setText(bookDataPanel.getBookCatalog().getTitleByIsbn(bookLoans[i].getISBN()));
+                status.setText(bookLoans[i].getStatus());
+                dateReleased.setText(sdf.format(bookLoans[i].getDateIssued()));
+                dateReleased.setText(sdf.format(bookLoans[i].getDueDate()));
+
+
+            }
+        }
+
     }
 
     public void setPanelVisibility(ActionEvent e){

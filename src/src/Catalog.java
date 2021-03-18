@@ -209,6 +209,10 @@ public class Catalog {
             }
     }
 
+    public String getTitleByIsbn(String isbn){
+        return getBookByIsbn(isbn).getTitle();
+    }
+
     public void removeFromCatalog(String isbn){
         char response;
         //The goal of this method will be to search for the element

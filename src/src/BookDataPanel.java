@@ -213,4 +213,7 @@ public class BookDataPanel extends JPanel {
     public void setBookDataLabels(String isbn){
 
     }
+    public Catalog getBookCatalog(){
+        return this.catalog;
+    }
 }
