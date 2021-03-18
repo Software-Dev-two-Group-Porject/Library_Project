@@ -24,6 +24,7 @@ public class AddEditStudent extends JFrame {
     StudentDataPanel studentDataPanel;
     JComboBox<String> statusBox;
     User user;
+    Utils utils;
 
     //the actions here will be an int 0 = Add, 1 = edit. this will manage some of the data that will be displayed.
     AddEditStudent(int action, Student student, StudentDataPanel studentDataPanel, StudentList studentList){
@@ -170,6 +171,24 @@ public class AddEditStudent extends JFrame {
     }
 
     public void addStudent(Student student){
+         utils = new Utils();
+         String validationMessage ="";
+         validationMessage += utils.nameValidation(nameField.getText());
+         validationMessage += utils.emailValidation(emailField.getText());
+         validationMessage += utils.passwordValidation(String.valueOf(passwordField.getPassword()),
+                                                        String.valueOf(repeatPasswordField.getPassword()));
+         validationMessage += utils.courseValidation(courseField.getText());
+         validationMessage += utils.blockValidation(blockField.getText());
+         validationMessage += utils.roomValidation(roomField.getText());
+        System.out.println(String.valueOf(passwordField.getPassword()));
+        System.out.println(String.valueOf(repeatPasswordField.getPassword()));
+
+         if(!validationMessage.equals("")){
+             JOptionPane.showMessageDialog(null, validationMessage);
+         } else {
+             JOptionPane.showMessageDialog(null, "A record would be inserted here");
+             user.addUserToList(new User());
+         }
 
         //need to order the userList array.
         studentDataPanel.renderTable(studentList.getStudentList());

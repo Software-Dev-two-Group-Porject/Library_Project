@@ -9,6 +9,7 @@ import java.util.Arrays;
  **/
 public class UserList {
     private User [] userList;
+    private Student [] studentList;
 
     UserList(){
 
@@ -55,7 +56,6 @@ public class UserList {
     }
 
     public void setStaffObject(String line){
-
     }
 }
 

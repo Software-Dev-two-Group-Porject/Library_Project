@@ -5,7 +5,7 @@ import javax.swing.*;
  * Update Comments About Program Here
  **/
 public class AddBook extends JFrame {
-    CommonLabel headerLabel, isbnLabel, titleLabel, authorLabel, genreLabel, subGenreLabel, quantityLabel;
+    CommonLabel headerLabel, isbnLabel, titleLabel, authorLabel, genreLabel, subGenreLabel, quantityLabel, isbnNumLabel;
     CommonTextField isbnField, titleField, authorField, genreField, subGenreField, quantityField;
     CommonButton buttonAdd, buttonClear;
     Catalog catalog;
@@ -17,7 +17,6 @@ public class AddBook extends JFrame {
 
     AddBook(Catalog catalog, BookDataPanel bookDataPanel){
         this.bookDataPanel = bookDataPanel;
-        this.staffPanel = staffPanel;
         this.catalog = catalog;
         this.setLayout(null);
 
@@ -30,8 +29,11 @@ public class AddBook extends JFrame {
         isbnLabel.setBounds(50, 50, 100, 30);
         this.add(isbnLabel);
 
+        isbnNumLabel = new CommonLabel("978-", 15);
+        isbnNumLabel.setBounds(50, 80, 50, 30);
+
         isbnField = new CommonTextField();
-        isbnField.setBounds(50, 80, 200, 30);
+        isbnField.setBounds(70, 80, 150, 30);
         this.add(isbnField);
 
         titleLabel = new CommonLabel("Title", 15);
