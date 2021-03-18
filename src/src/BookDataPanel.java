@@ -35,7 +35,7 @@ public class BookDataPanel extends JPanel {
 
         addBook = new CommonButton("Add Book", design.btnAddColor, 9);
         addBook.setBounds(10, 10, 85,25);
-        addBook.addActionListener(l -> openAddEditBook(""));
+        addBook.addActionListener(l -> openAddEditBook());
         topComponentContainer.add(addBook);
 
         viewAllButton = new CommonButton("View All", design.tableButtonColor, 9);
@@ -115,7 +115,7 @@ public class BookDataPanel extends JPanel {
                 "</tr></html>";
     }
 
-    public void openAddEditBook(String isbn){
+    public void openAddEditBook(){
         AddBook addBook = new AddBook(catalog, this);
 
 

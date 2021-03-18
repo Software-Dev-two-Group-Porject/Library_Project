@@ -187,7 +187,7 @@ public class AddEditStudent extends JFrame {
              JOptionPane.showMessageDialog(null, validationMessage);
          } else {
              JOptionPane.showMessageDialog(null, "A record would be inserted here");
-             user.addUserToList(new User());
+             user.addUserToList(new User(idField.getText()));
          }
 
         //need to order the userList array.

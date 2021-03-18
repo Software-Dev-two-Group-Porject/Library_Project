@@ -13,6 +13,7 @@ public class AddBook extends JFrame {
     Design design = new Design();
     StaffPanel staffPanel;
     BookDataPanel bookDataPanel;
+    Utils utils = new Utils();
 
 
     AddBook(Catalog catalog, BookDataPanel bookDataPanel){
@@ -30,10 +31,11 @@ public class AddBook extends JFrame {
         this.add(isbnLabel);
 
         isbnNumLabel = new CommonLabel("978-", 15);
-        isbnNumLabel.setBounds(50, 80, 50, 30);
+        isbnNumLabel.setBounds(50, 80, 40, 30);
+        this.add(isbnNumLabel);
 
         isbnField = new CommonTextField();
-        isbnField.setBounds(70, 80, 150, 30);
+        isbnField.setBounds(90, 80, 100, 30);
         this.add(isbnField);
 
         titleLabel = new CommonLabel("Title", 15);
@@ -87,22 +89,24 @@ public class AddBook extends JFrame {
     }
 
     public void addBookToCatalog(){
-        Book book = new Book();
-        //here would be where the validation journey would begin.
-        book.setIsbn(isbnField.getText());
-        book.setTitle(titleField.getText());
-        book.setAuthor(authorField.getText());
-        book.setGenre(genreField.getText());
-        book.setSubGenre(subGenreField.getText());
-        book.setQuantity(Integer.parseInt(quantityField.getText()));
+        String validationMessage = "";
+        validationMessage += utils.isbnValidation(isbnField.getText());
+        validationMessage += utils.bookValidation(titleField.getText());
+        validationMessage += utils.nameValidation(authorField.getText());
+        validationMessage += utils.roomValidation(quantityField.getText());
 
-
-        //afterValidation has been passed book is added to the list, the list is then saved,
-        // then the list is retrieved again.
-        catalog.addBookToCatalog(book);
-        catalog.saveData();
-        catalog.initializeCatalogue();
-        bookDataPanel.renderTable(catalog.getCatalogueList());
+        if(validationMessage.equals("")){
+            Book book = new Book("978"+isbnField.getText(), titleField.getText(), authorField.getText());
+            book.setGenre(genreField.getText());
+            book.setSubGenre(subGenreField.getText());
+            book.setQuantity(Integer.parseInt(quantityField.getText()));
+            catalog.addBookToCatalog(book);
+            catalog.saveData();
+            catalog.initializeCatalogue();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, validationMessage);
+        }
     }
 
     public void clearTextFields(){
