@@ -148,7 +148,6 @@ public class BookLoanList {
      //change status to reflect status of book (Collected, Requested, Delivered)
      **/
     public void updateStatus(String isbn, int userid, String status) {
-
         for (int i = 0; i < bookLoans.length; i++) {
             if (bookLoans[i].getISBN().trim().equals(isbn.trim()) && bookLoans[i].getUserID() == userid) {
                 bookLoans[i].setStatus(status);
@@ -159,6 +158,9 @@ public class BookLoanList {
                         break;
                     case "ready":
                         bookLoans[i].setDateReturned(new Date());
+                        break;
+                    default:
+                        break;
                 }
             }
         }

@@ -6,7 +6,12 @@ import javax.swing.*;
  **/
 public class BookLoanDataPanel extends JPanel {
     BookLoan [] bookLoans;
+    JLabel headerLabel;
+
+
     BookLoanDataPanel(BookLoan [] bookLoans){
         this.bookLoans = bookLoans;
     }
+
+
 }

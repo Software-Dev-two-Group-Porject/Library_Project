@@ -16,6 +16,7 @@ public class StaffPanel extends JPanel {
     CommonLabel studentName, studentCourse, studentBlock, studentRoomNumber,
                 studentEmail, studentCourses;
     CommonButton viewRequests, viewApprovals, viewReadys;
+    CommonButton viewLoans;
     Design design = new Design();
     StudentDataPanel studentDataPanel;
     BookDataPanel bookDataPanel;
@@ -93,6 +94,12 @@ public class StaffPanel extends JPanel {
         gbc.gridx = 1; gbc.gridy = 3;
         studentInfo.add(studentRoomNumber, gbc);
         studentInfo.setBounds(450, 130, 400, 120);
+
+        viewLoans = new CommonButton("View Loans", design.tableButtonColor, 12);
+        gbc.gridx = 0; gbc.gridy = 4;
+        viewLoans.setVisible(false);
+        studentInfo.add(viewLoans, gbc);
+
         this.add(studentInfo);
 
         bookLoanHolder = new JPanel();
@@ -100,7 +107,6 @@ public class StaffPanel extends JPanel {
         jsp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
         jsp.setBounds(450, 130, 400, 120);
-
         this.add(jsp);
         buttonContainer = new JPanel();
         buttonContainer.setLayout(new FlowLayout());
@@ -138,6 +144,7 @@ public class StaffPanel extends JPanel {
         studentCourse.setText("Course: " + student.getCourse());
         studentBlock.setText("Block:  " + student.getBlockLetter());
         studentRoomNumber.setText("Room:  " + student.getRoomNumber());
+        viewLoans.setVisible(true);
         if(bookLoans.length > 0){
             CommonLabel bookLoanLabel = new CommonLabel("Current Loans", 12);
             CommonLabel bookTitle = new CommonLabel("", 12);
@@ -149,8 +156,6 @@ public class StaffPanel extends JPanel {
                 status.setText(bookLoans[i].getStatus());
                 dateReleased.setText(sdf.format(bookLoans[i].getDateIssued()));
                 dateReleased.setText(sdf.format(bookLoans[i].getDueDate()));
-
-
             }
         }
 

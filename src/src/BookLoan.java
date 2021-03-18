@@ -37,10 +37,19 @@ public class BookLoan
     BookLoan(){
     }//Default Constructor
 
-   BookLoan(int userID, String isbn, Date dateIssued, Date dueDate,  Date dateReturned, boolean isOverdue, double finePerDay){
+
+    BookLoan(int userID, String isbn, String status){
+        this.userID = userID;
+        this.isbn = isbn;
+        this.status = status;
+    }
+
+
+   BookLoan(int userID, String isbn, Date dateIssued, String status,Date dueDate,  Date dateReturned, boolean isOverdue, double finePerDay){
        this.isbn = isbn;
        this.userID = userID;
        this.dateIssued = dateIssued;
+       this.status = status;
        this.dueDate = dueDate;
        this.dateReturned = dateReturned;
        this.isOverdue = isOverdue;
