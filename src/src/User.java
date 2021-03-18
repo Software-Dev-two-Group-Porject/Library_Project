@@ -1,5 +1,3 @@
-import java.io.*;
-import java.util.Arrays;
 import java.util.Scanner;
 
 
@@ -27,7 +25,7 @@ public class User
 
    } //Alt constructor
 
-   private String printHeader() {
+   protected static String printHeader() {
       return String.format("%-10s\t%-10s\t%-40s\t%-50s\t%-5s\t%-5s\t%-10s\t%s", "ID", "Status", "Name", "Email", "Block", "Room", "Overdue", "Course");
    }
 
@@ -40,7 +38,7 @@ public class User
       } //for
    } //Password not shown as in real world would be hashed for security
 
-   public void initUserList() {
+   /*public void initUserList() {
       String line = "";
       int i = 0;
       String [] userArray = new String[100];
@@ -68,19 +66,18 @@ public class User
 
       quickSort(this.userList, 0, this.userList.length -1);
 
-   } //initUserList
+   } //initUserList*/
 
    public String toString() {
       return String.format("%-10s\t%-10s\t%-40s\t%-50s\t%-5s\t%-5s\t%-10s\t%s", this.userID, this.status, this.name, this.email, this.block, this.room, this.overdue, this.course);
    } //toString
 
-   public User[] getUserList() { return this.userList; }
+//   public User[] getUserList() { return this.userList; }
 
    protected static User setUser(String line) {
       User user = new User();
-      int onLoan, tempUserID, theirRoom;
+      int tempUserID, theirRoom;
       boolean overdue;
-      String theirCourse;
       String [] info = line.split(",");
       tempUserID = Integer.parseInt(info[0]);
       user.setUserID(tempUserID);
@@ -93,36 +90,32 @@ public class User
          theirRoom = Integer.parseInt(info[6]);
          user.setRoom(theirRoom);
          user.setCourse(info[8]);
-
-         //onLoan = Integer.parseInt(info[7]);
-
-       //  user.setBooksOnLoan(onLoan);
          overdue = Boolean.parseBoolean(info[7]);
          user.setOverdue(overdue);
-         //Add user course
       }
       return user;
 
    } //setUser
 
-   public User getUserByID(int id) {
-      User returnUser = new User();
-      returnUser.initUserList();
+   /*public User getUserByID(int id) {
+      User user = new User();
+      UserList getUser = new UserList();
+      getUser.initUserList();
 
-      for (int i = 0; i < userList.length; i++) {
-         if(userList[i].getUserID() == id) {
-            returnUser = returnUser.userList[i];
+      for (int i = 0; i < getUser.userList.length; i++) {
+         if(getUser.userList[i].getUserID() == id) {
+            user = getUser.userList[i];
          }
 
       } //for
 
-      return returnUser;
+      return user;
 
-   } //getUserByID
+   } //getUserByID*/
 
    public static boolean checkExisting(int id) {
       boolean exists = false;
-      User existingUser = new User();
+      UserList existingUser = new UserList();
       existingUser.initUserList();
 
       for (int i = 0; i < existingUser.userList.length; i++)
@@ -136,7 +129,7 @@ public class User
 
    } //checkExisting
 
-   public User getUserByEmail(String email) {
+   /*public User getUserByEmail(String email) {
       User returnUser = new User();
       for (int i = 0; i < this.userList.length; i++) {
          if(this.userList[i].getEmail().equals(email)) {
@@ -144,9 +137,9 @@ public class User
          }
       } //for
       return returnUser;
-   } //getUserByEmail
+   } //getUserByEmail*/
 
-   public void addUserToList(User user) {
+   /*public void addUserToList(User user) {
       User [] newUserList = new User[userList.length + 1];
 
       for (int x = 0; x < userList.length; x++) {
@@ -155,9 +148,11 @@ public class User
       newUserList[newUserList.length-1] = user;
       userList = newUserList;
 
-   } //addUserToList
+   } //addUserToList*/
 
-   public void editUser(int userID) {
+   //Edit user has never been used, do we need to keep it??
+
+   /*public void editUser(int userID) {
       User editUser = new User();
       for (int i = 0; i < this.userList.length; i++) {
          if(this.userList[i].getUserID() == userID) {
@@ -166,9 +161,9 @@ public class User
 
       } //for
 
-   }//edit user
+   }//edit user*/
 
-   public void deleteUser(int userID, int prompt) {
+   /*public void deleteUser(int userID, int prompt) {
       char delete = 'N';
 
       for (int x = 0; x < userList.length; x++) {
@@ -191,9 +186,9 @@ public class User
             }
          }
       }
-   }//deleteUser
+   }//deleteUser*/
 
-   public void saveUsers() {
+   /*public void saveUsers() {
       String file = "src\\Data\\users.dat";
       BufferedWriter writer = null;
       String user = "";
@@ -214,10 +209,10 @@ public class User
             ioe.printStackTrace();
          } //catch
       } //finally
-   } //saveUsers
+   } //saveUsers*/
 
    //sorting implementation for ID's to be incremented easily.
-   private static void quickSort(User [] users, int begin, int end){
+   protected static void quickSort(User [] users, int begin, int end){
       if(begin < end){
          int partitionIndex = partition(users, begin, end);
          quickSort(users, begin, partitionIndex -1);
@@ -248,7 +243,7 @@ public class User
 
    public String saveStringForUsersDat() {
       return this.userID + "," + this.status + "," + this.name + "," + this.email + "," + this.password + "," + this.block + "," + this.room + "," + this.overdue + "," + this.course + "\n";
-   } //
+   } //Format the string correctly for saving to the dat file
 
    public int getUserID() {  return userID;  }
    public void setUserID(int userID) { this.userID = userID; }

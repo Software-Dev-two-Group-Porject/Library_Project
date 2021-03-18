@@ -7,7 +7,9 @@ public class AddUser
    public static void addUser(int id)
    {
       User user = new User();
-      user.initUserList();
+      UserList userList = new UserList();
+      userList.initUserList();
+
       if (user.checkExisting(id))
       {
          System.out.println("User already exists in database."); //Add function to go straight to edit user??
@@ -55,10 +57,10 @@ public class AddUser
             }
             addUser.setOverdue(false); //If it's a new user we assume they aren't overdue
 
-            user.addUserToList(addUser);
-            user.saveUsers();
+            userList.addUserToList(addUser);
+            userList.saveUsers();
 
-            User addedUser = user.getUserByID(id);
+            User addedUser = userList.getUserByID(id);
             System.out.println(addedUser.toString());
 
          } //addUser to list

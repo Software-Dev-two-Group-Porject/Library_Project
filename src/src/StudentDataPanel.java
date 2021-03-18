@@ -24,8 +24,8 @@ public class StudentDataPanel extends JPanel {
         studentList.populateList();
         this.staffPanel = staffPanel;
         user = new User();
-        user.initUserList();
-
+        UserList userList = new UserList();
+        userList.initUserList();
 
         topComponentPanel = new JPanel();
         topComponentPanel.setBackground(design.bgColor);
@@ -88,8 +88,7 @@ public class StudentDataPanel extends JPanel {
         JScrollPane jScrollPane = new JScrollPane(dataOutput);
         jScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         dataContainer.add(jScrollPane, BorderLayout.CENTER);
-
-
+        
         mainContainer.setBounds(0, 40, 900, 210);
 
         this.add(topComponentPanel);
@@ -151,10 +150,12 @@ public class StudentDataPanel extends JPanel {
     public void openAddEditTab(String id){
         int action = 0;
 
+        UserList userList = new UserList();
+
         Student student;
         if(id.equals("")) {
             student = new Student();
-            student.setUserID(user.getUserList()[user.getUserList().length -1].getUserID() + 1);
+            student.setUserID(userList.getUserList()[userList.getUserList().length -1].getUserID() + 1);
         }
         else{
             student = studentList.findById(Integer.parseInt(id));

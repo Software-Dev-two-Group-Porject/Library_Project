@@ -6,10 +6,11 @@ public class EditUser
 {
    public static void editUser(int id) {
       User user = new User();
-      user.initUserList();
+      UserList userList = new UserList();
+      userList.initUserList();
 
-      if (User.checkExisting(id)) {
-         user = user.getUserByID(id);
+      if (user.checkExisting(id)) {
+         user = userList.getUserByID(id);
          System.out.println(user.toString());
          String name = "", email = "", status = "", password = "", block = "", course = "";
          int room = 0, choice;
@@ -101,12 +102,12 @@ public class EditUser
             editUser.setCourse(course);
             editUser.setOverdue(overdue);
 
-            user.initUserList();
-            user.deleteUser(id, 0); //Delete the existing entry before adding the updated one
-            user.addUserToList(editUser);
-            user.saveUsers();
+            userList.initUserList();
+            userList.deleteUser(id, 0); //Delete the existing entry before adding the updated one
+            userList.addUserToList(editUser);
+            userList.saveUsers();
 
-            User editedUser = user.getUserByID(id);
+            User editedUser = userList.getUserByID(id);
             System.out.println("The user has been updated.");
             System.out.println(editedUser.toString());
          } else {

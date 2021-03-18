@@ -172,6 +172,7 @@ public class AddEditStudent extends JFrame {
 
     public void addStudent(Student student){
          utils = new Utils();
+         UserList userList = new UserList();
          String validationMessage ="";
          validationMessage += utils.nameValidation(nameField.getText());
          validationMessage += utils.emailValidation(emailField.getText());
@@ -187,7 +188,7 @@ public class AddEditStudent extends JFrame {
              JOptionPane.showMessageDialog(null, validationMessage);
          } else {
              JOptionPane.showMessageDialog(null, "A record would be inserted here");
-             user.addUserToList(new User());
+             userList.addUserToList(new User());
          }
 
         //need to order the userList array.
