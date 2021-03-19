@@ -64,7 +64,6 @@ public class StudentList {
         return this.studentList;
     }
 
-
    public void printStudentList(){
 
         for(int i = 0; i < studentList.length; i++){

@@ -19,12 +19,14 @@ public class LoginPanel extends JPanel {
     Font labelFont = new Font(design.fontName, Font.BOLD, 15);
 
     User user;
-    User [] userList;
+  //  User [] userList;
+    UserList userList;
 
 
     LoginPanel(Display parentFrame){
         this.user = new User();
-        this.user.initUserList();
+        UserList userList = new UserList();
+        userList.initUserList();
 
         this.display = parentFrame;
         this.setBackground(design.bgColor);
@@ -90,9 +92,10 @@ public class LoginPanel extends JPanel {
 
     private void processLogin(){
         String email;
+        UserList userList = new UserList();
         email = emailTextField.getText();
         //firstly we check for valid email with Utility classes.
-        User userSignIn = user.getUserByEmail(email);
+        User userSignIn = userList.getUserByEmail(email);
         if(userSignIn.getEmail() != null){
             if(userSignIn.getPassword().equals(new String(passwordField.getPassword()))){
                 display.setLoginPanelVisibility(false);

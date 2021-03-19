@@ -13,7 +13,17 @@ public class TestUsers
    public static void main(String[] args) throws IOException
    {
       User user = new User();
-      user.initUserList();
+
+      String email = "jhgasd@ulster.ac.uk";
+
+      System.out.println(Utils.emailValidation(email));
+
+
+
+
+
+
+      //user.initUserList();
 
     //  int id = Utils.askInt("Enter the user's ID: ");
 
@@ -26,7 +36,7 @@ public class TestUsers
       System.out.println("Result: " + name);
 
 
-      user.printUserList(user.getUserList());
+   //   user.printUserList(user.getUserList());
 
    //   user = user.getUserByID(id);
       System.out.println("HH");

@@ -11,22 +11,26 @@ public class Utils
    static Scanner keyboard = new Scanner(System.in);
 
    static String name = "[a-zA-Z\\sáéíóúÁÉÍÓÚ-]+"; //Allows only letters, hyphens and spaces
-   static String password = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8,20}$"; //Must have 1 each uppercase, lowercase, number, special character & no whitespace
+   static String email = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+[.]+[A-Za-z.]+$"; //Email format & allowed characters
+   static String password = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^!&-+=()])(?=\\S+$).{8,20}$"; //Must have 1 each uppercase, lowercase, number, special character & no whitespace
    static String numbers = "[0-9]+"; //Numbers only
    static String block = "[a-hA-h]"; //Would be set to only accept blocks that the university has
    final static int MAXROOM = 499; //Highest room number in any block
    static String course = "[a-zA-Z\\s'áéíóúÁÉÍÓÚ&,-]+"; //Allows only letters, ampersand, commas, hyphens and spaces
-   static String bookName = "[a-zA-Z0-9\\sáéíóúÁÉÍÓÚ-'&(),]+";
+   static String bookName = "[a-zA-Z0-9\\sáéíóúÁÉÍÓÚ-'&(),]+"; //Allows letters, numbers, spaces and certain special characters
 
    Utils(){
 
    }
 
-   public static String emailValidation(String email){
+   public static String emailValidation(String input){
       String validationMessage = "";
-      if(!email.contains("@ulster.ac.uk")) validationMessage += "This is not a valid email, Please enter an Ulster academic email\n";
+      Pattern pattern = Pattern.compile(email);
+      Matcher matcher = pattern.matcher(input);
+      if(!matcher.find()) validationMessage += "Please enter a valid email address\n";
+      if(!input.contains("@ulster.ac.uk")) validationMessage += "Please enter an Ulster academic email\n";
       return validationMessage;
-   }
+   } //emailValidation
 
    public static String nameValidation(String input) {
       String validationMessage = "";
@@ -116,14 +120,13 @@ public class Utils
    } //askString
 
    public static String askEmail(String question) {
-      String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+[.]+[A-Za-z.]+$"; //Email format & allowed characters
       boolean regexPass;
       String answer;
       System.out.println(question);
       answer = keyboard.nextLine();
       do
       {
-         Pattern pattern = Pattern.compile(regex);
+         Pattern pattern = Pattern.compile(email);
          Matcher matcher = pattern.matcher(answer);
          regexPass = matcher.find(); //Checks if input string matches the regex and returns true or false
          if (!regexPass) {
@@ -186,6 +189,5 @@ public class Utils
       }
       return String.valueOf(chars);
    } //capitalizeString
-
 
 } //class
