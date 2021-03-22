@@ -198,5 +198,19 @@ public class BookLoanList {
         return count;
     }
 
+    public BookLoan [] getBookLoansByStatus(String status){
+        int count = 0;
+        BookLoan [] returnArray = new BookLoan[bookLoans.length];
+        for(int i = 0; i < bookLoans.length; i++){
+            if(bookLoans[i].getStatus().equals(status)){
+                returnArray[count] = bookLoans[i];
+                count++;
+            }
+        }
+
+        return Arrays.copyOfRange(returnArray, 0, count);
+    }
+
+
 
 }

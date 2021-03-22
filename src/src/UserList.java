@@ -8,8 +8,6 @@ import java.util.Scanner;
  **/
 public class UserList {
     protected User [] userList;
-    private Student [] studentList;
-
     Scanner keyboard = new Scanner(System.in);
 
     UserList(){

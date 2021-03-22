@@ -211,7 +211,11 @@ public class BookDataPanel extends JPanel {
     }
 
     public void setBookDataLabels(String isbn){
-
+        System.out.println(isbn);
+        System.out.println(this.studentPanel);
+        if(studentPanel != null){
+            studentPanel.setBookLabels(catalog.getBookByIsbn(isbn));
+        }
     }
     public Catalog getBookCatalog(){
         return this.catalog;

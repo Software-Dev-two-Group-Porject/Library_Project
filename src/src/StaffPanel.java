@@ -25,6 +25,8 @@ public class StaffPanel extends JPanel {
     BookLoanList bookLoanList;
     GridBagConstraints gbc = new GridBagConstraints();
     JPanel bookLoanHolder;
+    BookLoanDataPanel bookLoanDataPanel;
+    String [] staffStatusChanges = {"Approved", "Delivered", "Collected"};
     StaffPanel(User user){
         this.setLayout(null);
         this.setBackground(design.bgColor);
@@ -38,7 +40,7 @@ public class StaffPanel extends JPanel {
         gbc.insets = new Insets(0, 0, 5, 20);
 
         headerPanel = new HeaderPanel("Staff",user.getName());
-        headerPanel.setBounds(20, 10, 850, 120);
+        headerPanel.setBounds(20, 5, 850, 120);
         this.add(headerPanel);
 
         labelTotalRequests = new CommonLabel("Requests: " + bookLoanList.getTotalRequests(), 20);
@@ -46,6 +48,7 @@ public class StaffPanel extends JPanel {
         readyStats.add(labelTotalRequests, gbc);
 
         viewRequests = new CommonButton("View", design.tableButtonColor, 12);
+        viewRequests.addActionListener(l -> populateBookLoanDataPanelByStatus("requests"));
         gbc.gridx =11; gbc.gridy =0; gbc.gridwidth = 1;
         readyStats.add(viewRequests, gbc);
 
@@ -55,6 +58,7 @@ public class StaffPanel extends JPanel {
 
         viewApprovals = new CommonButton("View", design.tableButtonColor, 12);
         gbc.gridx =11; gbc.gridy =1; gbc.gridwidth = 1;
+        viewApprovals.addActionListener(l -> populateBookLoanDataPanelByStatus("approved"));
         readyStats.add(viewApprovals, gbc);
 
         labelReadyForCollection = new CommonLabel("For Collection: " + bookLoanList.getTotalReady(), 20);
@@ -63,6 +67,7 @@ public class StaffPanel extends JPanel {
 
         viewReadys = new CommonButton("View", design.tableButtonColor, 12);
         gbc.gridx =11; gbc.gridy =2; gbc.gridwidth = 1;
+        viewReadys.addActionListener(l -> populateBookLoanDataPanelByStatus("ready"));
         readyStats.add(viewReadys, gbc);
 
         readyStats.setBounds(70, 130, 350, 120);
@@ -134,6 +139,9 @@ public class StaffPanel extends JPanel {
         bookDataPanel.setVisible(false);
         this.add(bookDataPanel);
 
+        bookLoanDataPanel = new BookLoanDataPanel(bookLoanList.getBookLoanList(), staffStatusChanges);
+
+
     }
 
     public void setStudentViewLabels(Student student){
@@ -146,19 +154,9 @@ public class StaffPanel extends JPanel {
         studentRoomNumber.setText("Room:  " + student.getRoomNumber());
         viewLoans.setVisible(true);
         if(bookLoans.length > 0){
-            CommonLabel bookLoanLabel = new CommonLabel("Current Loans", 12);
-            CommonLabel bookTitle = new CommonLabel("", 12);
-            CommonLabel status = new CommonLabel("", 12);
-            CommonLabel dateReleased = new CommonLabel("", 12);
-            CommonLabel dateDue = new CommonLabel("", 12);
-            for(int i = 0; i < bookLoans.length; i++){
-                bookTitle.setText(bookDataPanel.getBookCatalog().getTitleByIsbn(bookLoans[i].getISBN()));
-                status.setText(bookLoans[i].getStatus());
-                dateReleased.setText(sdf.format(bookLoans[i].getDateIssued()));
-                dateReleased.setText(sdf.format(bookLoans[i].getDueDate()));
-            }
+            bookLoanDataPanel.renderTable(bookLoans);
         }
-
+        //render the books in this section
     }
 
     public void setPanelVisibility(ActionEvent e){
@@ -177,5 +175,8 @@ public class StaffPanel extends JPanel {
         }
     }
 
-
+    public void populateBookLoanDataPanelByStatus(String status){
+      BookLoan [] statusBookLoans = bookLoanList.getBookLoansByStatus(status);
+      bookLoanDataPanel.renderTable(statusBookLoans);
+    }
 }

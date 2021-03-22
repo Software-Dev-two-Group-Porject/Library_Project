@@ -11,7 +11,6 @@ import java.util.Arrays;
 public class StudentList {
    private Student [] studentList;
 
-
     StudentList(){
 
     }
@@ -83,6 +82,17 @@ public class StudentList {
         return Arrays.copyOfRange(returnList, 0, s);
    }
 
+   public Student findStudentByEmail(String email){
+        Student returnStudent = new Student();
+        for (int i = 0; i < studentList.length; i++){
+            if(studentList[i].getEmail().equals(email)){
+                returnStudent = studentList[i];
+            }
+        }
+
+        return returnStudent;
+   }
+
    public Student [] findStudentByBlock(char block){
         Student [] returnList = new Student[studentList.length];
         int s = 0;
@@ -108,6 +118,10 @@ public class StudentList {
         Student [] studentArr = new Student[1];
         studentArr[0] = findById(id);
         return studentArr;
+   }
+
+   public String findStudentNameById(int id){
+        return findById(id).getName();
    }
 
 }
