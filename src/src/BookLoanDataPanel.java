@@ -37,7 +37,6 @@ public class BookLoanDataPanel extends JPanel {
         fineAmount = new JLabel();
 
         this.add(saveChanges, BorderLayout.SOUTH);
-
     }
 
 

@@ -21,12 +21,15 @@ public class StudentPanel extends JPanel {
     String [] statusChanges = {"requested", "ready"};
     StudentList studentList = new StudentList();
     CommonButton requestButton;
+    BookLoan [] studentBookLoans;
+    String tempIsbn = "";
+    Student student;
     StudentPanel(String email){
         this.setLayout(null);
         this.setBackground(design.bgColor);
 
         studentList.populateList();
-        Student student = studentList.findStudentByEmail(email);
+        student = studentList.findStudentByEmail(email);
 
         bookLoanList = new BookLoanList();
         bookLoanList.populateBookLoanList();
@@ -34,11 +37,12 @@ public class StudentPanel extends JPanel {
         headerPanel.setBounds(20, 5, 900, 135 );
         this.add(headerPanel);
 
-        bookLoanDataPanel = new BookLoanDataPanel(bookLoanList.getBookLoansByUserId(student.getUserID()), statusChanges); 
+        studentBookLoans = bookLoanList.getBookLoansByUserId(student.getUserID());
+
+        bookLoanDataPanel = new BookLoanDataPanel(studentBookLoans, statusChanges);
         studentDetailPanel = new JPanel();
         studentDetailPanel.setLayout(new GridLayout(3, 0));
 
-        setCurrentBookLoans(bookLoanList.getBookLoansByUserId(student.getUserID()));
         catalog = new Catalog();
         catalog.initializeCatalogue();
         bookDataPanel = new BookDataPanel(this, null);
@@ -64,6 +68,7 @@ public class StudentPanel extends JPanel {
 
         requestButton = new CommonButton("Request", design.tableButtonColor,10);
         requestButton.setBounds(275, 275, 100, 20);
+        requestButton.addActionListener(l -> addBookLoan());
         requestButton.setVisible(false);
 
         bookDataPanel.renderTable(catalog.getCatalogueList());
@@ -75,24 +80,48 @@ public class StudentPanel extends JPanel {
 
         //need to display the current book order.
         // need a smaller data table similar to the catalog,
-        //display the name of the book as well as other details so book can be eaily views.
+        //display the name of the book as well as other details so book can be easily+399 views.
         //have a status update button#
     }
 
 
-    private void setCurrentBookLoans(BookLoan [] bookLoans){
-        //this method will populated the panel with the text for the current book loans.
-    }
-
     public void setBookLabels(Book book){
+        tempIsbn = book.getIsbn();
         isbn.setText("Isbn: " + book.getIsbn());
         title.setText("Title: " + book.getTitle());
         author.setText("Author: " + book.getAuthor());
         genre.setText("Genre: " + book.getGenre());
         subGenre.setText("Sub Genre: " + book.getSubGenre());
         quantity.setText("Quantity: " + String.valueOf(book.getQuantity()));
-        if(book.getQuantity() > 0){
+        if(book.getQuantity() > 0 || studentBookLoans.length >= 5 || checkStudentBookLoanList(tempIsbn))
             requestButton.setVisible(true);
+        else
+            requestButton.setVisible(false);
+    }
+
+    public void addBookLoan(){
+        BookLoan [] newBookLoansArray = new BookLoan[studentBookLoans.length];
+        BookLoan newBookLoan = new BookLoan();
+        newBookLoan.setISBN(tempIsbn);
+        newBookLoan.setUserID(student.getUserID());
+        newBookLoan.setStatus("requested");
+        newBookLoansArray[studentBookLoans.length -1] = newBookLoan;
+        for(int i =0; i < studentBookLoans.length; i++){
+            newBookLoansArray[i] = studentBookLoans[i];
         }
+        studentBookLoans = newBookLoansArray;
+
+        bookLoanDataPanel.renderTable(studentBookLoans);
+    }
+
+    private boolean checkStudentBookLoanList(String isbn){
+        boolean exists = false;
+        for(int i =0; i < studentBookLoans.length; i++){
+            if(studentBookLoans[i].getISBN().equals(isbn)){
+                exists = true;
+            }
+        }
+
+        return exists;
     }
 }
