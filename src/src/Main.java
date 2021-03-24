@@ -20,13 +20,13 @@ public class Main {
         studentList.populateList();
         studentList.printStudentList();
 
-        //start to test the book loanList object,
+        //start to test the book loanList object, - also tested in TestBookLoan
         //this will need a file and will need to be read from and written too.
         try {
             String str = "2021-03-08 12:30:34";
             BookLoan bookLoan = new BookLoan();
             bookLoan.setUserID(1234);
-            bookLoan.setISBN("978-whatever the fuck we want");
+            bookLoan.setISBN("978-Test");
             bookLoan.setDateIssued(Date.from(LocalDate.of(2021, 1, 9).atStartOfDay(ZoneId.systemDefault()).toInstant()));
             bookLoan.setDueDate(formatter.parse( "2021-03-08 12:30:34"));
             System.out.println(str.charAt(0));

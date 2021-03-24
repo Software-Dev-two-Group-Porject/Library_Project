@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <excludeFromCompile>
+      <file url="file://$PROJECT_DIR$/src/src/AddBook.java" />
+      <file url="file://$PROJECT_DIR$/src/src/AddEditStudent.java" />
+      <file url="file://$PROJECT_DIR$/src/src/AddUser.java" />
+      <file url="file://$PROJECT_DIR$/src/src/Book.java" />
+      <file url="file://$PROJECT_DIR$/src/src/BookDataPanel.java" />
+      <file url="file://$PROJECT_DIR$/src/src/BookLoanDataPanel.java" />
+      <file url="file://$PROJECT_DIR$/src/src/Catalog.java" />
+      <file url="file://$PROJECT_DIR$/src/src/CommonButton.java" />
+      <file url="file://$PROJECT_DIR$/src/src/CommonLabel.java" />
+      <file url="file://$PROJECT_DIR$/src/src/CommonTextField.java" />
+      <file url="file://$PROJECT_DIR$/src/src/Design.java" />
+      <file url="file://$PROJECT_DIR$/src/src/Display.java" />
+      <file url="file://$PROJECT_DIR$/src/src/EditUser.java" />
+      <file url="file://$PROJECT_DIR$/src/src/HeaderPanel.java" />
+      <file url="file://$PROJECT_DIR$/src/src/LoginPanel.java" />
+      <file url="file://$PROJECT_DIR$/src/src/Main.java" />
+      <file url="file://$PROJECT_DIR$/src/src/RunGUI.java" />
+      <file url="file://$PROJECT_DIR$/src/src/StaffPanel.java" />
+      <file url="file://$PROJECT_DIR$/src/src/Student.java" />
+      <file url="file://$PROJECT_DIR$/src/src/StudentDataPanel.java" />
+      <file url="file://$PROJECT_DIR$/src/src/StudentList.java" />
+      <file url="file://$PROJECT_DIR$/src/src/StudentPanel.java" />
+      <file url="file://$PROJECT_DIR$/src/src/TableButton.java" />
+      <file url="file://$PROJECT_DIR$/src/src/TestCatalog.java" />
+      <file url="file://$PROJECT_DIR$/src/src/TestUsers.java" />
+      <file url="file://$PROJECT_DIR$/src/src/User.java" />
+      <file url="file://$PROJECT_DIR$/src/src/UserList.java" />
+      <file url="file://$PROJECT_DIR$/src/src/Utils.java" />
+    </excludeFromCompile>
+  </component>
+</project>

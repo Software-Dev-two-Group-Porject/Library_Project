@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class BookLoanList {
 
     private BookLoan [] bookLoans;
-    private String file = "src\\Data\\BookLoanList.csv";
+    private String file = "src\\Data\\BookLoanList.csv"; //src/Data/BookLoanList.csv - Mac path for file source
     static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private int count;
     static Scanner keyboard = new Scanner(System.in); //added RM- temp

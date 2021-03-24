@@ -92,10 +92,10 @@ public class BookLoan
 
    //instead of being a value within the constructor we can use the
    public int getDaysOverDue(){
-       System.out.println("At get days overdue" + dateFormat.format(dueDate));
+       System.out.println("At get days overdue: " + dateFormat.format(dueDate));
        //System.out.println(date.charAt(16));
        Date newDate = new Date();
-       System.out.println("Todays date as string:" + dateFormat.format(newDate));
+       System.out.println("Today's date as string: " + dateFormat.format(newDate));
       LocalDate secondDate = LocalDate.parse(dateFormat.format(dueDate), format); //convert from String type to readable Date
       LocalDate todayDate = LocalDate.now(); //creating object for current date
       if (todayDate.compareTo(secondDate)>0){
