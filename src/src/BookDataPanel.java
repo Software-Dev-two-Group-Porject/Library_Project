@@ -36,7 +36,9 @@ public class BookDataPanel extends JPanel {
         addBook = new CommonButton("Add Book", design.btnAddColor, 9);
         addBook.setBounds(10, 10, 85,25);
         addBook.addActionListener(l -> openAddEditBook());
-        topComponentContainer.add(addBook);
+        if(staffPanel != null) {
+            topComponentContainer.add(addBook);
+        }
 
         viewAllButton = new CommonButton("View All", design.tableButtonColor, 9);
         viewAllButton.setBounds(105, 10, 85, 25);
@@ -147,7 +149,7 @@ public class BookDataPanel extends JPanel {
                 arr = catalog.getBookByGenre(searchTextCategory.getText());
                 break;
             case "sub genre":
-                arr = catalog.getBookByGenre(searchTextCategory.getText());
+                arr = catalog.getBooksBySubGenre(searchTextCategory.getText());
                 break;
             default:
                 break;
@@ -169,7 +171,7 @@ public class BookDataPanel extends JPanel {
         dataOutput.revalidate();
         dataOutput.repaint();
 
-        JLabel isbn, title, author, genre, sub_genre, loantype, quantity;
+        JLabel isbn, title, author, genre, sub_genre, quantity;
         TableButton [] vb = getDataTableViewButtons(arr);
 
         GridBagConstraints gbc = new GridBagConstraints();
@@ -211,12 +213,10 @@ public class BookDataPanel extends JPanel {
     }
 
     public void setBookDataLabels(String isbn){
-        System.out.println(isbn);
-        System.out.println(this.studentPanel);
-        if(studentPanel != null){
+        if(studentPanel != null)
             studentPanel.setBookLabels(catalog.getBookByIsbn(isbn));
-        }
     }
+
     public Catalog getBookCatalog(){
         return this.catalog;
     }

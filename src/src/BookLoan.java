@@ -113,6 +113,10 @@ public class BookLoan
       return (int) daysOverDue;
    }
 
+   public double getFineAmount(){
+        return this.getDaysOverDue() * this.getFinePerDay();
+   }
+
    //or - alternative method to above
    ////instead of being a value within the constructor we can use the
    //public static int getDaysOverDue(){

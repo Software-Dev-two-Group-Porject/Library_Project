@@ -40,7 +40,7 @@ public class StaffPanel extends JPanel {
         gbc.insets = new Insets(0, 0, 5, 20);
 
         headerPanel = new HeaderPanel("Staff",user.getName());
-        headerPanel.setBounds(20, 5, 850, 120);
+        headerPanel.setBounds(20, 5, 850, 135);
         this.add(headerPanel);
 
         labelTotalRequests = new CommonLabel("Requests: " + bookLoanList.getTotalRequests(), 20);
@@ -107,12 +107,7 @@ public class StaffPanel extends JPanel {
 
         this.add(studentInfo);
 
-        bookLoanHolder = new JPanel();
-        JScrollPane jsp = new JScrollPane(bookLoanHolder);
-        jsp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
-        jsp.setBounds(450, 130, 400, 120);
-        this.add(jsp);
         buttonContainer = new JPanel();
         buttonContainer.setLayout(new FlowLayout());
         buttonContainer.setBounds(50, 260, 180, 35);
@@ -140,8 +135,6 @@ public class StaffPanel extends JPanel {
         this.add(bookDataPanel);
 
         bookLoanDataPanel = new BookLoanDataPanel(bookLoanList.getBookLoanList(), staffStatusChanges);
-
-
     }
 
     public void setStudentViewLabels(Student student){
@@ -153,7 +146,11 @@ public class StaffPanel extends JPanel {
         studentBlock.setText("Block:  " + student.getBlockLetter());
         studentRoomNumber.setText("Room:  " + student.getRoomNumber());
         viewLoans.setVisible(true);
+
         if(bookLoans.length > 0){
+            for(int i = 0; i < bookLoans.length; i++){
+                System.out.println(bookLoans[i].toString());
+            }
             bookLoanDataPanel.renderTable(bookLoans);
         }
         //render the books in this section

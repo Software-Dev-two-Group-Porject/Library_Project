@@ -209,9 +209,24 @@ public class Catalog {
             }
     }
 
-    public String getTitleByIsbn(String isbn){
-        return getBookByIsbn(isbn).getTitle();
+    public Book [] getBooksBySubGenre(String subGenre){
+        count = 0;
+        Book [] returnList = new Book[this.catalogueList.length];
+        for(int i = 0; i  < this.catalogueList.length; i++){
+            if(subGenre.toLowerCase().trim().equals(this.catalogueList[i].getSubGenre().toLowerCase().trim())){
+                Book book = this.catalogueList[i];
+                returnList[count] = book;
+                count++;
+            }
+        }
+
+        //using copy of to get an array with no null vals from our existing array
+        Book [] bookList = Arrays.copyOfRange(returnList, 0, count);
+
+        return bookList;
+
     }
+
 
     public void removeFromCatalog(String isbn){
         char response;

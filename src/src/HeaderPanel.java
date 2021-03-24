@@ -32,7 +32,7 @@ public class HeaderPanel extends JPanel {
         nameLabel = new JLabel("Name: " + name);
         nameLabel.setForeground(Color.white);
         nameLabel.setFont(new Font(design.fontName, Font.BOLD, 25));
-        nameLabel.setBounds(320, 45, 300, 30);
+        nameLabel.setBounds(320, 45, 400, 30);
 
         dateLabel = new JLabel("Date: " +formatter.format(date));
         dateLabel.setForeground(Color.white);

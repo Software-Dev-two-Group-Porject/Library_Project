@@ -40,6 +40,7 @@ public class StudentPanel extends JPanel {
         studentBookLoans = bookLoanList.getBookLoansByUserId(student.getUserID());
 
         bookLoanDataPanel = new BookLoanDataPanel(studentBookLoans, statusChanges);
+        bookLoanDataPanel.setBounds(400, 145, 550,200);
         studentDetailPanel = new JPanel();
         studentDetailPanel.setLayout(new GridLayout(3, 0));
 

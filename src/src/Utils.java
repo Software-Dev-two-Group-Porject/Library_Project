@@ -17,7 +17,7 @@ public class Utils
    static String block = "[a-hA-h]"; //Would be set to only accept blocks that the university has
    final static int MAXROOM = 499; //Highest room number in any block
    static String course = "[a-zA-Z\\s'áéíóúÁÉÍÓÚ&,-]+"; //Allows only letters, ampersand, commas, hyphens and spaces
-   static String bookName = "[a-zA-Z0-9\\sáéíóúÁÉÍÓÚ-'&(),]+"; //Allows letters, numbers, spaces and certain special characters
+   static String bookName = "^[a-zA-Z0-9\\sáéíóúÁÉÍÓÚ\\-'&(),]+$"; //Allows letters, numbers, spaces and certain special characters
 
    Utils(){
 
@@ -32,11 +32,13 @@ public class Utils
       return validationMessage;
    } //emailValidation
 
-   public static String nameValidation(String input) {
+   public static String nameValidation(String type, String input) {
       String validationMessage = "";
-      if (!stringCheck(input, name)) validationMessage += "Name must only have letters, hyphens and spaces\n";
-      if (!charCount(4, 50, input)) validationMessage += "Name must have between 4 and 50 characters\n";
-      if (countWords(input) < 2) validationMessage += "Name must be at least two words\n";
+      if (!stringCheck(input, name)) validationMessage += String.format("%s must only have letters, hyphens and spaces\n", type);
+      if (!charCount(4, 50, input)) validationMessage += String.format("%s must have between 4 and 50 characters\n", type);
+      if(!type.equals("genre")) {
+         if (countWords(input) < 2) validationMessage += String.format("%s must be at least two words\n", type);
+      }
       return validationMessage;
    } //nameValidation
 
@@ -62,11 +64,15 @@ public class Utils
       return validationMessage;
    } //blockValidation
 
-   public static String roomValidation(String input) {
+   public static String integerValidation(String name, String input) {
       String validationMessage = "";
-      if (Integer.parseInt(input) > MAXROOM) validationMessage += "Invalid room number";
-      if (!stringCheck(input, numbers)) validationMessage += "Room must only have numbers and no spaces\n";
-      if (!charCount(0,4,input)) validationMessage += "Room number must have one, two or three digits\n";
+       if(!input.trim().equals("")){
+         if (Integer.parseInt(input) > MAXROOM) validationMessage += String.format("Invalid %s \n", name);
+         if (!stringCheck(input, numbers)) validationMessage += String.format("%s must only have numbers and no spaces\n", name);
+         if (!charCount(0, 4, input)) validationMessage += String.format("%s must have one, two or three digits\n", name);
+      } else {
+          validationMessage += String.format("%s must have a valid value\n", name);
+       }
       return validationMessage;
    } //roomValidation
 

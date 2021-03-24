@@ -174,13 +174,13 @@ public class AddEditStudent extends JFrame {
          utils = new Utils();
          UserList userList = new UserList();
          String validationMessage ="";
-         validationMessage += utils.nameValidation(nameField.getText());
+         validationMessage += utils.nameValidation("Name", nameField.getText());
          validationMessage += utils.emailValidation(emailField.getText());
          validationMessage += utils.passwordValidation(String.valueOf(passwordField.getPassword()),
                                                         String.valueOf(repeatPasswordField.getPassword()));
          validationMessage += utils.courseValidation(courseField.getText());
          validationMessage += utils.blockValidation(blockField.getText());
-         validationMessage += utils.roomValidation(roomField.getText());
+         validationMessage += utils.integerValidation("Room Number", roomField.getText());
         System.out.println(String.valueOf(passwordField.getPassword()));
         System.out.println(String.valueOf(repeatPasswordField.getPassword()));
 
