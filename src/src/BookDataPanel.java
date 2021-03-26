@@ -35,8 +35,10 @@ public class BookDataPanel extends JPanel {
 
         addBook = new CommonButton("Add Book", design.btnAddColor, 9);
         addBook.setBounds(10, 10, 85,25);
-        addBook.addActionListener(l -> openAddEditBook(""));
-        topComponentContainer.add(addBook);
+        addBook.addActionListener(l -> openAddEditBook());
+        if(staffPanel != null) {
+            topComponentContainer.add(addBook);
+        }
 
         viewAllButton = new CommonButton("View All", design.tableButtonColor, 9);
         viewAllButton.setBounds(105, 10, 85, 25);
@@ -115,7 +117,7 @@ public class BookDataPanel extends JPanel {
                 "</tr></html>";
     }
 
-    public void openAddEditBook(String isbn){
+    public void openAddEditBook(){
         AddBook addBook = new AddBook(catalog, this);
 
 
@@ -131,28 +133,27 @@ public class BookDataPanel extends JPanel {
 
     public void filterBooks(){
         Book [] arr = null;
-        switch(searchByBox.getItemAt(searchByBox.getSelectedIndex()).toLowerCase()){
-            case "isbn":
-                //get by isbn
-                arr = catalog.getBookByIsbnForTable(searchTextCategory.getText());
-                break;
-            case "title":
-                arr = catalog.getBooksByTitle(searchTextCategory.getText());
-                //perform search to get title
-                break;
-            case "author":
-                arr = catalog.getBookByAuthor(searchTextCategory.getText());
-                break;
-            case "genre":
-                arr = catalog.getBookByGenre(searchTextCategory.getText());
-                break;
-            case "sub genre":
-                arr = catalog.getBookByGenre(searchTextCategory.getText());
-                break;
-            default:
-                break;
-        }
-
+            switch (searchByBox.getItemAt(searchByBox.getSelectedIndex()).toLowerCase()) {
+                case "isbn":
+                    //get by isbn
+                    arr = catalog.getBookByIsbnForTable(searchTextCategory.getText());
+                    break;
+                case "title":
+                    arr = catalog.getBooksByTitle(searchTextCategory.getText());
+                    //perform search to get title
+                    break;
+                case "author":
+                    arr = catalog.getBookByAuthor(searchTextCategory.getText());
+                    break;
+                case "genre":
+                    arr = catalog.getBookByGenre(searchTextCategory.getText());
+                    break;
+                case "sub genre":
+                    arr = catalog.getBooksBySubGenre(searchTextCategory.getText());
+                    break;
+                default:
+                    break;
+            }
         if(arr != null) {
             renderTable(arr);
         }
@@ -169,40 +170,65 @@ public class BookDataPanel extends JPanel {
         dataOutput.revalidate();
         dataOutput.repaint();
 
-        JLabel isbn, title, author, genre, sub_genre, loantype, quantity;
-        TableButton [] vb = getDataTableViewButtons(arr);
+        JLabel isbn, title, author, genre, sub_genre, quantity;
+        if(arr.length > 0) {
+            TableButton[] vb = getDataTableViewButtons(arr);
 
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.insets = new Insets(0,0,0,10);
-        for(int i =0; i < arr.length; i++){
-            isbn = new JLabel(arr[i].getIsbn(), JLabel.LEFT);
-            gbc.gridx = 0; gbc.gridwidth = 2; gbc.weightx = 0;
-            gbc.gridy= i;
-            dataOutput.add(isbn, gbc);
+            GridBagConstraints gbc = new GridBagConstraints();
+            gbc.fill = GridBagConstraints.HORIZONTAL;
+            gbc.insets = new Insets(0, 0, 0, 10);
+            for (int i = 0; i < arr.length; i++) {
+                isbn = new JLabel(arr[i].getIsbn(), JLabel.LEFT);
+                gbc.gridx = 0;
+                gbc.gridwidth = 2;
+                gbc.weightx = 0;
+                gbc.gridy = i;
+                dataOutput.add(isbn, gbc);
 
-            title = new JLabel(arr[i].getTitle(), JLabel.LEFT);
-            gbc.gridx = 2; gbc.gridwidth = 3; gbc.gridy = i; gbc.weightx = 5;
-            dataOutput.add(title, gbc);
+                title = new JLabel(arr[i].getTitle(), JLabel.LEFT);
+                gbc.gridx = 2;
+                gbc.gridwidth = 3;
+                gbc.gridy = i;
+                gbc.weightx = 5;
+                dataOutput.add(title, gbc);
 
-            author = new JLabel(arr[i].getAuthor(), JLabel.LEFT);
-            gbc.gridx =6;  gbc.gridwidth = 3; gbc.gridy = i; gbc.weightx =4;
-            dataOutput.add(author, gbc);
+                author = new JLabel(arr[i].getAuthor(), JLabel.LEFT);
+                gbc.gridx = 6;
+                gbc.gridwidth = 3;
+                gbc.gridy = i;
+                gbc.weightx = 4;
+                dataOutput.add(author, gbc);
 
-            genre = new JLabel(arr[i].getGenre(), JLabel.LEFT);
-            gbc.gridx= 10; gbc.gridwidth = 3; gbc.gridy = i; gbc.weightx = 3;
-            dataOutput.add(genre, gbc);
+                genre = new JLabel(arr[i].getGenre(), JLabel.LEFT);
+                gbc.gridx = 10;
+                gbc.gridwidth = 3;
+                gbc.gridy = i;
+                gbc.weightx = 3;
+                dataOutput.add(genre, gbc);
 
-            sub_genre = new JLabel(arr[i].getSubGenre(), JLabel.LEFT);
-            gbc.gridx = 13; gbc.gridwidth = 3; gbc.gridy = i; gbc.weightx =3;
-            dataOutput.add(sub_genre, gbc);
+                sub_genre = new JLabel(arr[i].getSubGenre(), JLabel.LEFT);
+                gbc.gridx = 13;
+                gbc.gridwidth = 3;
+                gbc.gridy = i;
+                gbc.weightx = 3;
+                dataOutput.add(sub_genre, gbc);
 
-            quantity = new JLabel(String.valueOf(arr[i].getQuantity()), JLabel.LEFT);
-            gbc.gridx = 20; gbc.gridwidth = 3; gbc.gridy = i; gbc.weightx =3;
-            dataOutput.add(quantity, gbc);
+                quantity = new JLabel(String.valueOf(arr[i].getQuantity()), JLabel.LEFT);
+                gbc.gridx = 20;
+                gbc.gridwidth = 3;
+                gbc.gridy = i;
+                gbc.weightx = 3;
+                dataOutput.add(quantity, gbc);
 
-            gbc.gridx = 23; gbc.gridwidth = 2; gbc.gridy=i; gbc.weightx = 0;
-            dataOutput.add(vb[i], gbc);
+                gbc.gridx = 23;
+                gbc.gridwidth = 2;
+                gbc.gridy = i;
+                gbc.weightx = 0;
+                dataOutput.add(vb[i], gbc);
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Your search returned no results.");
         }
     }
 
@@ -211,6 +237,11 @@ public class BookDataPanel extends JPanel {
     }
 
     public void setBookDataLabels(String isbn){
+        if(studentPanel != null)
+            studentPanel.setBookLabels(catalog.getBookByIsbn(isbn));
+    }
 
+    public Catalog getBookCatalog(){
+        return this.catalog;
     }
 }

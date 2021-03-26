@@ -30,7 +30,7 @@ public class TestUsers
       System.out.println("Name: ");
       String name = keyboard.nextLine();
 
-      String test = Utils.nameValidation(name);
+      String test = Utils.nameValidation("NAME",name);
 
       System.out.println("Error: " + test);
       System.out.println("Result: " + name);

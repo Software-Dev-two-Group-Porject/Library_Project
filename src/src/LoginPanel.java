@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
  * Update Comments About Program Here
  **/
 public class LoginPanel extends JPanel {
-    private JLabel emailLabel, passwordLabel, loginLabel, logoLabel, headerLabel;
+    private JLabel emailLabel, passwordLabel, loginLabel, logoLabel, headerLabel1, headerLabel2;
     private JTextField emailTextField;
     private JPasswordField passwordField;
     JPanel loginContainer;
@@ -19,7 +19,6 @@ public class LoginPanel extends JPanel {
     Font labelFont = new Font(design.fontName, Font.BOLD, 15);
 
     User user;
-  //  User [] userList;
     UserList userList;
 
 
@@ -33,13 +32,18 @@ public class LoginPanel extends JPanel {
 
         logoLabel = new JLabel();
         logoLabel.setIcon(design.img);
-        logoLabel.setBounds(30, 20, 181, 100);
+        logoLabel.setBorder(BorderFactory.createLineBorder(design.borderColor, 2));
+        logoLabel.setBounds(30, 10, 280, 118);
 
-        headerLabel = new JLabel("COM809 Halls Book Order Service");
-        headerLabel.setFont(new Font(design.fontName, Font.BOLD, 35));
-        headerLabel.setBounds(220, 40, 580, 50);
-        headerLabel.setForeground(Color.white);
+        headerLabel1 = new JLabel("COM 809");
+        headerLabel1.setFont(new Font(design.fontName, Font.BOLD, 35));
+        headerLabel1.setBounds(330, 50, 150, 50);
+        headerLabel1.setForeground(design.borderGold);
 
+        headerLabel2 = new JLabel("Project Team 7");
+        headerLabel2.setFont(new Font(design.fontName, Font.BOLD, 35));
+        headerLabel2.setBounds(485, 50, 250, 50);
+        headerLabel2.setForeground(Color.white);
 
         loginLabel = new JLabel("Login");
         loginLabel.setForeground(Color.white);
@@ -63,8 +67,8 @@ public class LoginPanel extends JPanel {
 
         passwordField = new JPasswordField();
         passwordField.setBounds(40, 180, 290, 30);
-        emailTextField.setBorder(BorderFactory.createLineBorder(new Color(105,105,105), 2));
-        emailTextField.setFont(labelFont);
+        passwordField.setBorder(BorderFactory.createLineBorder(new Color(105,105,105), 2));
+        passwordField.setFont(labelFont);
 
         loginBtn = new JButton("Login");
         loginBtn.setForeground(Color.white);
@@ -85,7 +89,7 @@ public class LoginPanel extends JPanel {
         loginContainer.add(passwordField); loginContainer.add(loginBtn);
 
 
-        this.setLayout(null); this.add(headerLabel);
+        this.setLayout(null); this.add(headerLabel1); this.add(headerLabel2);
         this.add(logoLabel); this.add(loginContainer);
 
     }
@@ -102,7 +106,8 @@ public class LoginPanel extends JPanel {
                 if(userSignIn.getStatus().equals("staff")){
                     display.add(new StaffPanel(userSignIn));
                 } else {
-                    display.add(new StudentPanel(new Student()));
+                    //need to properly display a student here
+                    display.add(new StudentPanel(email));
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Incorrect Password");

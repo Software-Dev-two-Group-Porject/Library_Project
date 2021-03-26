@@ -12,19 +12,14 @@ public class Catalog {
     static Scanner input = new Scanner(System.in);
     private Book[] catalogueList;
     int count;
+    String fileName = "src\\Data\\Book_Data.csv";
 
     Catalog(){
     }
 
 
     //used as a easier test method to check that data is being displayed correctly. 
-    public void printList(Book [] bookList){
-        System.out.println("\t\t\tBOOK CATALOGUE");
-        System.out.println(printHeader());
-        for(int i = 0; i < bookList.length; i++){
-            System.out.println(bookList[i].toString());
-        }
-    }
+
 
     private String printHeader(){
         return String.format("%-15s\t%-20s\t%-60s\t%-20s\t%-20s\t%s", "ISBN", "Author", "Title", "Genre", "Sub Genre", "Quantity", "Priority");
@@ -86,7 +81,7 @@ public class Catalog {
     }
 
     public Book getBookByIsbn(String isbn){
-        Book returnBook = new Book();
+        Book returnBook = null;
         for(int i = 0; i< this.catalogueList.length; i++){
             if(this.catalogueList[i].getIsbn().equals(isbn.trim())){
                 returnBook = this.catalogueList[i];
@@ -166,9 +161,14 @@ public class Catalog {
     }
 
     public Book [] getBookByIsbnForTable(String isbn){
-        Book [] bookArr = new Book[1];
-        bookArr[0] = getBookByIsbn(isbn);
-        return bookArr;
+        if(getBookByIsbn(isbn) != null) {
+            Book [] bookArr = new Book[1];
+            bookArr[0] = getBookByIsbn(isbn);
+            return bookArr;
+        } else {
+         return null;
+        }
+
     }
 
     public void addBookToCatalog(Book book){
@@ -208,6 +208,25 @@ public class Catalog {
                 System.out.println("Book record not found");
             }
     }
+
+    public Book [] getBooksBySubGenre(String subGenre){
+        count = 0;
+        Book [] returnList = new Book[this.catalogueList.length];
+        for(int i = 0; i  < this.catalogueList.length; i++){
+            if(subGenre.toLowerCase().trim().equals(this.catalogueList[i].getSubGenre().toLowerCase().trim())){
+                Book book = this.catalogueList[i];
+                returnList[count] = book;
+                count++;
+            }
+        }
+
+        //using copy of to get an array with no null vals from our existing array
+        Book [] bookList = Arrays.copyOfRange(returnList, 0, count);
+
+        return bookList;
+
+    }
+
 
     public void removeFromCatalog(String isbn){
         char response;

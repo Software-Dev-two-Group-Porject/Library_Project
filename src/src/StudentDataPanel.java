@@ -17,6 +17,7 @@ public class StudentDataPanel extends JPanel {
     AddEditStudent addEditStudent;
     StaffPanel staffPanel;
     User user;
+    UserList userList;
 
     StudentDataPanel(StaffPanel staffPanel){
         this.setLayout(null);
@@ -24,7 +25,7 @@ public class StudentDataPanel extends JPanel {
         studentList.populateList();
         this.staffPanel = staffPanel;
         user = new User();
-        UserList userList = new UserList();
+        userList = new UserList();
         userList.initUserList();
 
         topComponentPanel = new JPanel();
@@ -149,9 +150,6 @@ public class StudentDataPanel extends JPanel {
 
     public void openAddEditTab(String id){
         int action = 0;
-
-        UserList userList = new UserList();
-
         Student student;
         if(id.equals("")) {
             student = new Student();

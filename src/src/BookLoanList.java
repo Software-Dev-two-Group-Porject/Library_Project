@@ -1,9 +1,11 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -50,13 +52,12 @@ public class BookLoanList {
         System.out.println(line);
         try {
             String [] data = line.split(",");
-
             bookLoan.setISBN(data[0]);
             bookLoan.setUserID(Integer.parseInt(data[1]));
-            bookLoan.setDateIssued(formatter.parse(data[2]));
-            bookLoan.setDueDate(formatter.parse(data[3]));
-            bookLoan.setDateReturned(formatter.parse(data[4]));
-            bookLoan.setOverdue(false);
+            bookLoan.setDateIssued((data[2].trim().equals("")) ? null : formatter.parse(data[2]));
+            bookLoan.setStatus(data[3]);
+            bookLoan.setDueDate((data[4].trim().equals("")) ? null : formatter.parse(data[4]));
+            bookLoan.setDateReturned((data[5].trim().equals("")) ? null : formatter.parse(data[5]));
             bookLoan.setFinePerDay(2.50);
         } catch (ParseException pe) {
             pe.printStackTrace();
@@ -106,21 +107,12 @@ public class BookLoanList {
         return Arrays.copyOfRange(returnBookList, 0, count);
     }
 
-    public void addToBookLoanList(BookLoan bkloan){     //see 2nd method below for my try
-
-    }
-
-    //To Do
-    //Add Method
-    //Remove Method
-    //Update Status Method
-
     //Copied from Catalog to edit
     //Method to remove book from BookLoan List if collected/requested/delivered
     public void removeFromBookLoanList(String isbn, int userid){
         char response;
         for(int i = 0; i < bookLoans.length; i++){
-            if(bookLoans[i].getISBN().equals(isbn.trim())){   //do I need ID looped through too?
+            if(bookLoans[i].getISBN().equals(isbn.trim()) && bookLoans[i].getUserID() == userid){   //do I need ID looped through too?
                 System.out.println("Record Found");
                 System.out.println(isbn); //printHeader()?
                 System.out.println(bookLoans[i].toString());
@@ -142,7 +134,7 @@ public class BookLoanList {
 
 
     //AddBookLoanlist method
-    public void addToBookLoanList(BookLoan bkloan, int userid){
+    public void addToBookLoanList(BookLoan bkloan){
         BookLoan [] newArray = new BookLoan[bookLoans.length + 1]; //create new array adding 1 new index for new book
         for(int i = 0; i < bookLoans.length; i++){
             newArray[i] = bookLoans[i];
@@ -154,31 +146,57 @@ public class BookLoanList {
     /**- code with errors - UpdateStatusMethod
      //Update Status Method - Update - find object, update (and set value to it)
      //change status to reflect status of book (Collected, Requested, Delivered)
-
-    public void updateStatus(String isbn, int userid, String status){
-        BookLoan book = null; //?
-        int j= 0;
-        for(int i = 0; i < bookLoans.length; i++) {
-            if (bookLoans[i].getISBN().trim().equals(isbn.trim())) {
-                book = bookLoans[i];
-                j = i;
+     **/
+    public void updateStatus(String isbn, int userid, String status) {
+        for (int i = 0; i < bookLoans.length; i++) {
+            if (bookLoans[i].getISBN().trim().equals(isbn.trim()) && bookLoans[i].getUserID() == userid) {
+                bookLoans[i].setStatus(status);
+                switch(status){
+                    case "delivered":
+                        bookLoans[i].setDateIssued(new Date());
+                        bookLoans[i].setDueDate(new Date());
+                        break;
+                    case "ready":
+                        bookLoans[i].setDateReturned(new Date());
+                        break;
+                    default:
+                        break;
+                }
             }
-        }
-        if(book != null){
-            if(BookLoan.getDateIssued() > 0 && status == "Collected"){
-                BookLoan.setStatus(book.getStatus());
-            } else if (status == "Delivered"){
-                BookLoan.setStatus(book.getStatus() + 1);
-            } else {
-                System.out.println("Requested");
-            }
-            bookLoans[j] = book;
-        } else {
-            System.out.println("Book record not found");
         }
 
     }
-     **/
+    public int getTotals(String status){
+        int count = 0;
+        for(int i = 0; i < bookLoans.length; i++){
+            if(bookLoans[i].status.equals(status)){
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public BookLoan [] getBookLoansByStatus(String status){
+        int count = 0;
+        BookLoan [] returnArray = new BookLoan[bookLoans.length];
+        for(int i = 0; i < bookLoans.length; i++){
+            if(bookLoans[i].getStatus().toLowerCase().equals(status)){
+                returnArray[count] = bookLoans[i];
+                count++;
+            }
+        }
+
+        return Arrays.copyOfRange(returnArray, 0, count);
+    }
+
+
+    public void saveData(){
+        String header = "isbn,userid,date,status,dateissued,datereturned,duedate,isoverdue,fineperday";
+        BufferedWriter writer = null;
+
+    }
+
 
 
 }

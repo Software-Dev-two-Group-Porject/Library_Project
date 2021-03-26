@@ -26,6 +26,7 @@ public class AddEditStudent extends JFrame {
     User user;
     Utils utils;
 
+
     //the actions here will be an int 0 = Add, 1 = edit. this will manage some of the data that will be displayed.
     AddEditStudent(int action, Student student, StudentDataPanel studentDataPanel, StudentList studentList){
         this.studentDataPanel = studentDataPanel;
@@ -108,10 +109,10 @@ public class AddEditStudent extends JFrame {
         //setting buttons
         if(this.action == 1){
             btnAddEdit = new CommonButton("Edit", design.btnWarningColor, 13);
-            btnAddEdit.addActionListener(l -> editStudentInfo(student));
+            btnAddEdit.addActionListener(l -> addEditUser());
         } else {
             btnAddEdit = new CommonButton("Add", design.btnAddColor, 13);
-            btnAddEdit.addActionListener(l -> addStudent(student));
+            btnAddEdit.addActionListener(l -> addEditUser());
         }
 
         btnAddEdit.setBounds(50, 575, 100, 40);
@@ -157,42 +158,49 @@ public class AddEditStudent extends JFrame {
     }
 
 
-    public void setStatusFieldsOnChange(ActionEvent ae){
+   private String validateData(){
+       String validationMessage ="";
+       validationMessage += utils.nameValidation("Name", nameField.getText());
+       validationMessage += utils.emailValidation(emailField.getText());
+       validationMessage += utils.passwordValidation(String.valueOf(passwordField.getPassword()), String.valueOf(repeatPasswordField.getPassword()));
+       validationMessage += utils.courseValidation(courseField.getText());
+       validationMessage += utils.blockValidation(blockField.getText());
+       validationMessage += utils.integerValidation("Room Number", roomField.getText());
 
-    }
+       return validationMessage;
+   }
 
-    public void setStatusFields(String status){
+  public void addEditUser(){
+       UserList userList = new UserList();
+       User newUser = new User();
+       String validationText = validateData();
+       String message = "";
+       if(validationText.equals("")){
+           newUser.setUserID(Integer.parseInt(idField.getText()));
+           newUser.setName(nameField.getText());
+           newUser.setPassword(String.valueOf(passwordField.getPassword()));
+           newUser.setEmail(emailField.getText());
+           newUser.setCourse(courseField.getText());
+           newUser.setBlock(blockField.getText());
+           newUser.setRoom(Integer.parseInt(roomField.getText()));
+           newUser.setStatus(statusBox.getItemAt(statusBox.getSelectedIndex()));
+         if(action == 0){
+             userList.addUserToList(newUser);
+             message = newUser.getName() + " has been added";
 
-    }
-
-
-
-    public void editStudentInfo(Student student ){
-    }
-
-    public void addStudent(Student student){
-         utils = new Utils();
-         UserList userList = new UserList();
-         String validationMessage ="";
-         validationMessage += utils.nameValidation(nameField.getText());
-         validationMessage += utils.emailValidation(emailField.getText());
-         validationMessage += utils.passwordValidation(String.valueOf(passwordField.getPassword()),
-                                                        String.valueOf(repeatPasswordField.getPassword()));
-         validationMessage += utils.courseValidation(courseField.getText());
-         validationMessage += utils.blockValidation(blockField.getText());
-         validationMessage += utils.roomValidation(roomField.getText());
-        System.out.println(String.valueOf(passwordField.getPassword()));
-        System.out.println(String.valueOf(repeatPasswordField.getPassword()));
-
-         if(!validationMessage.equals("")){
-             JOptionPane.showMessageDialog(null, validationMessage);
          } else {
-             JOptionPane.showMessageDialog(null, "A record would be inserted here");
-             userList.addUserToList(new User());
+             userList.editUser(Integer.parseInt(idField.getText()), newUser);
+             message = newUser.getName() + " has been edited";
          }
+           userList.saveUsers();
+           studentList.populateList();
+           //need to order the userList array.
+           studentDataPanel.renderTable(studentList.getStudentList());
+           this.dispose();
 
-        //need to order the userList array.
-        studentDataPanel.renderTable(studentList.getStudentList());
+       } else {
+           JOptionPane.showMessageDialog(null,validationText);
+       }
+  }
 
-    }
 }

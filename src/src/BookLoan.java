@@ -29,21 +29,27 @@ public class BookLoan
     private Date dateIssued;
     private Date dateReturned;
     private Date dueDate;           //or LocalDate dueDate?
-    boolean isOverdue;
     double finePerDay;
     String status;
-    Instant instant;
 
     BookLoan(){
     }//Default Constructor
 
-   BookLoan(int userID, String isbn, Date dateIssued, Date dueDate,  Date dateReturned, boolean isOverdue, double finePerDay){
+
+    BookLoan(int userID, String isbn, String status){
+        this.userID = userID;
+        this.isbn = isbn;
+        this.status = status;
+    }
+
+
+   BookLoan(int userID, String isbn, Date dateIssued, String status,Date dueDate,  Date dateReturned, double finePerDay){
        this.isbn = isbn;
        this.userID = userID;
        this.dateIssued = dateIssued;
+       this.status = status;
        this.dueDate = dueDate;
        this.dateReturned = dateReturned;
-       this.isOverdue = isOverdue;
        this.finePerDay = finePerDay;
     }//constructor
 
@@ -92,28 +98,21 @@ public class BookLoan
 
    //instead of being a value within the constructor we can use the
    public int getDaysOverDue(){
-       System.out.println("At get days overdue: " + dateFormat.format(dueDate));
-       //System.out.println(date.charAt(16));
-       Date newDate = new Date();
-       System.out.println("Today's date as string: " + dateFormat.format(newDate));
-      LocalDate secondDate = LocalDate.parse(dateFormat.format(dueDate), format); //convert from String type to readable Date
-      LocalDate todayDate = LocalDate.now(); //creating object for current date
-      if (todayDate.compareTo(secondDate)>0){
-      } //if today's date is past due date
-      long daysOverDue = ChronoUnit.DAYS.between(secondDate,todayDate); //calc difference to find days overdue
-      return (int) daysOverDue;
+        if(this.dueDate != null) {
+            LocalDate secondDate = LocalDate.parse(dateFormat.format(dueDate), format); //convert from String type to readable Date
+            LocalDate todayDate = LocalDate.now(); //creating object for current date
+            if (todayDate.compareTo(secondDate) > 0) {
+            } //if today's date is past due date
+            long daysOverDue = ChronoUnit.DAYS.between(secondDate, todayDate); //calc difference to find days overdue
+            return (int) daysOverDue;
+        } else {
+            return 0;
+        }
    }
 
-   //or - alternative method to above
-   ////instead of being a value within the constructor we can use the
-   //public static int getDaysOverDue(){
-      //LocalDate secondDate = LocalDate.of(2021,03,05); //need to input date here?
-      //LocalDate todayDate = LocalDate.now(); //creating object for current date
-      //if (todayDate.compareTo(secondDate)>0){
-      //} //if today's date is past due date
-      //long daysOverDue = ChronoUnit.DAYS.between(secondDate,todayDate); //calc difference to find days overdue
-      //return (int) daysOverDue;
-   //}
+   public double getFineAmount(){
+        return this.getDaysOverDue() * this.getFinePerDay();
+   }
 
     public String getStatus(){
         return this.status;
@@ -130,10 +129,7 @@ public class BookLoan
     public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
     }
-   public void setOverdue(boolean overdue)
-   {
-      isOverdue = overdue;
-   }
+
 
    public double getFinePerDay()
    {
@@ -146,7 +142,9 @@ public class BookLoan
    }
 
    public String toString(){
-        return String.format("%d, %s, %s, %s, %s, %d", this.userID, this.isbn,
-                dateFormat.format(this.dateIssued), dateFormat.format(this.dateReturned), this.isOverdue, this.getDaysOverDue());
+        return String.format("%d, %s, %s, %s, %s, %d", this.userID, this.isbn, this.status,
+                (this.dateIssued != null) ? dateFormat.format(this.dateIssued) : "",
+                (this.dateReturned != null) ? dateFormat.format(this.dateReturned) : "",
+                this.getDaysOverDue());
    }
 }//class

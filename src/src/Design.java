@@ -18,7 +18,7 @@ public class Design {
         this.btnAddColor = new Color(0, 103, 38);
         this.btnWarningColor = new Color(255, 174, 0);
         this.btnCancelColor = new Color(217, 83, 79);
-        this.img = new ImageIcon("src\\img\\ulster_logo.png");
+        this.img = new ImageIcon("src\\img\\project7_logo_4_40.png");
         this.fontName = "Arial";
         this.borderGold = new Color(207,181, 59);
         this.tableButtonColor = new Color(0, 92, 151);
