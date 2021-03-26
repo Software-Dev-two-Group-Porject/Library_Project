@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class UserList {
     protected User [] userList;
     Scanner keyboard = new Scanner(System.in);
+    Utils utils = new Utils();
 
     UserList(){
 
@@ -45,7 +46,7 @@ public class UserList {
             this.userList[j] = User.setUser(newUserArray[j]);
         }
 
-        User.quickSort(this.userList, 0, this.userList.length -1);
+        utils.quickSort(this.userList, 0, this.userList.length -1);
 
     } //initUserList
 
@@ -80,8 +81,8 @@ public class UserList {
     } //getUserByEmail
 
     public void addUserToList(User user) {
-        User [] newUserList = new User[userList.length + 1];
-
+        initUserList();
+        User [] newUserList = new User[this.userList.length + 1];
         for (int x = 0; x < userList.length; x++) {
             newUserList[x] = userList[x];
         }//for
@@ -138,49 +139,21 @@ public class UserList {
         }
     }//deleteUser
 
-
-   /* public void populateList() { //This already exists in User as initUserList
-        int i = 0;
-        String file = "src\\users.dat";
-        BufferedReader reader = null;
-        String line = "";
-        String[] strArr = new String[500];
-        try {
-            reader = new BufferedReader(new FileReader(file));
-            while ((line = reader.readLine()) != null) {
-                strArr[i] = line;
-                i++;
+    public void editUser(int userId, User user){
+        initUserList();
+        for (int i = 0; i < userList.length; i++) {
+            if(userList[i].getUserID() == userId) {
+                userList[i].setName(user.getName());
+                userList[i].setEmail(user.getEmail());
+                userList[i].setPassword(user.getPassword());
+                userList[i].setStatus(user.getStatus());
+                userList[i].setRoom(user.getRoom());
+                userList[i].setBlock(user.getBlock());
+                userList[i].setCourse(user.getCourse());
             }
 
-            //using copy of method to create new array of String without the column headers so data can be seperated
-            //and placed in setters
-            String[] newStrArray = Arrays.copyOfRange(strArr, 1, i);
-            //after grabbing from csv file, we need to set a new array, removing the headings
-            this.userList = new User[newStrArray.length];//array set to length of existing records
-            //here we loop through the String array and set our book object by the values in the csv
-            //the order of the csv to the class names.
-
-            for (int j = 0; j < this.userList.length; j++) {
-                //this.userList[j] = setBookObject(newStrArray[j]);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                reader.close();
-            } catch (IOException io) {
-                io.printStackTrace();
-            }
-        }
+        } //for
     }
 
-    public Student setStudentObject(String line){
-        Student newStudent = new Student();
-        String [] data = line.split(",");
-        return newStudent;
-    }
-
-    public void setStaffObject(String line){
-    } */
 }
 

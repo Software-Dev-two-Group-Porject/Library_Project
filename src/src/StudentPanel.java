@@ -18,7 +18,7 @@ public class StudentPanel extends JPanel {
     JPanel studentDetailPanel;
     GridBagConstraints gbc = new GridBagConstraints();
     Design design = new Design();
-    String [] statusChanges = {"requested", "ready"};
+    String [] statusChanges = {"received", "ready"};
     StudentList studentList = new StudentList();
     CommonButton requestButton;
     BookLoan [] studentBookLoans;
@@ -39,8 +39,9 @@ public class StudentPanel extends JPanel {
 
         studentBookLoans = bookLoanList.getBookLoansByUserId(student.getUserID());
 
-        bookLoanDataPanel = new BookLoanDataPanel(studentBookLoans, statusChanges);
-        bookLoanDataPanel.setBounds(400, 145, 550,200);
+        bookLoanDataPanel = new BookLoanDataPanel(studentBookLoans, null, this);
+        bookLoanDataPanel.setBounds(330, 145, 620,150);
+        bookLoanDataPanel.renderTable(studentBookLoans);
         studentDetailPanel = new JPanel();
         studentDetailPanel.setLayout(new GridLayout(3, 0));
 
@@ -68,7 +69,7 @@ public class StudentPanel extends JPanel {
         quantity.setBounds(70, 275, 150, 20);
 
         requestButton = new CommonButton("Request", design.tableButtonColor,10);
-        requestButton.setBounds(275, 275, 100, 20);
+        requestButton.setBounds(225, 275, 100, 20);
         requestButton.addActionListener(l -> addBookLoan());
         requestButton.setVisible(false);
 
@@ -101,18 +102,23 @@ public class StudentPanel extends JPanel {
     }
 
     public void addBookLoan(){
-        BookLoan [] newBookLoansArray = new BookLoan[studentBookLoans.length];
+        BookLoan [] newBookLoansArray = new BookLoan[studentBookLoans.length + 1];
         BookLoan newBookLoan = new BookLoan();
         newBookLoan.setISBN(tempIsbn);
         newBookLoan.setUserID(student.getUserID());
         newBookLoan.setStatus("requested");
-        newBookLoansArray[studentBookLoans.length -1] = newBookLoan;
+        newBookLoansArray[newBookLoansArray.length -1] = newBookLoan;
         for(int i =0; i < studentBookLoans.length; i++){
             newBookLoansArray[i] = studentBookLoans[i];
         }
+        System.out.println("Testing add book to loan output");
+        for(int i =0; i < newBookLoansArray.length; i++){
+            System.out.println(newBookLoansArray[i].getStatus());
+        }
         studentBookLoans = newBookLoansArray;
-
         bookLoanDataPanel.renderTable(studentBookLoans);
+        bookLoanDataPanel.saveChanges.setVisible(true);
+        bookLoanList.addToBookLoanList(newBookLoan);
     }
 
     private boolean checkStudentBookLoanList(String isbn){
@@ -124,5 +130,9 @@ public class StudentPanel extends JPanel {
         }
 
         return exists;
+    }
+
+    public void saveBookLoanListChanges(){
+        bookLoanList.saveData();
     }
 }

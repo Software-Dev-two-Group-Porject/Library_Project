@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
@@ -53,11 +54,10 @@ public class BookLoanList {
             String [] data = line.split(",");
             bookLoan.setISBN(data[0]);
             bookLoan.setUserID(Integer.parseInt(data[1]));
-            bookLoan.setDateIssued(formatter.parse(data[2]));
+            bookLoan.setDateIssued((data[2].trim().equals("")) ? null : formatter.parse(data[2]));
             bookLoan.setStatus(data[3]);
-            bookLoan.setDueDate(formatter.parse(data[4]));
-            bookLoan.setDateReturned(formatter.parse(data[5]));
-            bookLoan.setOverdue(false);
+            bookLoan.setDueDate((data[4].trim().equals("")) ? null : formatter.parse(data[4]));
+            bookLoan.setDateReturned((data[5].trim().equals("")) ? null : formatter.parse(data[5]));
             bookLoan.setFinePerDay(2.50);
         } catch (ParseException pe) {
             pe.printStackTrace();
@@ -112,7 +112,7 @@ public class BookLoanList {
     public void removeFromBookLoanList(String isbn, int userid){
         char response;
         for(int i = 0; i < bookLoans.length; i++){
-            if(bookLoans[i].getISBN().equals(isbn.trim())){   //do I need ID looped through too?
+            if(bookLoans[i].getISBN().equals(isbn.trim()) && bookLoans[i].getUserID() == userid){   //do I need ID looped through too?
                 System.out.println("Record Found");
                 System.out.println(isbn); //printHeader()?
                 System.out.println(bookLoans[i].toString());
@@ -134,7 +134,7 @@ public class BookLoanList {
 
 
     //AddBookLoanlist method
-    public void addToBookLoanList(BookLoan bkloan, int userid){
+    public void addToBookLoanList(BookLoan bkloan){
         BookLoan [] newArray = new BookLoan[bookLoans.length + 1]; //create new array adding 1 new index for new book
         for(int i = 0; i < bookLoans.length; i++){
             newArray[i] = bookLoans[i];
@@ -166,35 +166,14 @@ public class BookLoanList {
         }
 
     }
-    public int getTotalRequests(){
+    public int getTotals(String status){
         int count = 0;
         for(int i = 0; i < bookLoans.length; i++){
-            if(bookLoans[i].status.equals("requested")){
+            if(bookLoans[i].status.equals(status)){
                 count++;
             }
         }
 
-        return count;
-    }
-
-    public int getTotalApproved(){
-        int count = 0;
-        for(int i = 0; i < bookLoans.length; i++){
-            if(bookLoans[i].status.equals("approved")){
-                count++;
-            }
-        }
-
-        return count;
-    }
-
-    public int getTotalReady(){
-        int count = 0;
-        for(int i = 0; i < bookLoans.length; i++){
-            if(bookLoans[i].status.equals("ready")){
-                count++;
-            }
-        }
         return count;
     }
 
@@ -202,13 +181,20 @@ public class BookLoanList {
         int count = 0;
         BookLoan [] returnArray = new BookLoan[bookLoans.length];
         for(int i = 0; i < bookLoans.length; i++){
-            if(bookLoans[i].getStatus().equals(status)){
+            if(bookLoans[i].getStatus().toLowerCase().equals(status)){
                 returnArray[count] = bookLoans[i];
                 count++;
             }
         }
 
         return Arrays.copyOfRange(returnArray, 0, count);
+    }
+
+
+    public void saveData(){
+        String header = "isbn,userid,date,status,dateissued,datereturned,duedate,isoverdue,fineperday";
+        BufferedWriter writer = null;
+
     }
 
 

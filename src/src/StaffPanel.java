@@ -24,7 +24,6 @@ public class StaffPanel extends JPanel {
     JPanel readyStats, studentInfo, buttonContainer;
     BookLoanList bookLoanList;
     GridBagConstraints gbc = new GridBagConstraints();
-    JPanel bookLoanHolder;
     BookLoanDataPanel bookLoanDataPanel;
     String [] staffStatusChanges = {"Approved", "Delivered", "Collected"};
     StaffPanel(User user){
@@ -43,16 +42,16 @@ public class StaffPanel extends JPanel {
         headerPanel.setBounds(20, 5, 850, 135);
         this.add(headerPanel);
 
-        labelTotalRequests = new CommonLabel("Requests: " + bookLoanList.getTotalRequests(), 20);
+        labelTotalRequests = new CommonLabel("Requests: " + bookLoanList.getTotals("requested"), 15);
         gbc.gridx = 0; gbc.gridy = 0; gbc.gridwidth = 10;
         readyStats.add(labelTotalRequests, gbc);
 
         viewRequests = new CommonButton("View", design.tableButtonColor, 12);
-        viewRequests.addActionListener(l -> populateBookLoanDataPanelByStatus("requests"));
+        viewRequests.addActionListener(l -> populateBookLoanDataPanelByStatus("requested"));
         gbc.gridx =11; gbc.gridy =0; gbc.gridwidth = 1;
         readyStats.add(viewRequests, gbc);
 
-        labelsBooksForDelivery = new CommonLabel("For delivery: " + bookLoanList.getTotalApproved(), 20);
+        labelsBooksForDelivery = new CommonLabel("For delivery: " + bookLoanList.getTotals("approved"), 15);
         gbc.gridx = 0; gbc.gridy = 1; gbc.gridwidth = 10;
         readyStats.add(labelsBooksForDelivery, gbc);
 
@@ -61,7 +60,7 @@ public class StaffPanel extends JPanel {
         viewApprovals.addActionListener(l -> populateBookLoanDataPanelByStatus("approved"));
         readyStats.add(viewApprovals, gbc);
 
-        labelReadyForCollection = new CommonLabel("For Collection: " + bookLoanList.getTotalReady(), 20);
+        labelReadyForCollection = new CommonLabel("For Collection: " + bookLoanList.getTotals("ready"), 15);
         gbc.gridx = 0; gbc.gridy = 2; gbc.gridwidth = 10;
         readyStats.add(labelReadyForCollection, gbc);
 
@@ -70,7 +69,7 @@ public class StaffPanel extends JPanel {
         viewReadys.addActionListener(l -> populateBookLoanDataPanelByStatus("ready"));
         readyStats.add(viewReadys, gbc);
 
-        readyStats.setBounds(70, 130, 350, 120);
+        readyStats.setBounds(20, 150, 300, 100);
         this.add(readyStats);
 
         studentInfo = new JPanel();
@@ -98,14 +97,15 @@ public class StaffPanel extends JPanel {
         studentRoomNumber = new CommonLabel("", 17);
         gbc.gridx = 1; gbc.gridy = 3;
         studentInfo.add(studentRoomNumber, gbc);
-        studentInfo.setBounds(450, 130, 400, 120);
+        studentInfo.setBounds(450, 150, 400, 120);
 
         viewLoans = new CommonButton("View Loans", design.tableButtonColor, 12);
         gbc.gridx = 0; gbc.gridy = 4;
         viewLoans.setVisible(false);
+        viewLoans.addActionListener(l -> displayBookLoansForStudent());
         studentInfo.add(viewLoans, gbc);
-
         this.add(studentInfo);
+        studentInfo.setVisible(false);
 
 
         buttonContainer = new JPanel();
@@ -134,10 +134,16 @@ public class StaffPanel extends JPanel {
         bookDataPanel.setVisible(false);
         this.add(bookDataPanel);
 
-        bookLoanDataPanel = new BookLoanDataPanel(bookLoanList.getBookLoanList(), staffStatusChanges);
+        bookLoanDataPanel = new BookLoanDataPanel(bookLoanList.getBookLoanList(), this, null);
+        bookLoanDataPanel.setBounds(330,150, 620, 150);
+        this.add(bookLoanDataPanel);
     }
 
     public void setStudentViewLabels(Student student){
+        if(bookLoanDataPanel.isVisible()){
+            bookLoanDataPanel.setVisible(false);
+            studentInfo.setVisible(true);
+        }
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         BookLoan [] bookLoans = bookLoanList.getBookLoansByUserId(student.getUserID());
         studentName.setText("Name: " + student.getName());
@@ -145,12 +151,9 @@ public class StaffPanel extends JPanel {
         studentCourse.setText("Course: " + student.getCourse());
         studentBlock.setText("Block:  " + student.getBlockLetter());
         studentRoomNumber.setText("Room:  " + student.getRoomNumber());
-        viewLoans.setVisible(true);
 
         if(bookLoans.length > 0){
-            for(int i = 0; i < bookLoans.length; i++){
-                System.out.println(bookLoans[i].toString());
-            }
+            viewLoans.setVisible(true);
             bookLoanDataPanel.renderTable(bookLoans);
         }
         //render the books in this section
@@ -174,6 +177,18 @@ public class StaffPanel extends JPanel {
 
     public void populateBookLoanDataPanelByStatus(String status){
       BookLoan [] statusBookLoans = bookLoanList.getBookLoansByStatus(status);
+      for(int i = 0; i < statusBookLoans.length; i++){
+          System.out.println(statusBookLoans[i].toString());
+      }
       bookLoanDataPanel.renderTable(statusBookLoans);
+    }
+
+    public void displayBookLoansForStudent() {
+        bookLoanDataPanel.setVisible(true);
+        studentInfo.setVisible(false);
+    }
+
+    public void saveBookLoanListChanges(){
+        bookLoanList.saveData();
     }
 }

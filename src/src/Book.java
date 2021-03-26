@@ -4,7 +4,7 @@
  **/
 public class Book {
 
-    private int loanType, quantity;
+    private int  quantity;
     private String author, title, isbn;
     private String genre, subGenre;
 

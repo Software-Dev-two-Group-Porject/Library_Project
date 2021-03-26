@@ -11,8 +11,6 @@ public class User
    private String status, name, email, password, block, course;
    private int userID, room;
    private boolean overdue;
-   private User[] userList;
-   static Scanner keyboard = new Scanner(System.in);
 
    User() {  } //Default constructor
 
@@ -25,48 +23,9 @@ public class User
 
    } //Alt constructor
 
-   protected static String printHeader() {
+   public static String printHeader() {
       return String.format("%-10s\t%-10s\t%-40s\t%-50s\t%-5s\t%-5s\t%-10s\t%s", "ID", "Status", "Name", "Email", "Block", "Room", "Overdue", "Course");
    }
-
-   public void printUserList(User [] userList) {
-      System.out.println("User List");
-      System.out.println(printHeader());
-
-      for (int i = 0; i < userList.length; i++) {
-         System.out.println(userList[i].toString());
-      } //for
-   } //Password not shown as in real world would be hashed for security
-
-   /*public void initUserList() {
-      String line = "";
-      int i = 0;
-      String [] userArray = new String[100];
-
-      try (FileReader file = new FileReader(new File("src\\Data\\users.dat"))) {
-         BufferedReader userFile = new BufferedReader(file);
-
-         while((line = userFile.readLine()) != null) {
-            userArray[i] = line;
-            i++;
-         }
-
-      } catch (Exception e) { //error handling
-         System.err.format("File does not exist\n");
-         e.printStackTrace();
-      }
-
-      String [] newUserArray = Arrays.copyOfRange(userArray, 0, i);
-
-      this.userList = new User[newUserArray.length];
-
-      for(int j = 0; j < newUserArray.length; j++) {
-         this.userList[j] = setUser(newUserArray[j]);
-      }
-
-      quickSort(this.userList, 0, this.userList.length -1);
-
-   } //initUserList*/
 
    public String toString() {
       return String.format("%-10s\t%-10s\t%-40s\t%-50s\t%-5s\t%-5s\t%-10s\t%s", this.userID, this.status, this.name, this.email, this.block, this.room, this.overdue, this.course);
@@ -97,22 +56,6 @@ public class User
 
    } //setUser
 
-   /*public User getUserByID(int id) {
-      User user = new User();
-      UserList getUser = new UserList();
-      getUser.initUserList();
-
-      for (int i = 0; i < getUser.userList.length; i++) {
-         if(getUser.userList[i].getUserID() == id) {
-            user = getUser.userList[i];
-         }
-
-      } //for
-
-      return user;
-
-   } //getUserByID*/
-
    public static boolean checkExisting(int id) {
       boolean exists = false;
       UserList existingUser = new UserList();
@@ -129,117 +72,7 @@ public class User
 
    } //checkExisting
 
-   /*public User getUserByEmail(String email) {
-      User returnUser = new User();
-      for (int i = 0; i < this.userList.length; i++) {
-         if(this.userList[i].getEmail().equals(email)) {
-            returnUser = this.userList[i];
-         }
-      } //for
-      return returnUser;
-   } //getUserByEmail*/
 
-   /*public void addUserToList(User user) {
-      User [] newUserList = new User[userList.length + 1];
-
-      for (int x = 0; x < userList.length; x++) {
-         newUserList[x] = userList[x];
-      }//for
-      newUserList[newUserList.length-1] = user;
-      userList = newUserList;
-
-   } //addUserToList*/
-
-   //Edit user has never been used, do we need to keep it??
-
-   /*public void editUser(int userID) {
-      User editUser = new User();
-      for (int i = 0; i < this.userList.length; i++) {
-         if(this.userList[i].getUserID() == userID) {
-            this.userList[i] = editUser;
-         }
-
-      } //for
-
-   }//edit user*/
-
-   /*public void deleteUser(int userID, int prompt) {
-      char delete = 'N';
-
-      for (int x = 0; x < userList.length; x++) {
-         if(userList[x].getUserID() == userID) {
-            if (prompt != 0) { //Show user info before deleting unless prompts are hidden
-               System.out.println(printHeader());
-               System.out.println(userList[x].toString());
-               System.out.println("Please confirm you would like to delete user. (Y/N)");
-               delete = keyboard.nextLine().toUpperCase().charAt(0);
-            }
-            if ((delete == 'Y') || (prompt == 0)) {
-               User deleteUser = userList[x];
-               userList[x] = userList[0];
-               userList[0] = deleteUser;
-               userList = Arrays.copyOfRange(userList,1,userList.length);
-               if (prompt !=0) { System.out.println("User has been deleted."); }
-            } else {
-               System.out.println("User has not been deleted.");
-               break;
-            }
-         }
-      }
-   }//deleteUser*/
-
-   /*public void saveUsers() {
-      String file = "src\\Data\\users.dat";
-      BufferedWriter writer = null;
-      String user = "";
-      try {
-         writer = new BufferedWriter(new FileWriter(file));
-         for (int i=0; i < userList.length; i++) {
-            user += userList[i].saveStringForUsersDat();
-
-         }//for
-         writer.write(user);
-
-      } catch(Exception e) {
-         e.printStackTrace();
-      } finally {
-         try {
-            writer.close();
-         } catch (IOException ioe) {
-            ioe.printStackTrace();
-         } //catch
-      } //finally
-   } //saveUsers*/
-
-   //sorting implementation for ID's to be incremented easily.
-   protected static void quickSort(User [] users, int begin, int end){
-      if(begin < end){
-         int partitionIndex = partition(users, begin, end);
-         quickSort(users, begin, partitionIndex -1);
-         quickSort(users, partitionIndex+1, end);
-
-      }
-   }
-
-   private static int partition(User [] users, int begin, int end){
-      User pivot = users[end];
-      int i = (begin - 1);
-
-      for(int j = begin; j <=end; j++){
-         if(users[j].getUserID() < pivot.getUserID()){
-            i++;
-            User temp = users[i];
-            users[i] = users[j];
-            users[j] = temp;
-         }
-      }
-
-      User temp = users[i+1];
-      users[i+1] = users[end];
-      users[end] = temp;
-
-      return i+1;
-   }
 
    public String saveStringForUsersDat() {
       return this.userID + "," + this.status + "," + this.name + "," + this.email + "," + this.password + "," + this.block + "," + this.room + "," + this.overdue + "," + this.course + "\n";

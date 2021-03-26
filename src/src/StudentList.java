@@ -10,6 +10,7 @@ import java.util.Arrays;
  **/
 public class StudentList {
    private Student [] studentList;
+   private String fileName = "src\\Data\\users.dat";
 
     StudentList(){
 
@@ -17,14 +18,13 @@ public class StudentList {
 
     public void populateList(){
         BufferedReader reader = null;
-        String file = "src\\Data\\users.dat";
         int s = 0;
         int i = 0;
         String line = "";
         String [] arr = new String [500];
         Student [] stdArr = new Student[arr.length];
         try{
-            reader = new BufferedReader(new FileReader(file));
+            reader = new BufferedReader(new FileReader(fileName));
             while((line = reader.readLine()) != null){
                 arr[i] = line;
                 String [] data = line.split(",");
@@ -118,10 +118,6 @@ public class StudentList {
         Student [] studentArr = new Student[1];
         studentArr[0] = findById(id);
         return studentArr;
-   }
-
-   public String findStudentNameById(int id){
-        return findById(id).getName();
    }
 
 }

@@ -96,6 +96,7 @@ public class AddBook extends JFrame {
     public void addBookToCatalog(){
         String validationMessage = "";
         validationMessage += utils.isbnValidation(isbnField.getText());
+        validationMessage += (catalog.getBookByIsbn("978"+isbnField.getText()) != null) ? "Isbn already exists." : "";
         validationMessage += utils.bookValidation(titleField.getText());
         validationMessage += utils.nameValidation("Author", authorField.getText());
         validationMessage += utils.nameValidation("Genre", genreField.getText());
@@ -109,6 +110,10 @@ public class AddBook extends JFrame {
             catalog.addBookToCatalog(book);
             catalog.saveData();
             catalog.initializeCatalogue();
+            bookDataPanel.renderTable(catalog.getCatalogueList());
+
+            JOptionPane.showMessageDialog(null, String.format("%s has been successfully added!", book.getTitle()));
+            this.dispose();
         }
         else {
             JOptionPane.showMessageDialog(null, validationMessage);
@@ -118,6 +123,6 @@ public class AddBook extends JFrame {
     public void clearTextFields(){
      isbnField.setText(""); titleField.setText("");
      authorField.setText(""); genreField.setText("");
-     subGenreField.setText(""); quantityField.setText(""); 
+     subGenreField.setText(""); quantityField.setText("");
     }
 }

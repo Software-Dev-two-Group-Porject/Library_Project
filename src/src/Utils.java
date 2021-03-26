@@ -23,6 +23,37 @@ public class Utils
 
    }
 
+
+   public static void quickSort(User [] users, int begin, int end){
+      if(begin < end){
+         int partitionIndex = partition(users, begin, end);
+         quickSort(users, begin, partitionIndex -1);
+         quickSort(users, partitionIndex+1, end);
+
+      }
+   }
+
+   public static int partition(User [] users, int begin, int end){
+      User pivot = users[end];
+      int i = (begin - 1);
+
+      for(int j = begin; j <=end; j++){
+         if(users[j].getUserID() < pivot.getUserID()){
+            i++;
+            User temp = users[i];
+            users[i] = users[j];
+            users[j] = temp;
+         }
+      }
+
+      User temp = users[i+1];
+      users[i+1] = users[end];
+      users[end] = temp;
+
+      return i+1;
+   }
+
+
    public static String emailValidation(String input){
       String validationMessage = "";
       Pattern pattern = Pattern.compile(email);
@@ -36,7 +67,7 @@ public class Utils
       String validationMessage = "";
       if (!stringCheck(input, name)) validationMessage += String.format("%s must only have letters, hyphens and spaces\n", type);
       if (!charCount(4, 50, input)) validationMessage += String.format("%s must have between 4 and 50 characters\n", type);
-      if(!type.equals("genre")) {
+      if(!type.toLowerCase().equals("genre")) {
          if (countWords(input) < 2) validationMessage += String.format("%s must be at least two words\n", type);
       }
       return validationMessage;
